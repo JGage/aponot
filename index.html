@@ -3,144 +3,205 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Denizen Healthcare</title>
-  <meta name="description" content="RN-supervised patient follow-up for OB-GYN practices.">
+  <title>Denizen Healthcare — RN-led patient follow-up for OB-GYN practices</title>
+  <meta name="description" content="Denizen Healthcare provides RN-led patient follow-up for OB-GYN practices. Personalized 1-on-1 support throughout pregnancy and postpartum, integrated with your EHR.">
   <meta name="robots" content="index, follow">
 
-  <!-- Open Graph for link sharing -->
   <meta property="og:title" content="Denizen Healthcare">
-  <meta property="og:description" content="RN-supervised patient follow-up for OB-GYN practices.">
+  <meta property="og:description" content="RN-led patient follow-up for OB-GYN practices.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://denizenhealthcare.com">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f6f3ee;
-      color: #1f1f1f;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.5rem;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .container {
-      max-width: 520px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .wordmark {
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #1a1a1a;
-      margin-bottom: 4rem;
-    }
-
-    .tagline {
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: #2a2a2a;
-      margin-bottom: 2.5rem;
-      line-height: 1.35;
-      letter-spacing: -0.005em;
-    }
-
-    .description {
-      font-size: 1rem;
-      color: #5a5a5a;
-      margin-bottom: 3.5rem;
-      line-height: 1.65;
-      max-width: 440px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .status {
-      font-size: 0.85rem;
-      color: #8a8a8a;
-      margin-bottom: 1.25rem;
-      letter-spacing: 0.04em;
-    }
-
-    .contact {
-      display: inline-block;
-      font-size: 1rem;
-      color: #1a1a1a;
-      text-decoration: none;
-      border-bottom: 1px solid #b8b3a8;
-      padding-bottom: 3px;
-      transition: border-color 0.2s ease, color 0.2s ease;
-    }
-
-    .contact:hover {
-      border-color: #1a1a1a;
-      color: #000;
-    }
-
-    .footer {
-      margin-top: 5rem;
-      font-size: 0.8rem;
-      color: #a8a39a;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 1.5rem 1rem;
-      }
-
-      .wordmark {
-        font-size: 0.95rem;
-        margin-bottom: 3rem;
-      }
-
-      .tagline {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-      }
-
-      .description {
-        font-size: 0.95rem;
-        margin-bottom: 3rem;
-      }
-
-      .footer {
-        margin-top: 4rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="container">
-    <h1 class="wordmark">Denizen Healthcare</h1>
 
-    <p class="tagline">RN-supervised patient follow-up for OB-GYN practices.</p>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="wordmark">Denizen Healthcare</a>
+      <button class="mobile-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+      <nav class="nav">
+        <a href="how-it-works.html">How it works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="sign-up.html" class="cta">Sign up</a>
+      </nav>
+    </div>
+  </header>
 
-    <p class="description">We partner with practices to handle the postpartum, prenatal, and follow-up outreach that doesn't always get done — supplementing your clinical team, not replacing it.</p>
+  <main>
 
-    <p class="status">In early development.</p>
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">For OB-GYN practices</p>
+        <h1>RN-led patient follow-up that improves outcomes — without adding to your team's load.</h1>
+        <p class="lead">Denizen Healthcare handles the prenatal, postpartum, and follow-up outreach that doesn't always get done. Personalized 1-on-1 support throughout pregnancy, delivered by trained registered nurses, integrated with your EHR.</p>
+        <div class="hero-actions">
+          <a href="sign-up.html" class="btn btn-primary">Sign up your practice</a>
+          <a href="how-it-works.html" class="btn btn-secondary">See how it works</a>
+        </div>
+      </div>
+    </section>
 
-    <a href="mailto:hello@denizenhealthcare.com" class="contact">hello@denizenhealthcare.com</a>
+    <section class="muted">
+      <div class="container">
+        <div class="section-intro">
+          <p class="eyebrow">The problem</p>
+          <h2>Approximately 95% of OB-GYN practices don't execute structured patient follow-ups.</h2>
+          <p class="lead">The result is poor outcomes for both the patient — health, mental health, experience of care — and the practice — operational drag, missed visits, and lost revenue. The gap is well-documented; the bandwidth to close it is not.</p>
+        </div>
+      </div>
+    </section>
 
-    <p class="footer">Tampa, Florida</p>
+    <section>
+      <div class="container">
+        <div class="section-intro">
+          <p class="eyebrow">What we do</p>
+          <h2>Denizen follows up on clinical visits with personalized 1-on-1 support throughout pregnancy and postpartum.</h2>
+        </div>
+        <div class="attributes">
+          <div class="attribute">
+            <h3>Proactive</h3>
+            <p>We follow up with patients across pregnancy and postpartum to catch issues before they escalate.</p>
+          </div>
+          <div class="attribute">
+            <h3>Personal</h3>
+            <p>Every interaction is 1-on-1 with an experienced, trained registered nurse.</p>
+          </div>
+          <div class="attribute">
+            <h3>Customized in content</h3>
+            <p>Each touchpoint is tailored to the patient's history and current stage.</p>
+          </div>
+          <div class="attribute">
+            <h3>Customized in timing</h3>
+            <p>Touchpoints align to clinical milestones so check-ins happen when they change outcomes.</p>
+          </div>
+          <div class="attribute">
+            <h3>Closed-loop</h3>
+            <p>Daily digest back to your team — patient status, flagged concerns, and what needs your attention.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="muted">
+      <div class="container">
+        <div class="section-intro">
+          <p class="eyebrow">How it works</p>
+          <h2>One light setup. We handle the rest, every day.</h2>
+          <p class="lead">A 30-minute configuration with your office manager wires the daily report from your EHR. From there, our team takes over the follow-up loop — and reports back to your team each evening.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">Step 1</div>
+            <h3>EHR delivers a daily patient report</h3>
+            <p>Securely, via SFTP. No installs, no integration project.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">Step 2</div>
+            <h3>We plan the day's outreach</h3>
+            <p>Each patient is routed to the right touchpoint based on stage, history, and risk.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">Step 3</div>
+            <h3>An RN reaches out</h3>
+            <p>By phone or text, 1-on-1. Out-of-scope cases route back to your team.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">Step 4</div>
+            <h3>End-of-day digest</h3>
+            <p>Patient status, flagged concerns, and what needs your attention — delivered to your team.</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="how-it-works.html" class="btn btn-secondary">Read the full walk-through</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-intro" style="text-align: center; margin-left: auto; margin-right: auto; max-width: 760px;">
+          <p class="eyebrow">Why Denizen</p>
+          <h2 style="margin-left: auto; margin-right: auto;">Our singular focus on follow-up support for independent OB-GYNs lets us charge over 65% less than leading alternatives — while delivering a higher-quality service.</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="muted">
+      <div class="container">
+        <div class="section-intro" style="text-align: center;">
+          <p class="eyebrow">Pricing</p>
+          <h2 style="margin-left: auto; margin-right: auto;">Simple, flat-rate pricing.</h2>
+        </div>
+        <div class="pricing-card">
+          <div class="price">$249</div>
+          <div class="price-note">per month, per practice</div>
+          <div class="price-discount">Discounted rate for our first 25 practices — locked in for the life of your subscription.</div>
+          <ul>
+            <li>Up to 200 active patients</li>
+            <li>No setup fee or per-patient charges</li>
+            <li>After a 90-day pilot, cancel anytime with 30 days' notice</li>
+          </ul>
+          <div style="margin-top: 2rem; text-align: center;">
+            <a href="pricing.html" class="btn btn-secondary">See full pricing details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Ready to give your patients better follow-up?</h2>
+        <p>We're partnering with our first 25 practices to refine the service together. Get in touch — we'd love to talk.</p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a href="sign-up.html" class="btn btn-primary">Sign up your practice</a>
+          <a href="contact.html" class="btn btn-secondary">Contact us</a>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="wordmark">Denizen Healthcare</a>
+          <p>RN-led patient follow-up for OB-GYN practices. Tampa, Florida.</p>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <ul>
+            <li><a href="how-it-works.html">How it works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="sign-up.html">Sign up</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="resources.html">Resources</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="hipaa-notice.html">HIPAA Notice</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Denizen Healthcare &middot; Tampa, Florida</div>
+        <div><a href="mailto:hello@denizenhealthcare.com">hello@denizenhealthcare.com</a></div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
