@@ -7,16 +7,20 @@
   <meta name="description" content="How Denizen delivers real home care as an employee benefit." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0a0a0a;
+      /* Warm dusty dark — softer than pitch black */
+      --bg: #1c1a17;
       --text: #f0eee9;
-      --muted: #7c7972;
-      --line: rgba(240, 238, 233, 0.12);
-      --line-strong: rgba(240, 238, 233, 0.28);
+      --muted: #8a857e;
+      --line: rgba(240, 238, 233, 0.10);
+      --line-strong: rgba(240, 238, 233, 0.26);
+      --terra: #d47a55;
+      --crimson: #a31f34;
+      --crimson-hover: #b32540;
     }
 
     html, body {
@@ -42,6 +46,18 @@
       font-size: 18px;
       font-weight: 500;
       letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    header .wordmark::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--terra);
+      border-radius: 50%;
+      display: inline-block;
     }
 
     main {
@@ -53,10 +69,11 @@
     }
 
     h1 {
-      font-size: 52px;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 56px;
       font-weight: 500;
-      letter-spacing: -0.025em;
-      line-height: 1.08;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
       margin-bottom: 32px;
       color: var(--text);
       max-width: 760px;
@@ -77,11 +94,11 @@
     }
 
     .placeholder-kicker {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
-      color: var(--muted);
+      color: var(--terra);
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       margin-bottom: 16px;
     }
 
@@ -105,16 +122,17 @@
     }
 
     .cta-button {
-      background: var(--text);
-      color: var(--bg);
-      padding: 12px 24px;
+      background: var(--crimson);
+      color: var(--text);
+      padding: 14px 28px;
       font-size: 14px;
       font-weight: 500;
       border-radius: 999px;
-      transition: opacity 120ms;
+      transition: background-color 120ms;
+      letter-spacing: 0.01em;
     }
 
-    .cta-button:hover { opacity: 0.85; }
+    .cta-button:hover { background: var(--crimson-hover); }
 
     .cta-button.secondary {
       background: transparent;
