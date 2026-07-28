@@ -1,131 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service — Denizen Healthcare</title>
-  <meta name="description" content="Denizen Healthcare's terms of service for use of denizenhealthcare.com.">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Denizen</title>
+  <meta name="description" content="Denizen Terms of Service." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --text: #f0eee9;
+      --muted: #7c7972;
+      --line: rgba(240, 238, 233, 0.12);
+      --line-strong: rgba(240, 238, 233, 0.28);
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; padding: 40px; }
+    header .wordmark { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; text-decoration: none; }
+
+    main {
+      flex: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px 0 40px;
+    }
+
+    h1 { font-size: 40px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
+    .updated { font-size: 13px; color: var(--muted); margin-bottom: 48px; }
+    h2 { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; margin-top: 40px; margin-bottom: 12px; }
+    p { font-size: 16px; margin-bottom: 16px; }
+    ul { padding-left: 24px; margin-bottom: 16px; }
+    li { font-size: 16px; margin-bottom: 8px; }
+
+    .notice {
+      padding: 20px 24px;
+      border: 1px solid var(--line-strong);
+      border-radius: 4px;
+      margin-bottom: 40px;
+      font-size: 14px;
+      color: var(--muted);
+      background: rgba(240, 238, 233, 0.02);
+    }
+
+    footer {
+      padding: 60px 40px 32px;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    footer .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    footer .footer-nav a { text-decoration: underline; text-decoration-color: var(--line-strong); }
+
+    @media (max-width: 640px) {
+      .page { padding: 24px; }
+      h1 { font-size: 32px; }
+      main { padding: 40px 0 20px; }
+      footer { padding: 40px 24px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="wordmark">Denizen Healthcare</a>
-      <button class="mobile-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
-      <nav class="nav">
-        <a href="how-it-works.html">How it works</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="sign-up.html" class="cta">Sign up</a>
-      </nav>
-    </div>
-  </header>
+<div class="page">
+
+  <header><a href="/" class="wordmark">Denizen</a></header>
 
   <main>
 
-    <section class="page-header">
-      <div class="container">
-        <p class="eyebrow">Legal</p>
-        <h1>Terms of Service</h1>
-        <p class="lead">Terms governing use of our website. Service-level terms with practices are governed by separate Master Services Agreements.</p>
-      </div>
-    </section>
+    <h1>Terms of Service</h1>
+    <div class="updated">Last updated: July 27, 2026</div>
 
-    <section class="tight">
-      <div class="container prose">
+    <div class="notice">
+      By accessing our website or using our services, you agree to these
+      terms. Please read them carefully. If you don't agree, please don't
+      use our website or services.
+    </div>
 
-        <p class="meta">Last updated: June 1, 2026 &middot; Draft &mdash; pending attorney review.</p>
+    <h2>Who we are</h2>
+    <p>
+      Denizen is a technology platform that connects employees and their
+      families with a curated network of licensed home care agencies. We
+      are not a home care agency or a healthcare provider. All care is
+      delivered by independent third-party agencies in our network.
+    </p>
 
-        <p style="background: #fbf8f3; border: 1px solid #e8e0d2; padding: 1rem 1.25rem; border-radius: 6px; font-size: 0.92rem;"><strong>Draft notice.</strong> These Terms of Service are a working draft and have not yet been reviewed by a licensed attorney. They are not legally binding in their current form. We are providing them publicly to be transparent about our intended terms while the final version is reviewed.</p>
+    <h2>Your account</h2>
+    <p>
+      When you register for an account, you agree to provide accurate
+      information and keep it up to date. You are responsible for
+      maintaining the security of your account credentials and for all
+      activity on your account.
+    </p>
 
-        <h2>1. Agreement to terms</h2>
-        <p>By accessing or using the Denizen Healthcare website at denizenhealthcare.com (the "Site"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, please do not use the Site.</p>
+    <h2>Services and network</h2>
+    <p>
+      Denizen provides technology infrastructure to match you with home care
+      providers in our network. We vet participating agencies against
+      documented licensing, insurance, and quality criteria. However,
+      Denizen does not provide medical or care services directly, and we
+      make no guarantee regarding specific outcomes of care.
+    </p>
+    <p>
+      Care is provided by independent home care agencies. Your relationship
+      for the delivery of care is with those agencies. Denizen facilitates
+      scheduling, payment, and record-keeping but is not the employer of
+      caregivers.
+    </p>
 
-        <h2>2. Description of services</h2>
-        <p>Denizen Healthcare ("Denizen") provides patient follow-up services to OB-GYN practices. The Site is our public-facing marketing presence. The actual delivery of services to a partner practice is governed by a separate Master Services Agreement (MSA) and Business Associate Agreement (BAA) executed between Denizen and that practice.</p>
+    <h2>Fees and payments</h2>
+    <p>
+      Your employer pays for platform access under a separate agreement.
+      Where you incur individual charges for care hours or optional plan
+      tiers, you authorize us to charge the payment method you provide.
+      Fees for care are set by participating agencies at rates negotiated
+      through the platform.
+    </p>
+    <p>
+      Refunds may be issued at our discretion for billing errors or
+      significant service failures. Contact us within 14 days of any
+      disputed charge.
+    </p>
 
-        <h2>3. No medical advice</h2>
-        <p>Content on the Site is provided for general informational purposes only. It is not medical advice and does not establish a clinical relationship between Denizen and any individual. Patients should consult their own healthcare provider for medical decisions.</p>
+    <h2>User conduct</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use the services for any unlawful purpose</li>
+      <li>Impersonate any person or misrepresent your affiliation</li>
+      <li>Circumvent our network for the purpose of hiring caregivers directly outside the platform</li>
+      <li>Attempt to interfere with the security, integrity, or operation of our services</li>
+      <li>Share your account with others</li>
+    </ul>
 
-        <h2>4. Acceptable use</h2>
-        <p>You agree not to:</p>
-        <ul>
-          <li>Use the Site to violate any law or regulation</li>
-          <li>Attempt to interfere with the operation of the Site or any user's use of it</li>
-          <li>Attempt to gain unauthorized access to the Site, our systems, or data</li>
-          <li>Use automated tools (bots, scrapers) to collect information from the Site without our written permission</li>
-          <li>Submit false, misleading, or impersonating information through any form on the Site</li>
-        </ul>
+    <h2>Health information and consent</h2>
+    <p>
+      By using our services, you consent to the collection and sharing of
+      information reasonably necessary to arrange care, including with
+      participating agencies. Handling of protected health information is
+      governed by our <a href="/hipaa">HIPAA Notice</a> and
+      <a href="/privacy">Privacy Policy</a>.
+    </p>
 
-        <h2>5. Intellectual property</h2>
-        <p>The Site and its content &mdash; including text, graphics, logos, and software &mdash; are owned by Denizen Healthcare or our licensors and are protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works of the Site without our written permission, except as expressly allowed by law.</p>
+    <h2>Disclaimers</h2>
+    <p>
+      Our services are provided "as is" without warranties of any kind,
+      express or implied, to the maximum extent permitted by law. Denizen
+      does not warrant that services will be uninterrupted, error-free, or
+      that all care outcomes will meet expectations. You use the services at
+      your own risk.
+    </p>
 
-        <h2>6. Third-party links</h2>
-        <p>The Site may contain links to third-party websites. We are not responsible for the content or practices of those sites and including a link does not imply endorsement.</p>
+    <h2>Limitation of liability</h2>
+    <p>
+      To the maximum extent permitted by law, Denizen and its affiliates
+      shall not be liable for indirect, incidental, special, consequential,
+      or punitive damages arising from your use of the services. Our total
+      liability for any claim shall not exceed the amount you paid to
+      Denizen in the 12 months preceding the claim.
+    </p>
 
-        <h2>7. Disclaimers</h2>
-        <p>The Site is provided "as is" and "as available." To the maximum extent permitted by law, Denizen Healthcare disclaims all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+    <h2>Termination</h2>
+    <p>
+      You may stop using the services at any time. We may suspend or
+      terminate your access if you violate these terms or if your employer
+      ends its agreement with us.
+    </p>
 
-        <h2>8. Limitation of liability</h2>
-        <p>To the maximum extent permitted by law, Denizen Healthcare will not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or relating to your use of the Site. Our total liability for any claim arising out of these Terms is limited to one hundred dollars ($100).</p>
+    <h2>Changes to these terms</h2>
+    <p>
+      We may update these terms from time to time. When we do, we'll
+      update the "Last updated" date and — for material changes — notify
+      registered users with at least 30 days' notice. Continued use of the
+      services constitutes acceptance of any updated terms.
+    </p>
 
-        <h2>9. Indemnification</h2>
-        <p>You agree to defend, indemnify, and hold harmless Denizen Healthcare from any claims, damages, or expenses (including reasonable attorneys' fees) arising out of your violation of these Terms or your misuse of the Site.</p>
+    <h2>Governing law</h2>
+    <p>
+      These terms are governed by the laws of the State of Florida, without
+      regard to conflict-of-law principles. Any dispute shall be resolved in
+      state or federal courts located in Hillsborough County, Florida.
+    </p>
 
-        <h2>10. Governing law</h2>
-        <p>These Terms are governed by the laws of the State of Florida, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to these Terms will be resolved exclusively in the state or federal courts located in Hillsborough County, Florida.</p>
-
-        <h2>11. Changes</h2>
-        <p>We may update these Terms from time to time. When we do, we will post the updated version here with a new "last updated" date. Your continued use of the Site after changes are posted constitutes acceptance of the updated Terms.</p>
-
-        <h2>12. Contact</h2>
-        <p>Questions about these Terms? Email <a href="mailto:hello@denizenhealthcare.com" style="color: #345670;">hello@denizenhealthcare.com</a>.</p>
-
-      </div>
-    </section>
+    <h2>Contact us</h2>
+    <p>
+      Questions about these terms? Reach us at
+      <a href="mailto:legal@denizenhealthcare.com">legal@denizenhealthcare.com</a>.
+    </p>
 
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="wordmark">Denizen Healthcare</a>
-          <p>RN-led patient follow-up for OB-GYN practices. Tampa, Florida.</p>
-        </div>
-        <div>
-          <h4>Product</h4>
-          <ul>
-            <li><a href="how-it-works.html">How it works</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="sign-up.html">Sign up</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="resources.html">Resources</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="terms.html">Terms</a></li>
-            <li><a href="hipaa-notice.html">HIPAA Notice</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>&copy; 2026 Denizen Healthcare &middot; Tampa, Florida</div>
-        <div><a href="mailto:hello@denizenhealthcare.com">hello@denizenhealthcare.com</a></div>
-      </div>
-    </div>
+  <footer>
+    <div>&copy; 2026 Denizen</div>
+    <nav class="footer-nav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/hipaa">HIPAA</a>
+      <a href="mailto:hello@denizenhealthcare.com">Contact</a>
+    </nav>
   </footer>
+
+</div>
 
 </body>
 </html>

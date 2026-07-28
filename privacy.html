@@ -1,151 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Denizen Healthcare</title>
-  <meta name="description" content="Denizen Healthcare's privacy policy — how we collect, use, and protect information.">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Denizen</title>
+  <meta name="description" content="Denizen Privacy Policy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --text: #f0eee9;
+      --muted: #7c7972;
+      --line: rgba(240, 238, 233, 0.12);
+      --line-strong: rgba(240, 238, 233, 0.28);
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; padding: 40px; }
+    header .wordmark { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; text-decoration: none; }
+
+    main {
+      flex: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px 0 40px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .updated {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-top: 40px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    ul { padding-left: 24px; margin-bottom: 16px; }
+    li { font-size: 16px; margin-bottom: 8px; }
+
+    .notice {
+      padding: 20px 24px;
+      border: 1px solid var(--line-strong);
+      border-radius: 4px;
+      margin-bottom: 40px;
+      font-size: 14px;
+      color: var(--muted);
+      background: rgba(240, 238, 233, 0.02);
+    }
+
+    footer {
+      padding: 60px 40px 32px;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    footer .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    footer .footer-nav a { text-decoration: underline; text-decoration-color: var(--line-strong); }
+
+    @media (max-width: 640px) {
+      .page { padding: 24px; }
+      h1 { font-size: 32px; }
+      main { padding: 40px 0 20px; }
+      footer { padding: 40px 24px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="wordmark">Denizen Healthcare</a>
-      <button class="mobile-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
-      <nav class="nav">
-        <a href="how-it-works.html">How it works</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="sign-up.html" class="cta">Sign up</a>
-      </nav>
-    </div>
-  </header>
+<div class="page">
+
+  <header><a href="/" class="wordmark">Denizen</a></header>
 
   <main>
 
-    <section class="page-header">
-      <div class="container">
-        <p class="eyebrow">Legal</p>
-        <h1>Privacy Policy</h1>
-        <p class="lead">How we collect, use, and protect information at Denizen Healthcare.</p>
-      </div>
-    </section>
+    <h1>Privacy Policy</h1>
+    <div class="updated">Last updated: July 27, 2026</div>
 
-    <section class="tight">
-      <div class="container prose">
+    <div class="notice">
+      This policy describes how Denizen collects, uses, and protects information
+      when you interact with our website and services. We'll update this policy
+      as our services evolve. Material changes will be communicated to registered
+      users at least 30 days in advance.
+    </div>
 
-        <p class="meta">Last updated: June 1, 2026 &middot; Draft &mdash; pending attorney review.</p>
+    <h2>Information we collect</h2>
+    <p>
+      We collect information you provide directly to us — including your name,
+      email address, employer, and any details you share in messages or forms.
+      When you become an active user of our services, we may collect additional
+      information necessary to deliver care coordination, including information
+      about the person you are arranging care for.
+    </p>
+    <p>
+      We also automatically collect standard technical information when you
+      visit our website, including IP address, browser type, device
+      information, and pages visited.
+    </p>
 
-        <p style="background: #fbf8f3; border: 1px solid #e8e0d2; padding: 1rem 1.25rem; border-radius: 6px; font-size: 0.92rem;"><strong>Draft notice.</strong> This privacy policy is a working draft and has not yet been reviewed by a licensed attorney. It is not legally binding in its current form. We are providing it publicly to be transparent about our intended privacy practices while the final version is reviewed.</p>
+    <h2>How we use information</h2>
+    <ul>
+      <li>To provide, maintain, and improve our services</li>
+      <li>To communicate with you about our services and respond to inquiries</li>
+      <li>To coordinate care with our network of home care providers</li>
+      <li>To process payments and administer billing</li>
+      <li>To comply with legal obligations and enforce our terms</li>
+      <li>To analyze usage patterns and improve product experience</li>
+    </ul>
 
-        <h2>1. Scope</h2>
-        <p>This Privacy Policy describes how Denizen Healthcare ("Denizen," "we," "us") collects, uses, and discloses information through our website at denizenhealthcare.com and the services we provide to OB-GYN practices.</p>
-        <p>This policy applies to information about practice contacts and website visitors. Information about patients of our partner practices is governed by separate Business Associate Agreements (BAAs) between Denizen and each practice, and is treated as Protected Health Information (PHI) under HIPAA. For details on PHI handling, see our <a href="hipaa-notice.html">HIPAA Notice</a>.</p>
+    <h2>How we share information</h2>
+    <p>
+      We share information with our network of vetted home care agencies only
+      to the extent necessary to arrange and deliver requested care. We share
+      information with service providers (payment processing, hosting, email,
+      analytics) under appropriate confidentiality obligations. We may share
+      information when required by law or to protect the rights and safety of
+      Denizen, our users, or others.
+    </p>
+    <p>
+      <strong>We do not sell your personal information.</strong>
+    </p>
 
-        <h2>2. Information we collect</h2>
+    <h2>Health information</h2>
+    <p>
+      Where applicable, we handle protected health information in accordance
+      with the Health Insurance Portability and Accountability Act (HIPAA)
+      and applicable state privacy laws. See our
+      <a href="/hipaa">HIPAA Notice</a> for details.
+    </p>
 
-        <h3>Information you give us directly</h3>
-        <p>When you submit a form on our website (sign-up, contact), we collect:</p>
-        <ul>
-          <li>Your name, role, and email address</li>
-          <li>Practice name, location, and basic operational details (provider count, EHR used)</li>
-          <li>Any notes or questions you include in your submission</li>
-        </ul>
+    <h2>Data security</h2>
+    <p>
+      We use industry-standard technical and organizational measures to
+      protect your information, including encryption in transit and at rest,
+      access controls, and regular security reviews. No system is perfectly
+      secure, and we cannot guarantee absolute security.
+    </p>
 
-        <h3>Information collected automatically</h3>
-        <p>Our website uses standard web logs that record IP address, browser type, pages visited, and referring URL. We do not use third-party advertising cookies. We may use minimal analytics (page-view counts) to understand which content is useful.</p>
+    <h2>Your rights and choices</h2>
+    <p>
+      You may access, correct, or delete personal information we hold about
+      you by contacting us. You may also opt out of certain marketing
+      communications. Residents of California, Virginia, Colorado, Connecticut,
+      Utah, and other jurisdictions with applicable privacy laws have
+      additional rights, which we honor.
+    </p>
 
-        <h2>3. How we use information</h2>
-        <p>We use the information you provide to:</p>
-        <ul>
-          <li>Respond to your inquiry or sign-up request</li>
-          <li>Communicate with you about our services</li>
-          <li>Improve our website and the materials we offer</li>
-        </ul>
-        <p>We do not sell your information. We do not share it with third parties for their marketing purposes.</p>
+    <h2>Cookies</h2>
+    <p>
+      We use cookies and similar technologies for essential site functionality,
+      analytics, and remembering your preferences. You can control cookies
+      through your browser settings.
+    </p>
 
-        <h2>4. How we share information</h2>
-        <p>We share your information only in these circumstances:</p>
-        <ul>
-          <li><strong>Service providers.</strong> Vendors we use to operate our business (email hosting, form submission services, cloud infrastructure) who have committed to handle information with appropriate safeguards.</li>
-          <li><strong>Legal obligations.</strong> When required by law, court order, or government request.</li>
-          <li><strong>Business transfers.</strong> In connection with a merger, acquisition, or sale of assets, subject to the protections of this policy.</li>
-        </ul>
+    <h2>Children's privacy</h2>
+    <p>
+      Our services are not directed to children under 13, and we do not
+      knowingly collect information from children under 13.
+    </p>
 
-        <h2>5. Data retention</h2>
-        <p>We retain information you submit to us for as long as needed to respond to your inquiry and maintain our business records. If you ask us to delete your information, we will do so unless we are legally required to keep it.</p>
-
-        <h2>6. Your choices</h2>
-        <p>You may:</p>
-        <ul>
-          <li>Request access to the information we hold about you</li>
-          <li>Request correction of inaccurate information</li>
-          <li>Request deletion of your information</li>
-          <li>Opt out of any email communications by replying to any email from us</li>
-        </ul>
-        <p>To exercise any of these rights, email us at <a href="mailto:hello@denizenhealthcare.com" style="color: #345670;">hello@denizenhealthcare.com</a>.</p>
-
-        <h2>7. Security</h2>
-        <p>We maintain administrative, technical, and physical safeguards designed to protect information against unauthorized access, loss, misuse, or alteration. No system is perfectly secure, but we take this responsibility seriously and continually improve our practices.</p>
-
-        <h2>8. Children</h2>
-        <p>Our website and services are not directed to children under 13. We do not knowingly collect information from children under 13.</p>
-
-        <h2>9. Changes to this policy</h2>
-        <p>We may update this Privacy Policy from time to time. When we do, we will post the updated version here with a new "last updated" date. For material changes, we will provide additional notice.</p>
-
-        <h2>10. Contact us</h2>
-        <p>Questions about this policy or how we handle information? Reach out:</p>
-        <ul>
-          <li>Email: <a href="mailto:hello@denizenhealthcare.com" style="color: #345670;">hello@denizenhealthcare.com</a></li>
-          <li>Mail: Denizen Healthcare, Tampa, Florida</li>
-        </ul>
-
-      </div>
-    </section>
+    <h2>Contact us</h2>
+    <p>
+      Questions about this policy? Reach us at
+      <a href="mailto:privacy@denizenhealthcare.com">privacy@denizenhealthcare.com</a>.
+    </p>
 
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="wordmark">Denizen Healthcare</a>
-          <p>RN-led patient follow-up for OB-GYN practices. Tampa, Florida.</p>
-        </div>
-        <div>
-          <h4>Product</h4>
-          <ul>
-            <li><a href="how-it-works.html">How it works</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="sign-up.html">Sign up</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="resources.html">Resources</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="terms.html">Terms</a></li>
-            <li><a href="hipaa-notice.html">HIPAA Notice</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>&copy; 2026 Denizen Healthcare &middot; Tampa, Florida</div>
-        <div><a href="mailto:hello@denizenhealthcare.com">hello@denizenhealthcare.com</a></div>
-      </div>
-    </div>
+  <footer>
+    <div>&copy; 2026 Denizen</div>
+    <nav class="footer-nav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/hipaa">HIPAA</a>
+      <a href="mailto:hello@denizenhealthcare.com">Contact</a>
+    </nav>
   </footer>
+
+</div>
 
 </body>
 </html>

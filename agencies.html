@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Denizen</title>
+  <meta name="description" content="A new operating model for home care." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --text: #f0eee9;
+      --muted: #7c7972;
+      --line: rgba(240, 238, 233, 0.12);
+      --line-strong: rgba(240, 238, 233, 0.28);
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 40px;
+    }
+
+    header .wordmark {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    main {
+      flex: 1;
+      max-width: 880px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px 0 40px;
+    }
+
+    h1 {
+      font-size: 52px;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.08;
+      margin-bottom: 32px;
+      color: var(--text);
+      max-width: 760px;
+    }
+
+    .lede {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 96px;
+    }
+
+    section.block {
+      padding-top: 64px;
+      margin-top: 64px;
+      border-top: 1px solid var(--line);
+    }
+
+    section.block:first-of-type {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .kicker {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 24px;
+    }
+
+    section.block p {
+      font-size: 17px;
+      color: var(--text);
+      max-width: 640px;
+      margin-bottom: 20px;
+    }
+
+    section.block p:last-child { margin-bottom: 0; }
+
+    section.block p.muted {
+      color: var(--muted);
+    }
+
+    .market-chart {
+      margin-top: 40px;
+      width: 100%;
+      max-width: 720px;
+      color: var(--text);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      margin-top: 40px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .metric-cell {
+      background: var(--bg);
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .metric-icon {
+      width: 28px;
+      height: 28px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .metric-value {
+      font-size: 40px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .metric-value .arrow {
+      color: var(--muted);
+      font-weight: 400;
+      margin: 0 4px;
+      font-size: 32px;
+    }
+
+    .metric-label {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.4;
+      margin-top: 4px;
+    }
+
+    .section-intro {
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    section.form-block {
+      padding-top: 64px;
+      margin-top: 96px;
+      border-top: 1px solid var(--line);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 440px;
+      margin-top: 32px;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--line-strong);
+      color: var(--text);
+      padding: 12px 0;
+      font-family: inherit;
+      font-size: 15px;
+      transition: border-color 120ms;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-bottom-color: var(--text);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: var(--muted);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+      line-height: 1.5;
+      font-family: inherit;
+    }
+
+    button {
+      align-self: flex-start;
+      margin-top: 16px;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: opacity 120ms;
+    }
+
+    button:hover { opacity: 0.85; }
+    button:disabled { opacity: 0.5; cursor: default; }
+
+    footer {
+      padding: 60px 40px 32px;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 880px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    footer a { text-decoration: underline; text-decoration-color: var(--line-strong); }
+
+    footer .footer-nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 24px; }
+      h1 { font-size: 32px; }
+      .lede { font-size: 16px; margin-bottom: 64px; }
+      main { padding: 40px 0 20px; }
+      section.block { padding-top: 48px; margin-top: 48px; }
+      section.form-block { padding-top: 48px; margin-top: 64px; }
+      .metrics-grid { grid-template-columns: 1fr; }
+      .metric-cell { padding: 32px 24px; }
+      .metric-value { font-size: 32px; }
+      footer {
+        padding: 40px 24px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      footer .footer-nav { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <header>
+    <a href="/" class="wordmark">Denizen</a>
+  </header>
+
+  <main>
+
+    <h1>A new operating model for home care.</h1>
+    <p class="lede">
+      Better economics, deeper support, real independence — for the founders
+      building the next generation of home care agencies.
+    </p>
+
+    <section class="block">
+      <div class="kicker">The market</div>
+      <p>
+        US home care is a massive and fast-growing industry, projected to
+        exceed $140 billion by 2030. But growth alone doesn't help the people
+        building it.
+      </p>
+
+      <svg class="market-chart" viewBox="0 -24 720 284" xmlns="http://www.w3.org/2000/svg" aria-label="US home care market growth projection: $75B in 2018 to $140B+ in 2030">
+        <line x1="0" y1="220" x2="720" y2="220" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/>
+
+        <g transform="translate(40, 0)">
+          <rect x="0" y="140" width="60" height="80" fill="currentColor" fill-opacity="0.15"/>
+          <text x="30" y="132" text-anchor="middle" font-size="12" font-weight="500" fill="currentColor" fill-opacity="0.55" font-family="Inter, sans-serif">$75B</text>
+          <text x="30" y="240" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.45" font-family="Inter, sans-serif">2018</text>
+        </g>
+
+        <g transform="translate(180, 0)">
+          <rect x="0" y="110" width="60" height="110" fill="currentColor" fill-opacity="0.25"/>
+          <text x="30" y="102" text-anchor="middle" font-size="12" font-weight="500" fill="currentColor" fill-opacity="0.55" font-family="Inter, sans-serif">$95B</text>
+          <text x="30" y="240" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.45" font-family="Inter, sans-serif">2022</text>
+        </g>
+
+        <g transform="translate(320, 0)">
+          <rect x="0" y="75" width="60" height="145" fill="currentColor" fill-opacity="0.4"/>
+          <text x="30" y="67" text-anchor="middle" font-size="12" font-weight="500" fill="currentColor" fill-opacity="0.55" font-family="Inter, sans-serif">$115B</text>
+          <text x="30" y="240" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.45" font-family="Inter, sans-serif">2026</text>
+        </g>
+
+        <g transform="translate(460, 0)">
+          <rect x="0" y="40" width="60" height="180" fill="currentColor" fill-opacity="0.6"/>
+          <text x="30" y="32" text-anchor="middle" font-size="12" font-weight="500" fill="currentColor" fill-opacity="0.75" font-family="Inter, sans-serif">$140B</text>
+          <text x="30" y="240" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.45" font-family="Inter, sans-serif">2030</text>
+        </g>
+
+        <g transform="translate(600, 0)">
+          <rect x="0" y="15" width="60" height="205" fill="currentColor" fill-opacity="0.85"/>
+          <text x="30" y="7" text-anchor="middle" font-size="13" font-weight="500" fill="currentColor" font-family="Inter, sans-serif">$170B+</text>
+          <text x="30" y="240" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.45" font-family="Inter, sans-serif">2033</text>
+        </g>
+      </svg>
+    </section>
+
+    <section class="block">
+      <div class="kicker">What's broken for founders</div>
+      <p>
+        Setting up an efficient, legally-compliant home care agency or
+        registry takes 6 to 10 months and tens of thousands of dollars.
+      </p>
+      <p>
+        Finding, training, managing, and retaining caregivers is a constant
+        grind that eats time, energy, and money.
+      </p>
+      <p>
+        And finding leads, turning them into clients, and keeping those
+        clients happy is no easier.
+      </p>
+    </section>
+
+    <section class="block">
+      <div class="kicker">The existing options</div>
+      <p>
+        Doing all of this alone is daunting.
+      </p>
+      <p>
+        Some founders try — and end up moving much more slowly and making
+        much less money than they expected.
+      </p>
+      <p>
+        Others are drawn to franchises for the promise of a proven system —
+        only to discover the promises are largely empty, and they're paying
+        over 50% of their profit for very little.
+      </p>
+    </section>
+
+    <section class="block">
+      <div class="kicker">Our mission</div>
+      <p>
+        We're a group of ex-management consultants and MIT alumni who
+        started home care agencies ourselves and learned the hard way.
+      </p>
+      <p>
+        We created Denizen to make the market work better for everyone in
+        it — founders, clients, and caregivers alike.
+      </p>
+      <p>
+        Our model gives founders the operational support that actually
+        matters, while preserving the freedom, flexibility, and long-term
+        potential they wanted when they decided to build something of
+        their own.
+      </p>
+    </section>
+
+    <section class="block">
+      <div class="kicker">We're MIT alumni — so we're big on data</div>
+      <p class="section-intro">
+        What our model does for founders:
+      </p>
+
+      <div class="metrics-grid">
+        <div class="metric-cell">
+          <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="1"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+            <line x1="8" y1="3" x2="8" y2="7"/>
+            <line x1="16" y1="3" x2="16" y2="7"/>
+          </svg>
+          <div class="metric-value">6mo <span class="arrow">→</span> 1 day</div>
+          <div class="metric-label">Faster time-to-market</div>
+        </div>
+
+        <div class="metric-cell">
+          <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5"/>
+            <path d="M4.5 20c0-3.5 3.5-5.5 7.5-5.5s7.5 2 7.5 5.5"/>
+          </svg>
+          <div class="metric-value">94%</div>
+          <div class="metric-label">Reduction in admin cost</div>
+        </div>
+
+        <div class="metric-cell">
+          <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <line x1="12" y1="7" x2="12" y2="12"/>
+            <line x1="12" y1="12" x2="15.5" y2="14"/>
+          </svg>
+          <div class="metric-value">50%+</div>
+          <div class="metric-label">Fewer lost hours</div>
+        </div>
+
+        <div class="metric-cell">
+          <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 6.5v11M9 15c0 1 1 2 3 2s3-1 3-2-1-1.5-3-2-3-1-3-2 1-2 3-2 3 1 3 2"/>
+          </svg>
+          <div class="metric-value">62%</div>
+          <div class="metric-label">More revenue</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-block">
+      <div class="kicker">Get in touch</div>
+      <p class="lede" style="margin-bottom: 0;">
+        If you're a current or aspiring home care agency founder and would
+        like to hear about how we can help you actually reach your agency
+        goals, contact us&hellip;
+      </p>
+
+      <form onsubmit="handleSubmit(event)" id="signup-form">
+        <input type="text" name="name" placeholder="Name" required autocomplete="name" />
+        <input type="email" name="email" placeholder="Email" required autocomplete="email" />
+        <textarea name="context" placeholder="Anything you'd like us to know (optional)"></textarea>
+        <button type="submit">Get in touch</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>&copy; 2026 Denizen</div>
+    <nav class="footer-nav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/">For employers</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/hipaa">HIPAA</a>
+      <a href="mailto:hello@denizenhealthcare.com">Contact</a>
+    </nav>
+  </footer>
+
+</div>
+
+<script>
+  function handleSubmit(event) {
+    event.preventDefault();
+    const button = event.target.querySelector('button');
+    const form = document.getElementById('signup-form');
+    button.textContent = 'Thanks — we\'ll be in touch';
+    button.disabled = true;
+    Array.from(form.querySelectorAll('input, textarea')).forEach(el => el.disabled = true);
+  }
+</script>
+
+</body>
+</html>

@@ -1,214 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How it works — Denizen Healthcare</title>
-  <meta name="description" content="How Denizen Healthcare's RN-led patient follow-up service works — from EHR setup to daily outreach and end-of-day digest.">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works — Denizen</title>
+  <meta name="description" content="How Denizen delivers real home care as an employee benefit." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --text: #f0eee9;
+      --muted: #7c7972;
+      --line: rgba(240, 238, 233, 0.12);
+      --line-strong: rgba(240, 238, 233, 0.28);
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 40px;
+    }
+
+    header .wordmark {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    main {
+      flex: 1;
+      max-width: 880px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px 0 40px;
+    }
+
+    h1 {
+      font-size: 52px;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.08;
+      margin-bottom: 32px;
+      color: var(--text);
+      max-width: 760px;
+    }
+
+    .lede {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 96px;
+    }
+
+    .placeholder-block {
+      padding: 64px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .placeholder-kicker {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+
+    .placeholder-block p {
+      font-size: 17px;
+      color: var(--text);
+      max-width: 520px;
+      margin: 0 auto 12px;
+    }
+
+    .placeholder-block p.muted {
+      color: var(--muted);
+    }
+
+    .cta-row {
+      margin-top: 48px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      background: var(--text);
+      color: var(--bg);
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 999px;
+      transition: opacity 120ms;
+    }
+
+    .cta-button:hover { opacity: 0.85; }
+
+    .cta-button.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line-strong);
+    }
+
+    footer {
+      padding: 60px 40px 32px;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 880px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    footer .footer-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    footer .footer-nav a {
+      text-decoration: underline;
+      text-decoration-color: var(--line-strong);
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 24px; }
+      h1 { font-size: 32px; }
+      .lede { font-size: 16px; margin-bottom: 64px; }
+      main { padding: 40px 0 20px; }
+      footer { padding: 40px 24px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="wordmark">Denizen Healthcare</a>
-      <button class="mobile-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
-      <nav class="nav">
-        <a href="how-it-works.html" class="current">How it works</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="sign-up.html" class="cta">Sign up</a>
-      </nav>
-    </div>
+<div class="page">
+
+  <header>
+    <a href="/" class="wordmark">Denizen</a>
   </header>
 
   <main>
 
-    <section class="page-header">
-      <div class="container">
-        <p class="eyebrow">How it works</p>
-        <h1>A light, daily cycle that closes the follow-up gap.</h1>
-        <p class="lead">Denizen integrates with your EHR through a daily report, runs structured patient outreach throughout the day, and reports back to your team each evening. Your team's workflow doesn't change.</p>
-      </div>
-    </section>
+    <h1>How Denizen works.</h1>
+    <p class="lede">
+      A real home care benefit that fits into your existing benefits stack —
+      without the complexity or cost of building it yourself.
+    </p>
 
-    <section class="tight">
-      <div class="container">
-        <div class="section-intro">
-          <p class="eyebrow">One-time setup</p>
-          <h2>About 30 minutes with your office manager.</h2>
-          <p class="lead">We configure a daily report from your EHR — same data your team already pulls, just scheduled to deliver to us each morning. No installs on your end. No integration project. No vendor onboarding.</p>
-        </div>
-      </div>
-    </section>
+    <section class="placeholder-block">
+      <div class="placeholder-kicker">Coming soon</div>
+      <p>
+        We&rsquo;re still writing the detailed version of this page.
+      </p>
+      <p class="muted">
+        In the meantime, we&rsquo;d rather show you than tell you. Reach out
+        for a walkthrough tailored to your team.
+      </p>
 
-    <section class="muted">
-      <div class="container">
-        <div class="section-intro">
-          <p class="eyebrow">Each day</p>
-          <h2>The daily cycle.</h2>
-        </div>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1 — Morning</div>
-            <h3>EHR delivers the patient report</h3>
-            <p>Securely via SFTP. Includes today's active prenatal and postpartum patients and the touchpoints due.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">2 — Triage</div>
-            <h3>We plan the day's outreach</h3>
-            <p>Each patient is routed to the right touchpoint based on stage, history, and risk profile. Out-of-scope cases route back to your team before any outreach happens.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">3 — Outreach</div>
-            <h3>An RN reaches out</h3>
-            <p>By phone or text, 1-on-1. Trained to OB-GYN follow-up protocols. Tier 2 touchpoints get RN review before any message is sent.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">4 — Escalation</div>
-            <h3>Anything urgent routes to you</h3>
-            <p>Within stated service levels — 1 business hour for response, 30 minutes for clinical escalation, immediate paging for critical signals.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">5 — Evening</div>
-            <h3>End-of-day digest</h3>
-            <p>Patient status, flagged concerns, and what needs your attention — delivered to your team. Two-way close: every outreach event lands back in your view of the patient.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-intro">
-          <p class="eyebrow">What's covered</p>
-          <h2>Prenatal, postpartum, and follow-up touchpoints.</h2>
-          <p class="lead">Our scope is the structured follow-up calendar of obstetric care — the touchpoints that benefit from a human voice but rarely get one consistently.</p>
-        </div>
-        <div class="attributes">
-          <div class="attribute">
-            <h3>Prenatal check-ins</h3>
-            <p>Trimester-aligned outreach. Symptom tracking, education, and screening question follow-ups.</p>
-          </div>
-          <div class="attribute">
-            <h3>Lab + result follow-ups</h3>
-            <p>Communicating results, answering questions, and confirming next steps in plain language.</p>
-          </div>
-          <div class="attribute">
-            <h3>Vaccination + appointment reminders</h3>
-            <p>Tdap, flu, RSV, and recurring visit reminders timed to clinical milestones.</p>
-          </div>
-          <div class="attribute">
-            <h3>Postpartum follow-up</h3>
-            <p>Day 3, 10, 21, and 6-week structured check-ins. Mental health screening included.</p>
-          </div>
-          <div class="attribute">
-            <h3>Pre-hospital prep</h3>
-            <p>Hospital pre-registration, pediatrician selection, GBS results, and birth-plan touchpoints.</p>
-          </div>
-          <div class="attribute">
-            <h3>Sensitive-case routing</h3>
-            <p>Loss, fetal anomaly, and other sensitive ICD-10 categories are filtered out of automated outreach and surfaced to your team only.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="muted">
-      <div class="container">
-        <div class="section-intro">
-          <p class="eyebrow">What's not covered</p>
-          <h2>We don't replace your clinical team. We extend it.</h2>
-          <p class="lead">Denizen is a follow-up service, not a tele-health provider. Clinical decisions, prescriptions, scheduling, billing, and ongoing in-person care stay where they belong — with your practice.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-intro">
-          <p class="eyebrow">Service levels</p>
-          <h2>Stated, measured, met.</h2>
-        </div>
-        <div class="attributes">
-          <div class="attribute">
-            <h3>1 business hour</h3>
-            <p>Response time for patient inbound during business hours.</p>
-          </div>
-          <div class="attribute">
-            <h3>30 minutes</h3>
-            <p>Clinical escalation routing to your designated contact.</p>
-          </div>
-          <div class="attribute">
-            <h3>Immediate</h3>
-            <p>Critical signal paging to your after-hours contact.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="muted">
-      <div class="container">
-        <div class="section-intro">
-          <p class="eyebrow">Security &amp; compliance</p>
-          <h2>HIPAA-grade infrastructure. BAAs in place.</h2>
-          <p class="lead">All PHI is encrypted in transit and at rest. We sign a Business Associate Agreement with every practice and maintain BAAs with every vendor in our PHI-handling stack. Detailed security posture available on request.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-banner">
-      <div class="container">
-        <h2>Want to see this in action with your patient population?</h2>
-        <p>Sign up your practice and we'll walk through the setup with your office manager.</p>
-        <div class="hero-actions" style="justify-content: center;">
-          <a href="sign-up.html" class="btn btn-primary">Sign up your practice</a>
-          <a href="pricing.html" class="btn btn-secondary">See pricing</a>
-        </div>
+      <div class="cta-row">
+        <a href="/#signup-form" class="cta-button">Get in touch</a>
+        <a href="/" class="cta-button secondary">Back to home</a>
       </div>
     </section>
 
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="wordmark">Denizen Healthcare</a>
-          <p>RN-led patient follow-up for OB-GYN practices. Tampa, Florida.</p>
-        </div>
-        <div>
-          <h4>Product</h4>
-          <ul>
-            <li><a href="how-it-works.html">How it works</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="sign-up.html">Sign up</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="resources.html">Resources</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="terms.html">Terms</a></li>
-            <li><a href="hipaa-notice.html">HIPAA Notice</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>&copy; 2026 Denizen Healthcare &middot; Tampa, Florida</div>
-        <div><a href="mailto:hello@denizenhealthcare.com">hello@denizenhealthcare.com</a></div>
-      </div>
-    </div>
+  <footer>
+    <div>&copy; 2026 Denizen</div>
+    <nav class="footer-nav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/hipaa">HIPAA</a>
+      <a href="mailto:hello@denizenhealthcare.com">Contact</a>
+    </nav>
   </footer>
+
+</div>
 
 </body>
 </html>
