@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Denizen for Employers</title>
+  <title>Denizen for Employers — Mockup</title>
   <meta name="description" content="Home care support as an employee benefit — for the sandwich generation your business depends on." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0a0a0a;
+      /* Warm dusty dark — softer than pitch black, subtle brown undertone */
+      --bg: #1c1a17;
       --text: #f0eee9;
-      --muted: #7c7972;
-      --line: rgba(240, 238, 233, 0.12);
-      --line-strong: rgba(240, 238, 233, 0.28);
+      --muted: #8a857e;
+      --line: rgba(240, 238, 233, 0.10);
+      --line-strong: rgba(240, 238, 233, 0.26);
+      /* Warmth accent — terra cotta */
+      --terra: #d47a55;
+      --terra-soft: rgba(212, 122, 85, 0.14);
+      /* Emphasis / credibility — MIT crimson */
+      --crimson: #a31f34;
+      --crimson-hover: #b32540;
     }
 
     html, body {
@@ -42,6 +49,18 @@
       font-size: 18px;
       font-weight: 500;
       letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    header .wordmark::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--terra);
+      border-radius: 50%;
+      display: inline-block;
     }
 
     main {
@@ -53,10 +72,11 @@
     }
 
     h1 {
-      font-size: 52px;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 56px;
       font-weight: 500;
-      letter-spacing: -0.025em;
-      line-height: 1.08;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
       margin-bottom: 32px;
       color: var(--text);
       max-width: 760px;
@@ -81,12 +101,24 @@
       padding-top: 0;
     }
 
-    .kicker {
-      font-size: 12px;
+    section.block h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 32px;
       font-weight: 500;
-      color: var(--muted);
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 24px;
+      max-width: 640px;
+      display: none; /* Only used in some sections, remove per section as needed */
+    }
+
+    .kicker {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--terra);
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       margin-bottom: 24px;
     }
 
@@ -101,46 +133,6 @@
 
     section.block p.muted {
       color: var(--muted);
-    }
-
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      margin-top: 40px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: 4px;
-    }
-
-    .metric-cell {
-      background: var(--bg);
-      padding: 40px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .metric-icon {
-      width: 28px;
-      height: 28px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .metric-value {
-      font-size: 40px;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      color: var(--text);
-    }
-
-    .metric-label {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.4;
-      margin-top: 4px;
     }
 
     /* Miss-list — clean bulleted structure for "what existing benefits miss" */
@@ -162,7 +154,7 @@
     .miss-marker {
       font-size: 12px;
       font-weight: 500;
-      color: var(--muted);
+      color: var(--terra);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       padding-top: 4px;
@@ -193,7 +185,7 @@
       font-weight: 500;
     }
 
-    /* Impact section — bigger visual weight than the general metrics grid */
+    /* Impact section */
     .impact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -201,7 +193,8 @@
       margin-top: 40px;
       background: var(--line);
       border: 1px solid var(--line);
-      border-radius: 4px;
+      border-radius: 6px;
+      overflow: hidden;
     }
 
     .impact-cell {
@@ -213,11 +206,17 @@
     }
 
     .impact-value {
+      font-family: 'Fraunces', Georgia, serif;
       font-size: 68px;
       font-weight: 500;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.025em;
       line-height: 0.95;
       color: var(--text);
+    }
+
+    /* First (headline) impact number gets crimson emphasis */
+    .impact-cell:first-child .impact-value {
+      color: var(--crimson);
     }
 
     .impact-label {
@@ -241,18 +240,45 @@
       font-weight: 500;
     }
 
-    @media (max-width: 640px) {
-      .impact-grid { grid-template-columns: 1fr; }
-      .impact-cell { padding: 36px 24px; }
-      .impact-value { font-size: 52px; }
+    /* Who we are — MIT emphasis */
+    .credentials-line {
+      display: inline;
     }
 
-    .section-intro {
-      font-size: 16px;
+    .credentials-line .mit {
+      color: var(--crimson);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* Testimonial / voice callout */
+    .voice-callout {
+      margin-top: 40px;
+      padding: 32px 36px;
+      background: var(--terra-soft);
+      border-left: 3px solid var(--terra);
+      border-radius: 4px;
+      max-width: 640px;
+    }
+
+    .voice-callout blockquote {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.4;
       color: var(--text);
+      font-style: italic;
       margin-bottom: 12px;
     }
 
+    .voice-callout .attribution {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Form section */
     section.form-block {
       padding-top: 64px;
       margin-top: 96px;
@@ -281,7 +307,7 @@
 
     input:focus, textarea:focus {
       outline: none;
-      border-bottom-color: var(--text);
+      border-bottom-color: var(--terra);
     }
 
     input::placeholder, textarea::placeholder {
@@ -298,19 +324,20 @@
     button {
       align-self: flex-start;
       margin-top: 16px;
-      background: var(--text);
-      color: var(--bg);
+      background: var(--crimson);
+      color: var(--text);
       border: none;
-      padding: 12px 24px;
+      padding: 14px 28px;
       font-family: inherit;
       font-size: 14px;
       font-weight: 500;
       border-radius: 999px;
       cursor: pointer;
-      transition: opacity 120ms;
+      transition: background-color 120ms;
+      letter-spacing: 0.01em;
     }
 
-    button:hover { opacity: 0.85; }
+    button:hover { background: var(--crimson-hover); }
     button:disabled { opacity: 0.5; cursor: default; }
 
     footer {
@@ -337,14 +364,16 @@
 
     @media (max-width: 640px) {
       .page { padding: 24px; }
-      h1 { font-size: 32px; }
+      h1 { font-size: 36px; }
       .lede { font-size: 16px; margin-bottom: 64px; }
       main { padding: 40px 0 20px; }
       section.block { padding-top: 48px; margin-top: 48px; }
       section.form-block { padding-top: 48px; margin-top: 64px; }
-      .metrics-grid { grid-template-columns: 1fr; }
-      .metric-cell { padding: 32px 24px; }
-      .metric-value { font-size: 32px; }
+      .impact-grid { grid-template-columns: 1fr; }
+      .impact-cell { padding: 36px 24px; }
+      .impact-value { font-size: 52px; }
+      .voice-callout { padding: 24px 28px; }
+      .voice-callout blockquote { font-size: 19px; }
       footer {
         padding: 40px 24px 24px;
         flex-direction: column;
@@ -384,6 +413,14 @@
         The cost of caregiver-related absenteeism and turnover in US workplaces
         is measured in the tens of billions annually.
       </p>
+
+      <div class="voice-callout">
+        <blockquote>
+          "By the time I realized my mom needed help, I was already burned out
+          from trying to figure out where to start."
+        </blockquote>
+        <div class="attribution">— Caregiver, 52</div>
+      </div>
     </section>
 
     <section class="block">
@@ -495,9 +532,12 @@
     <section class="block">
       <div class="kicker">Who we are</div>
       <p>
-        We're a group of ex-management consultants, MIT alumni, and home care
-        industry veterans who've spent years operating in this space and
-        studying it from the inside.
+        <span class="credentials-line">
+          We're a group of ex-management consultants,
+          <span class="mit">MIT alumni</span>, and home care industry veterans
+          who've spent years operating in this space and studying it from
+          the inside.
+        </span>
       </p>
       <p>
         We built Denizen to close a gap the benefits industry has been circling
