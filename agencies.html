@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Denizen</title>
-  <meta name="description" content="A new operating model for home care." />
+  <title>Denizen for Agencies</title>
+  <meta name="description" content="A new client acquisition channel for home care agencies — high-value professionals, ready to pay, delivered through employer benefit programs." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -103,14 +103,8 @@
       color: var(--muted);
     }
 
-    .market-chart {
-      margin-top: 40px;
-      width: 100%;
-      max-width: 720px;
-      color: var(--text);
-    }
-
-    .metrics-grid {
+    /* Impact grid — same as the employer page */
+    .impact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1px;
@@ -120,49 +114,89 @@
       border-radius: 4px;
     }
 
-    .metric-cell {
+    .impact-cell {
       background: var(--bg);
-      padding: 40px 32px;
+      padding: 48px 36px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
-    .metric-icon {
-      width: 28px;
-      height: 28px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .metric-value {
-      font-size: 40px;
+    .impact-value {
+      font-size: 68px;
       font-weight: 500;
-      letter-spacing: -0.02em;
-      line-height: 1;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
       color: var(--text);
     }
 
-    .metric-value .arrow {
-      color: var(--muted);
-      font-weight: 400;
-      margin: 0 4px;
-      font-size: 32px;
-    }
-
-    .metric-label {
+    .impact-label {
       font-size: 15px;
       color: var(--muted);
-      line-height: 1.4;
-      margin-top: 4px;
+      line-height: 1.5;
+      margin-top: 8px;
     }
 
-    .section-intro {
-      font-size: 16px;
+    .impact-scenario {
+      margin-top: 24px;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--line);
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .impact-scenario strong {
       color: var(--text);
-      margin-bottom: 12px;
+      font-weight: 500;
     }
 
+    /* CAC growth chart — mimics the market chart from the employer page */
+    .cac-chart {
+      margin-top: 40px;
+      width: 100%;
+      max-width: 720px;
+      color: var(--text);
+    }
+
+    /* Value list — for "What Denizen delivers" */
+    .value-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 32px;
+      max-width: 640px;
+    }
+
+    .value-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .value-marker {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding-top: 4px;
+      white-space: nowrap;
+    }
+
+    .value-body {
+      font-size: 17px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .value-body strong {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* Form section */
     section.form-block {
       padding-top: 64px;
       margin-top: 96px;
@@ -252,9 +286,9 @@
       main { padding: 40px 0 20px; }
       section.block { padding-top: 48px; margin-top: 48px; }
       section.form-block { padding-top: 48px; margin-top: 64px; }
-      .metrics-grid { grid-template-columns: 1fr; }
-      .metric-cell { padding: 32px 24px; }
-      .metric-value { font-size: 32px; }
+      .impact-grid { grid-template-columns: 1fr; }
+      .impact-cell { padding: 36px 24px; }
+      .impact-value { font-size: 52px; }
       footer {
         padding: 40px 24px 24px;
         flex-direction: column;
@@ -274,166 +308,154 @@
 
   <main>
 
-    <h1>A new operating model for home care.</h1>
+    <h1>Clients ready to pay. Delivered.</h1>
     <p class="lede">
-      Better economics, deeper support, real independence — for the founders
-      building the next generation of home care agencies.
+      Denizen is a new client acquisition channel for home care agencies —
+      real families, employer-backed, high lifetime value, and no marketing
+      spend required.
     </p>
 
     <section class="block">
-      <div class="kicker">The market</div>
+      <div class="kicker">The client acquisition problem</div>
       <p>
-        US home care is a massive and fast-growing industry, projected to
-        exceed $140 billion by 2030. But growth alone doesn't help the people
-        building it.
-      </p>
-
-      <svg class="market-chart" viewBox="0 -24 720 284" xmlns="http://www.w3.org/2000/svg" aria-label="US home care market growth projection: $75B in 2018 to $140B+ in 2030">
-        <line x1="0" y1="220" x2="720" y2="220" stroke="currentColor" stroke-opacity="0.15" stroke-width="1"/>
-
-        <g transform="translate(40, 0)">
-          <rect x="0" y="140" width="60" height="80" fill="currentColor" fill-opacity="0.15"/>
-          <text x="30" y="132" text-anchor="middle" font-size="12" font-weight="500" fill="currentColor" fill-opacity="0.55" font-family="Inter, sans-serif">$75B</text>
-          <text x="30" y="240" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.45" font-family="Inter, sans-serif">2018</text>
-        </g>
-
-        <g transform="translate(180, 0)">
-          <rect x="0" y="110" width="60" height="110" fill="currentColor" fill-opacity="0.25"/>
-          <text x="30" y="102" text-anchor="middle" font-size="12" font-weight="500" fill="currentColor" fill-opacity="0.55" font-family="Inter, sans-serif">$95B</text>
-          <text x="30" y="240" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.45" font-family="Inter, sans-serif">2022</text>
-        </g>
-
-        <g transform="translate(320, 0)">
-          <rect x="0" y="75" width="60" height="145" fill="currentColor" fill-opacity="0.4"/>
-          <text x="30" y="67" text-anchor="middle" font-size="12" font-weight="500" fill="currentColor" fill-opacity="0.55" font-family="Inter, sans-serif">$115B</text>
-          <text x="30" y="240" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.45" font-family="Inter, sans-serif">2026</text>
-        </g>
-
-        <g transform="translate(460, 0)">
-          <rect x="0" y="40" width="60" height="180" fill="currentColor" fill-opacity="0.6"/>
-          <text x="30" y="32" text-anchor="middle" font-size="12" font-weight="500" fill="currentColor" fill-opacity="0.75" font-family="Inter, sans-serif">$140B</text>
-          <text x="30" y="240" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.45" font-family="Inter, sans-serif">2030</text>
-        </g>
-
-        <g transform="translate(600, 0)">
-          <rect x="0" y="15" width="60" height="205" fill="currentColor" fill-opacity="0.85"/>
-          <text x="30" y="7" text-anchor="middle" font-size="13" font-weight="500" fill="currentColor" font-family="Inter, sans-serif">$170B+</text>
-          <text x="30" y="240" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.45" font-family="Inter, sans-serif">2033</text>
-        </g>
-      </svg>
-    </section>
-
-    <section class="block">
-      <div class="kicker">What's broken for founders</div>
-      <p>
-        Setting up an efficient, legally-compliant home care agency or
-        registry takes 6 to 10 months and tens of thousands of dollars.
+        Home care is more crowded every year. More agencies, more franchises,
+        more direct-to-consumer platforms — all chasing the same referrals
+        from the same doctors, discharge planners, and Google searches.
       </p>
       <p>
-        Finding, training, managing, and retaining caregivers is a constant
-        grind that eats time, energy, and money.
+        Client acquisition costs are climbing. Referral partnerships take
+        months to build. Paid marketing has gotten more expensive and less
+        reliable. Agencies increasingly need three or four channels running
+        just to keep the lights on.
       </p>
       <p>
-        And finding leads, turning them into clients, and keeping those
-        clients happy is no easier.
+        That's before you count the operational cost of chasing leads,
+        qualifying them, and converting them to paying clients.
       </p>
     </section>
 
     <section class="block">
-      <div class="kicker">The existing options</div>
-      <p>
-        Doing all of this alone is daunting.
-      </p>
-      <p>
-        Some founders try — and end up moving much more slowly and making
-        much less money than they expected.
-      </p>
-      <p>
-        Others are drawn to franchises for the promise of a proven system —
-        only to discover the promises are largely empty, and they're paying
-        over 50% of their profit for very little.
-      </p>
-    </section>
+      <div class="kicker">What acquisition actually costs</div>
 
-    <section class="block">
-      <div class="kicker">Our mission</div>
-      <p>
-        We're a group of ex-management consultants and MIT alumni who
-        started home care agencies ourselves and learned the hard way.
-      </p>
-      <p>
-        We created Denizen to make the market work better for everyone in
-        it — founders, clients, and caregivers alike.
-      </p>
-      <p>
-        Our model gives founders the operational support that actually
-        matters, while preserving the freedom, flexibility, and long-term
-        potential they wanted when they decided to build something of
-        their own.
-      </p>
-    </section>
-
-    <section class="block">
-      <div class="kicker">We're MIT alumni — so we're big on data</div>
-      <p class="section-intro">
-        What our model does for founders:
-      </p>
-
-      <div class="metrics-grid">
-        <div class="metric-cell">
-          <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="16" rx="1"/>
-            <line x1="3" y1="10" x2="21" y2="10"/>
-            <line x1="8" y1="3" x2="8" y2="7"/>
-            <line x1="16" y1="3" x2="16" y2="7"/>
-          </svg>
-          <div class="metric-value">6mo <span class="arrow">→</span> 1 day</div>
-          <div class="metric-label">Faster time-to-market</div>
+      <div class="impact-grid">
+        <div class="impact-cell">
+          <div class="impact-value">$500-$1,500</div>
+          <div class="impact-label">Typical cost to acquire a single home care client through paid and referral channels.</div>
         </div>
 
-        <div class="metric-cell">
-          <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="8" r="3.5"/>
-            <path d="M4.5 20c0-3.5 3.5-5.5 7.5-5.5s7.5 2 7.5 5.5"/>
-          </svg>
-          <div class="metric-value">94%</div>
-          <div class="metric-label">Reduction in admin cost</div>
+        <div class="impact-cell">
+          <div class="impact-value">3-6 mo</div>
+          <div class="impact-label">Time to build a productive referral relationship with a single hospital or physician group.</div>
         </div>
 
-        <div class="metric-cell">
-          <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="9"/>
-            <line x1="12" y1="7" x2="12" y2="12"/>
-            <line x1="12" y1="12" x2="15.5" y2="14"/>
-          </svg>
-          <div class="metric-value">50%+</div>
-          <div class="metric-label">Fewer lost hours</div>
+        <div class="impact-cell">
+          <div class="impact-value">10-15%</div>
+          <div class="impact-label">Typical conversion rate from inbound lead to signed client on paid channels.</div>
         </div>
 
-        <div class="metric-cell">
-          <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="9"/>
-            <path d="M12 6.5v11M9 15c0 1 1 2 3 2s3-1 3-2-1-1.5-3-2-3-1-3-2 1-2 3-2 3 1 3 2"/>
-          </svg>
-          <div class="metric-value">62%</div>
-          <div class="metric-label">More revenue</div>
+        <div class="impact-cell">
+          <div class="impact-value">3-5x</div>
+          <div class="impact-label">Client acquisition costs have increased over the last five years as the market has consolidated.</div>
         </div>
       </div>
     </section>
 
+    <section class="block">
+      <div class="kicker">What Denizen delivers</div>
+      <p>
+        Denizen is an employee benefit that connects working professionals
+        with home care for their aging parents. When their families need
+        care, we route the request to our network of vetted agencies.
+      </p>
+      <p>
+        You get:
+      </p>
+
+      <div class="value-list">
+        <div class="value-item">
+          <div class="value-marker">Ready buyers</div>
+          <div class="value-body">
+            <strong>Clients with the benefit already active.</strong>
+            Payment and eligibility are confirmed before you ever see the
+            shift request. No selling. No convincing.
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-marker">High LTV</div>
+          <div class="value-body">
+            <strong>Professionals, not price shoppers.</strong>
+            Our members are working professionals with the means and the
+            need for extended care relationships. Above-cap hours convert
+            to full-rate private pay.
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-marker">Zero CAC</div>
+          <div class="value-body">
+            <strong>No marketing spend, no lead nurturing.</strong>
+            Denizen delivers the client, the payment method, and the
+            assessment. Your team focuses on caregiving, not sales.
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-marker">Backend efficiency</div>
+          <div class="value-body">
+            <strong>We manage intake, payment, and admin.</strong>
+            Assessment lives in the platform. Payment flows through us
+            weekly. You focus on delivering good care and getting rebooked.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="kicker">How it works for agencies</div>
+      <p>
+        A family submits a shift request through Denizen. We broadcast the
+        opportunity to agencies in the network with matching geography and
+        capability.
+      </p>
+      <p>
+        You accept shifts you can fill, decline the ones you can't. Deliver
+        care. Submit hours. Get paid weekly. Repeat.
+      </p>
+      <p class="muted">
+        No monthly platform fee. No exclusivity requirement. No integration
+        headaches. Just clients.
+      </p>
+    </section>
+
+    <section class="block">
+      <div class="kicker">Who this is for</div>
+      <p>
+        Denizen is built for licensed home care agencies looking to grow
+        without proportionally scaling their marketing spend or sales team.
+      </p>
+      <p>
+        We prioritize agencies with strong quality track records, clean
+        licensing, and the operational capacity to fulfill shifts reliably.
+        We're building a network we can stand behind — and so should you.
+      </p>
+    </section>
+
     <section class="form-block">
-      <div class="kicker">Get in touch</div>
+      <div class="kicker">Join the network</div>
       <p class="lede" style="margin-bottom: 0;">
-        If you're a current or aspiring home care agency founder and would
-        like to hear about how we can help you actually reach your agency
-        goals, contact us&hellip;
+        If you run or operate a licensed home care agency and want to hear
+        more about how Denizen can be a new lead channel for you, tell us
+        about your operation&hellip;
       </p>
 
       <form onsubmit="handleSubmit(event)" id="signup-form">
-        <input type="text" name="name" placeholder="Name" required autocomplete="name" />
+        <input type="text" name="name" placeholder="Your name" required autocomplete="name" />
         <input type="email" name="email" placeholder="Email" required autocomplete="email" />
-        <textarea name="context" placeholder="Anything you'd like us to know (optional)"></textarea>
-        <button type="submit">Get in touch</button>
+        <input type="text" name="agency" placeholder="Agency name" />
+        <input type="text" name="market" placeholder="Primary market (city, state)" />
+        <textarea name="context" placeholder="Anything you'd like us to know about your operation"></textarea>
+        <button type="submit">Join the network</button>
       </form>
     </section>
 
