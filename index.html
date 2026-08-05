@@ -34,6 +34,7 @@
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -412,10 +413,27 @@
     }
     .cta-button:hover { background: var(--crimson-hover); }
 
+    /* Credential seals + cards layout */
+    .trust-layout {
+      display: grid; grid-template-columns: 172px 1fr; gap: 44px;
+      align-items: center; margin-top: 38px;
+    }
+    .cred-seals { display: flex; flex-direction: column; gap: 30px; align-items: center; }
+    .cred-seals img {
+      height: auto; display: block;
+      filter: grayscale(100%); opacity: 0.5;
+      transition: opacity .18s, filter .18s;
+    }
+    .cred-seals img:hover { filter: grayscale(0%); opacity: 1; }
+    @media (max-width: 760px) {
+      .trust-layout { grid-template-columns: 1fr; gap: 30px; }
+      .cred-seals { flex-direction: row; justify-content: center; gap: 44px; }
+    }
+
     /* Icon trust cards */
     .trust-cards {
       display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-      margin-top: 36px; max-width: 720px;
+      margin-top: 0; max-width: none;
     }
     .trust-card {
       position: relative; overflow: hidden;
@@ -481,12 +499,13 @@
     /* Hero — offset photo with overlapping headline card */
     .hero { position: relative; margin: 8px 0 92px; }
     .hero-photo {
-      width: 80%; margin-left: auto;
-      border-radius: 18px; overflow: hidden;
-      box-shadow: 0 1px 3px rgba(28,26,23,0.06), 0 18px 52px rgba(28,26,23,0.13);
+      position: relative; left: 50%; right: 50%; width: 100vw;
+      margin-left: -50vw; margin-right: -50vw;
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(28,26,23,0.09);
     }
     .hero-photo img {
-      width: 100%; height: 500px; object-fit: cover; object-position: center 28%; display: block;
+      width: 100%; height: 540px; object-fit: cover; object-position: center 28%; display: block;
     }
     .hero-card {
       position: absolute; left: 0; bottom: -36px; z-index: 2;
@@ -499,12 +518,21 @@
     .hero-card .lede { font-size: 17px; line-height: 1.5; margin-bottom: 26px; max-width: none; color: var(--muted); }
     .hero-card .cta-button { margin: 0; }
     @media (max-width: 760px) {
-      .hero { margin: 4px 0 48px; }
-      .hero-photo { width: 100%; }
-      .hero-photo img { height: 300px; }
-      .hero-card { position: relative; z-index: 3; max-width: none; margin: -44px 14px 0; padding: 30px 28px; background: #ffffff; }
+      .hero { margin: 0 0 44px; }
+      .hero-photo img { height: 320px; }
+      .hero-card { position: relative; z-index: 3; max-width: none; margin: -46px 0 0; padding: 30px 26px; background: #ffffff; }
       .hero-card h1 { font-size: 32px; }
     }
+
+    /* Full-bleed section bands */
+    .band {
+      position: relative; left: 50%; right: 50%;
+      width: 100vw; margin-left: -50vw; margin-right: -50vw;
+    }
+    section.block.band { margin-top: 44px; padding-top: 0; border-top: none; }
+    .band-grey { background: #faf9f7; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .band-inner { max-width: 960px; margin: 0 auto; padding: 78px 40px; }
+    @media (max-width: 640px) { .band-inner { padding: 52px 24px; } section.block.band { margin-top: 28px; } }
 
     /* Problem section two-column */
     .problem-cols { display: grid; grid-template-columns: 1fr 300px; gap: 44px; align-items: start; }
@@ -743,6 +771,11 @@
         network to it.
       </p>
 
+      <div class="trust-layout">
+      <div class="cred-seals">
+        <img src="/logos/ahca.png" alt="Licensed by the Florida Agency for Health Care Administration" style="width:104px;" />
+        <img src="/logos/hipaa.png" alt="HIPAA compliant" style="width:150px;" />
+      </div>
       <div class="trust-cards">
         <div class="trust-card">
           <div class="trust-watermark">
@@ -773,10 +806,11 @@
           <p>General, professional (E&amp;O), and cyber liability coverage; certificates available on request.</p>
         </div>
       </div>
+      </div>
     </section>
 
-    <section class="block" style="border-top:none;">
-      <div class="panel">
+    <section class="block band band-grey">
+      <div class="band-inner">
       <div class="kicker">Who we are</div>
       <p>
         Aponot is built by the operators of a licensed, insured Florida home
