@@ -174,15 +174,30 @@
       main { padding: 40px 0 20px; }
       footer { padding: 40px 24px 24px; flex-direction: column; align-items: flex-start; }
     }
+  
+    /* unified-header */
+    header { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    header .brand img { height:28px; width:auto; display:block; }
+    header .topnav { display:flex; align-items:center; gap:22px; font-size:14px; color:var(--muted); flex-wrap:wrap; }
+    header .topnav a { text-decoration:none; color:inherit; transition:color .15s; }
+    header .topnav a:not(.login-link):hover { color:var(--text); }
+    header .login-link { color:var(--text); padding:8px 18px; border:1px solid var(--line-strong); border-radius:999px; transition:background .15s,border-color .15s,color .15s; }
+    header .login-link:hover { background:var(--terra-soft); border-color:var(--terra); color:var(--terra); }
+    @media (max-width:640px){ header .topnav a:not(.login-link){ display:none; } }
   </style>
 </head>
 <body>
 
 <div class="page">
 
-  <header>
-    <a href="/" class="brand"><img src="/logo.png" alt="Aponot" /></a>
-    <a class="login-link" href="https://app.aponot.com/sign-in">Log in</a>
+    <header>
+    <a href="/" class="brand"><img src="/logo-red.png" alt="Aponot" /></a>
+    <nav class="topnav">
+      <a href="/agencies">For agencies</a>
+      <a href="/articles">Resources</a>
+      <a href="/how-it-works">How it works</a>
+      <a class="login-link" href="https://app.aponot.com/sign-in">Log in</a>
+    </nav>
   </header>
 
   <main>
@@ -214,8 +229,9 @@
   <footer>
     <div>&copy; 2026 Aponot</div>
     <nav class="footer-nav">
-      <a href="/how-it-works">How it works</a>
       <a href="/agencies">For agencies</a>
+      <a href="/articles">Resources</a>
+      <a href="/how-it-works">How it works</a>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
       <a href="/hipaa">HIPAA</a>
