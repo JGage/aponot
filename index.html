@@ -412,9 +412,94 @@
     }
     .cta-button:hover { background: var(--crimson-hover); }
 
+    /* Icon trust cards */
+    .trust-cards {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      margin-top: 36px; max-width: 720px;
+    }
+    .trust-card {
+      background: #faf9f7; border: 1px solid var(--line); border-radius: 12px;
+      padding: 24px 26px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .trust-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: var(--terra-soft); color: var(--terra);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .trust-icon svg { width: 21px; height: 21px; }
+    .trust-card h3 { font-size: 15px; font-weight: 500; color: var(--text); }
+    .trust-card p { font-size: 14px; color: var(--muted); line-height: 1.5; margin: 0; max-width: none; }
+
+    /* Competitor-type icons */
+    .miss-lead { display: flex; flex-direction: column; gap: 9px; width: 128px; }
+    .miss-icon {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: var(--terra-soft); color: var(--terra);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .miss-icon svg { width: 19px; height: 19px; }
+    /* Stat icons */
+    .impact-icon { color: var(--terra); height: 26px; }
+    .impact-icon svg { width: 26px; height: 26px; display: block; }
+
+    /* Soft panel (used for Who we are + CTA) */
+    .panel {
+      background: #faf9f7; border: 1px solid var(--line);
+      border-radius: 16px; padding: 44px 44px;
+    }
+
+    /* "Worked closely with" strip */
+    .logo-strip { margin-top: 34px; padding-top: 30px; border-top: 1px solid var(--line); }
+    .logo-strip-label {
+      font-size: 11.5px; font-weight: 500; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.09em; line-height: 1.5;
+      margin-bottom: 20px; max-width: 520px;
+    }
+    .logo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 30px; }
+    .logo-mark {
+      font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500;
+      color: #6b665f; letter-spacing: -0.01em; white-space: nowrap;
+    }
+    @media (max-width: 640px) { .logo-mark { font-size: 17px; } .logo-row { gap: 12px 22px; } }
+
+    /* Numbered steps */
+    .steps-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 36px; }
+    .step-item { display: flex; flex-direction: column; gap: 14px; }
+    .step-num {
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 1.5px solid var(--terra); color: var(--terra);
+      font-family: 'Fraunces', Georgia, serif; font-size: 21px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-item h3 { font-size: 16px; font-weight: 500; color: var(--text); }
+    .step-item p { font-size: 15px; color: var(--muted); line-height: 1.55; margin: 0; max-width: none; }
+
+    /* Hero image */
+    .hero-cta { margin: 6px 0 40px; }
+    .hero-image {
+      margin: 0 0 56px; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 1px 3px rgba(28,26,23,0.06), 0 10px 34px rgba(28,26,23,0.07);
+    }
+    .hero-image img {
+      width: 100%; height: 460px; object-fit: cover; object-position: center 35%; display: block;
+    }
+    @media (max-width: 640px) { .hero-image img { height: 280px; } .hero-cta { margin: 6px 0 32px; } }
+
+    /* Problem section two-column */
+    .problem-cols { display: grid; grid-template-columns: 1fr 300px; gap: 44px; align-items: start; }
+    .problem-figure {
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 1px 3px rgba(28,26,23,0.06), 0 8px 26px rgba(28,26,23,0.06);
+    }
+    .problem-figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 22%; display: block; }
+    @media (max-width: 640px) { .problem-cols { grid-template-columns: 1fr; gap: 30px; } .problem-figure { max-width: 340px; } }
+
     @media (max-width: 640px) {
       .page { padding: 24px; }
       .team-grid { grid-template-columns: 1fr; gap: 28px; }
+      .trust-cards { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: 1fr; gap: 24px; }
+      .panel { padding: 32px 26px; }
       h1 { font-size: 36px; }
       .lede { font-size: 16px; margin-bottom: 64px; }
       main { padding: 40px 0 20px; }
@@ -451,32 +536,45 @@
   <main>
 
     <h1>Home care that works for your workforce.</h1>
-    <p class="lede">
+    <p class="lede" style="margin-bottom: 28px;">
       Employees in their 40s and 50s are carrying an invisible second job.
       Aponot is a benefit that makes it lighter — and keeps them at yours.
     </p>
+    <div class="hero-cta">
+      <a class="cta-button" href="#contact">Get in touch →</a>
+    </div>
+    <div class="hero-image">
+      <img src="/hero.jpg" alt="A caregiver and an older woman sharing a warm, candid moment outdoors" />
+    </div>
 
     <section class="block">
       <div class="kicker">The problem inside your workforce</div>
-      <p>
-        47% of adults in their 40s and 50s have a parent age 65 or older and
-        are actively caring for them.
-      </p>
-      <p>
-        For most, that care is invisible to their employer — until it isn't.
-        Missed meetings. Distracted workdays. A resignation letter.
-      </p>
-      <p>
-        The cost of caregiver-related absenteeism and turnover in US workplaces
-        is measured in the tens of billions annually.
-      </p>
+      <div class="problem-cols">
+        <div>
+          <p>
+            47% of adults in their 40s and 50s have a parent age 65 or older and
+            are actively caring for them.
+          </p>
+          <p>
+            For most, that care is invisible to their employer — until it isn't.
+            Missed meetings. Distracted workdays. A resignation letter.
+          </p>
+          <p>
+            The cost of caregiver-related absenteeism and turnover in US workplaces
+            is measured in the tens of billions annually.
+          </p>
 
-      <div class="voice-callout">
-        <blockquote>
-          "By the time I realized my mom needed help, I was already burned out
-          from trying to figure out where to start."
-        </blockquote>
-        <div class="attribution">— Caregiver, 52</div>
+          <div class="voice-callout">
+            <blockquote>
+              "By the time I realized my mom needed help, I was already burned out
+              from trying to figure out where to start."
+            </blockquote>
+            <div class="attribution">— Caregiver, 52</div>
+          </div>
+        </div>
+        <div class="problem-figure">
+          <img src="/employee.jpg" alt="A working professional at home, worn down while reviewing bills and messages" />
+        </div>
       </div>
     </section>
 
@@ -490,21 +588,25 @@
 
       <div class="impact-grid">
         <div class="impact-cell">
+          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <div class="impact-value">$50B</div>
           <div class="impact-label">Lost to US employers annually from caregiver-employee productivity impacts.</div>
         </div>
 
         <div class="impact-cell">
+          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
           <div class="impact-value">126M</div>
           <div class="impact-label">Workdays missed each year by caregivers in the US workforce.</div>
         </div>
 
         <div class="impact-cell">
+          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div class="impact-value">8 hrs</div>
           <div class="impact-label">Average per week that a caregiving employee loses to distraction, phone calls, and coordination.</div>
         </div>
 
         <div class="impact-cell">
+          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
           <div class="impact-value">1 in 5</div>
           <div class="impact-label">Caregiving employees will eventually quit, reduce hours, or take leave.</div>
         </div>
@@ -540,7 +642,10 @@
 
       <div class="miss-list">
         <div class="miss-item">
-          <div class="miss-marker">Navigation</div>
+          <div class="miss-lead">
+            <div class="miss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+            <div class="miss-marker">Navigation</div>
+          </div>
           <div class="miss-body">
             <strong>Care coordinators on the phone.</strong> They help
             employees think through options and locate resources — but the
@@ -549,7 +654,10 @@
         </div>
 
         <div class="miss-item">
-          <div class="miss-marker">Companion visits</div>
+          <div class="miss-lead">
+            <div class="miss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="miss-marker">Companion visits</div>
+          </div>
           <div class="miss-body">
             <strong>Social visits to the parent.</strong> Friendly, valuable
             for isolation — but not care. No help with bathing, mobility,
@@ -558,7 +666,10 @@
         </div>
 
         <div class="miss-item">
-          <div class="miss-marker">Referral lists</div>
+          <div class="miss-lead">
+            <div class="miss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M16 4h2a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></svg></div>
+            <div class="miss-marker">Referral lists</div>
+          </div>
           <div class="miss-body">
             <strong>A vetted list of local agencies.</strong> The employee
             still calls around, screens providers, negotiates rates, and hopes
@@ -576,16 +687,26 @@
 
     <section class="block">
       <div class="kicker">How Aponot works</div>
-      <p>
-        Employees log in, describe what their loved one needs, and confirm care
-        — often in minutes. No phone tag. No hunting for an agency. No
-        stress about vetting strangers.
-      </p>
-      <p>
-        Care is delivered through Aponot's vetted local agency network. All
-        caregivers are professionally credentialed and background-checked.
-      </p>
-      <p>
+
+      <div class="steps-row">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <h3>Request</h3>
+          <p>Employees log in and describe what their loved one needs — often in minutes. No phone tag, no hunting for an agency.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <h3>Match</h3>
+          <p>Aponot matches them with a vetted local agency and arranges a credentialed, background-checked caregiver.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <h3>Care</h3>
+          <p>Care is delivered in the home. Aponot handles scheduling, payment, and follow-up from there.</p>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:36px;">
         Employers pay a predictable subscription. Employees can opt into
         additional coverage tiers via voluntary payroll deduction.
       </p>
@@ -599,57 +720,49 @@
         network to it.
       </p>
 
-      <div class="miss-list">
-        <div class="miss-item">
-          <div class="miss-marker">Licensed</div>
-          <div class="miss-body">
-            <strong>State-licensed home care agencies.</strong> Every agency in
-            the network operates under its own state license, insurance, and
-            workers&rsquo; compensation coverage.
+      <div class="trust-cards">
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
+          <h3>State-licensed agencies</h3>
+          <p>Every agency in the network operates under its own state license, insurance, and workers&rsquo; compensation.</p>
         </div>
-
-        <div class="miss-item">
-          <div class="miss-marker">Credentialed</div>
-          <div class="miss-body">
-            <strong>Vetted, certified caregivers.</strong> Caregivers are
-            credentialed (CNA or HHA), background-checked, and verified through
-            the licensed agency employing them.
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 10-5.5"/><path d="M15 19l2 2 4-4"/></svg>
           </div>
+          <h3>Credentialed caregivers</h3>
+          <p>Caregivers are certified (CNA or HHA), background-checked, and verified through the agency employing them.</p>
         </div>
-
-        <div class="miss-item">
-          <div class="miss-marker">Compliant</div>
-          <div class="miss-body">
-            <strong>HIPAA-compliant by design.</strong> Administrative,
-            physical, and technical safeguards, with Business Associate
-            Agreements available to employers and plans on request.
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
           </div>
+          <h3>HIPAA-compliant</h3>
+          <p>Administrative, physical, and technical safeguards, with Business Associate Agreements available on request.</p>
         </div>
-
-        <div class="miss-item">
-          <div class="miss-marker">Insured</div>
-          <div class="miss-body">
-            <strong>Fully insured.</strong> Aponot carries general, professional
-            (E&amp;O), and cyber liability coverage; certificates available on
-            request.
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9z"/><path d="M12 12v6a2 2 0 0 0 4 0"/></svg>
           </div>
+          <h3>Fully insured</h3>
+          <p>General, professional (E&amp;O), and cyber liability coverage; certificates available on request.</p>
         </div>
       </div>
     </section>
 
-    <section class="block">
+    <section class="block" style="border-top:none;">
+      <div class="panel">
       <div class="kicker">Who we are</div>
       <p>
-        Aponot is built by the operators of <strong>[Your Agency Name]</strong>,
-        a licensed and insured Florida home care agency — not a tech company
-        guessing at care from the outside. We run the operations, employ
-        caregivers, and answer the 2 a.m. calls.
+        Aponot is built by the operators of a licensed, insured Florida home
+        care agency — not a tech company guessing at care from the outside. We
+        run the operations, employ caregivers, and answer the 2 a.m. calls.
       </p>
       <p>
         Our founding team&rsquo;s background spans years working alongside
-        leading health systems and senior-living communities — including
-        AdventHealth, HCA, Moffitt Cancer Center, and Brookdale — together with
+        leading health systems and senior-living communities, together with
         ex-management consultants and <span class="mit">MIT alumni</span>.
       </p>
       <p>
@@ -657,30 +770,20 @@
         never solved: actual care delivery, at scale, at the moments that matter.
       </p>
 
-      <!-- FOUNDING TEAM — replace bracketed placeholders before publishing -->
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-avatar">A</div>
-          <div class="team-name">[Founder Name]</div>
-          <div class="team-role">[Co-founder &amp; CEO]</div>
-          <a class="team-link" href="[LinkedIn URL]">LinkedIn →</a>
+      <div class="logo-strip">
+        <div class="logo-strip-label">Healthcare &amp; senior-care companies our founders have worked closely with</div>
+        <div class="logo-row">
+          <span class="logo-mark">AdventHealth</span>
+          <span class="logo-mark">HCA Healthcare</span>
+          <span class="logo-mark">Moffitt Cancer Center</span>
+          <span class="logo-mark">Brookdale Senior Living</span>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">B</div>
-          <div class="team-name">[Founder Name]</div>
-          <div class="team-role">[Co-founder &amp; COO]</div>
-          <a class="team-link" href="[LinkedIn URL]">LinkedIn →</a>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar">C</div>
-          <div class="team-name">[Founder Name]</div>
-          <div class="team-role">[Co-founder &amp; Head of Care]</div>
-          <a class="team-link" href="[LinkedIn URL]">LinkedIn →</a>
-        </div>
+      </div>
+
       </div>
     </section>
 
-    <section class="form-block">
+    <section class="form-block" id="contact">
       <div class="kicker">Get in touch</div>
       <p class="lede" style="margin-bottom: 0;">
         If you're an HR leader, benefits consultant, or broker who wants to
