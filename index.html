@@ -43,37 +43,40 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding: 40px;
+      padding: 0 40px 40px;
     }
 
     header {
+      position: absolute; top: 0; left: 0; right: 0; z-index: 20;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      padding: 30px 40px;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.28);
     }
     header .brand { display: inline-flex; align-items: center; }
-    header .brand img { height: 26px; width: auto; display: block; }
+    header .brand img { height: 30px; width: auto; display: block; }
     header .login-link {
       font-size: 14px;
       font-weight: 500;
-      color: var(--text);
+      color: #ffffff;
       padding: 8px 18px;
-      border: 1px solid var(--line-strong);
+      border: 1px solid rgba(255,255,255,0.55);
       border-radius: 999px;
       transition: background .15s, border-color .15s, color .15s;
     }
-    header .login-link:hover { background: var(--terra-soft); border-color: var(--terra); color: var(--terra); }
+    header .login-link:hover { background: rgba(255,255,255,0.16); border-color: #ffffff; color: #ffffff; }
 
     header .topnav {
       display: flex;
       align-items: center;
       gap: 24px;
       font-size: 14px;
-      color: var(--muted);
+      color: rgba(255,255,255,0.88);
     }
     header .topnav a { color: inherit; transition: color .15s; }
-    header .topnav a:not(.login-link):hover { color: var(--text); }
+    header .topnav a:not(.login-link):hover { color: #ffffff; }
 
 
     main {
@@ -81,7 +84,7 @@
       max-width: 880px;
       margin: 0 auto;
       width: 100%;
-      padding: 80px 0 40px;
+      padding: 0 0 40px;
     }
 
     h1 {
@@ -475,14 +478,28 @@
       text-transform: uppercase; letter-spacing: 0.09em; line-height: 1.5;
       margin-bottom: 20px; max-width: 520px;
     }
-    .logo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 26px 42px; }
-    .logo-row img {
-      width: auto; display: block;
+    .logo-carousel { display: flex; align-items: center; gap: 12px; }
+    .lc-track {
+      display: flex; align-items: center; gap: 44px; flex: 1;
+      overflow-x: auto; scroll-behavior: smooth; padding: 8px 2px;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .lc-track::-webkit-scrollbar { display: none; }
+    .lc-track img {
+      flex: 0 0 auto; width: auto; display: block;
       filter: grayscale(100%); opacity: 0.6;
       transition: opacity .18s, filter .18s;
     }
-    .logo-row img:hover { filter: grayscale(0%); opacity: 1; }
-    @media (max-width: 640px) { .logo-row { gap: 20px 30px; } .logo-row img { transform: scale(0.9); } }
+    .lc-track img:hover { filter: grayscale(0%); opacity: 1; }
+    .lc-arrow {
+      flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid var(--line-strong); background: #ffffff; color: var(--muted);
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: color .15s, border-color .15s, background .15s;
+    }
+    .lc-arrow:hover { color: var(--terra); border-color: var(--terra); background: var(--terra-soft); }
+    .lc-arrow svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 640px) { .lc-track { gap: 30px; } .lc-arrow { width: 32px; height: 32px; } }
 
     /* Numbered steps */
     .steps-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 36px; }
@@ -496,32 +513,45 @@
     .step-item h3 { font-size: 16px; font-weight: 500; color: var(--text); }
     .step-item p { font-size: 15px; color: var(--muted); line-height: 1.55; margin: 0; max-width: none; }
 
-    /* Hero — offset photo with overlapping headline card */
-    .hero { position: relative; margin: 8px 0 92px; }
-    .hero-photo {
-      position: relative; left: 50%; right: 50%; width: 100vw;
-      margin-left: -50vw; margin-right: -50vw;
+    /* Hero — full-bleed photo banner with white text overlay */
+    .hero {
+      position: relative;
+      width: 100vw; left: 50%; right: 50%;
+      margin-left: -50vw; margin-right: -50vw; margin-top: 0; margin-bottom: 84px;
+      min-height: 668px;
+      display: flex; align-items: flex-end;
       overflow: hidden;
-      box-shadow: 0 14px 34px rgba(28,26,23,0.09);
     }
-    .hero-photo img {
-      width: 100%; height: 540px; object-fit: cover; object-position: center 28%; display: block;
+    .hero-media { position: absolute; inset: 0; }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+    .hero-scrim {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(22,17,14,0.46) 0%, rgba(22,17,14,0) 26%),
+        linear-gradient(100deg, rgba(22,17,14,0.70) 0%, rgba(22,17,14,0.34) 46%, rgba(22,17,14,0.05) 100%);
     }
-    .hero-card {
-      position: absolute; left: 0; bottom: -36px; z-index: 2;
-      max-width: 456px;
-      background: #ffffff; border: 1px solid var(--line); border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(28,26,23,0.05), 0 28px 66px rgba(28,26,23,0.17);
-      padding: 38px 40px;
+    .hero-inner {
+      position: relative; z-index: 2;
+      width: 100%; max-width: 960px; margin: 0 auto;
+      padding: 0 40px 76px;
     }
-    .hero-card h1 { font-size: 43px; line-height: 1.04; margin-bottom: 18px; max-width: none; }
-    .hero-card .lede { font-size: 17px; line-height: 1.5; margin-bottom: 26px; max-width: none; color: var(--muted); }
-    .hero-card .cta-button { margin: 0; }
+    .hero-content { max-width: 540px; }
+    .hero-content h1 {
+      color: #ffffff; font-size: 54px; line-height: 1.04; letter-spacing: -0.02em;
+      margin-bottom: 20px; max-width: none;
+      text-shadow: 0 2px 22px rgba(0,0,0,0.30);
+    }
+    .hero-content .hero-sub {
+      color: rgba(255,255,255,0.92); font-size: 19px; line-height: 1.5;
+      max-width: 470px; margin-bottom: 30px;
+      text-shadow: 0 1px 16px rgba(0,0,0,0.34);
+    }
+    .hero-content .cta-button { margin: 0; box-shadow: 0 10px 26px rgba(0,0,0,0.28); }
     @media (max-width: 760px) {
-      .hero { margin: 0 0 44px; }
-      .hero-photo img { height: 320px; }
-      .hero-card { position: relative; z-index: 3; max-width: none; margin: -46px 0 0; padding: 30px 26px; background: #ffffff; }
-      .hero-card h1 { font-size: 32px; }
+      .hero { min-height: 560px; margin-bottom: 52px; }
+      .hero-inner { padding: 0 24px 48px; }
+      .hero-content h1 { font-size: 35px; }
+      .hero-content .hero-sub { font-size: 16px; }
     }
 
     /* Full-bleed section bands */
@@ -544,14 +574,16 @@
     @media (max-width: 640px) { .problem-cols { grid-template-columns: 1fr; gap: 30px; } .problem-figure { max-width: 340px; } }
 
     @media (max-width: 640px) {
-      .page { padding: 24px; }
+      .page { padding: 0 24px 24px; }
+      header { padding: 20px 24px; }
+      header .topnav a:not(.login-link) { display: none; }
       .team-grid { grid-template-columns: 1fr; gap: 28px; }
       .trust-cards { grid-template-columns: 1fr; }
       .steps-row { grid-template-columns: 1fr; gap: 24px; }
       .panel { padding: 32px 26px; }
       h1 { font-size: 36px; }
       .lede { font-size: 16px; margin-bottom: 64px; }
-      main { padding: 40px 0 20px; }
+      main { padding: 0 0 20px; }
       section.block { padding-top: 48px; margin-top: 48px; }
       section.form-block { padding-top: 48px; margin-top: 64px; }
       .impact-grid { grid-template-columns: 1fr; }
@@ -573,7 +605,7 @@
 <div class="page">
 
   <header>
-    <a href="/" class="brand"><img src="/logo.png" alt="Aponot" /></a>
+    <a href="/" class="brand"><img src="/logo-red.png" alt="Aponot" /></a>
     <nav class="topnav">
       <a href="/agencies">For agencies</a>
       <a href="/articles">Resources</a>
@@ -585,16 +617,19 @@
   <main>
 
     <div class="hero">
-      <div class="hero-photo">
+      <div class="hero-media">
         <img src="/hero.jpg" alt="A caregiver and an older woman sharing a warm, candid moment outdoors" />
+        <div class="hero-scrim"></div>
       </div>
-      <div class="hero-card">
-        <h1>Home care that works for your workforce.</h1>
-        <p class="lede">
-          Employees in their 40s and 50s are carrying an invisible second job.
-          Aponot is a benefit that makes it lighter — and keeps them at yours.
-        </p>
-        <a class="cta-button" href="#contact">Get in touch →</a>
+      <div class="hero-inner">
+        <div class="hero-content">
+          <h1>Home care that works for your workforce.</h1>
+          <p class="hero-sub">
+            Employees in their 40s and 50s are carrying an invisible second job.
+            Aponot is a benefit that makes it lighter — and keeps them at yours.
+          </p>
+          <a class="cta-button" href="#contact">Get in touch →</a>
+        </div>
       </div>
     </div>
 
@@ -829,14 +864,22 @@
 
       <div class="logo-strip">
         <div class="logo-strip-label">Healthcare &amp; senior-care companies our founders have worked closely with</div>
-        <div class="logo-row">
-          <img src="/logos/advent.png" alt="AdventHealth" style="height:30px;" />
-          <img src="/logos/hca.png" alt="HCA Healthcare" style="height:44px;" />
-          <img src="/logos/moffitt.png" alt="Moffitt Cancer Center" style="height:40px;" />
-          <img src="/logos/baycare.png" alt="BayCare" style="height:32px;" />
-          <img src="/logos/brookdale.png" alt="Brookdale Senior Living" style="height:38px;" />
-          <img src="/logos/discovery.png" alt="Discovery Senior Living" style="height:48px;" />
-          <img src="/logos/enhabit.png" alt="Enhabit Home Health &amp; Hospice" style="height:40px;" />
+        <div class="logo-carousel">
+          <button class="lc-arrow" type="button" aria-label="Scroll logos left" onclick="scrollLogos(-1)">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div class="lc-track" id="logoTrack">
+            <img src="/logos/advent.png" alt="AdventHealth" style="height:30px;" />
+            <img src="/logos/hca.png" alt="HCA Healthcare" style="height:44px;" />
+            <img src="/logos/moffitt.png" alt="Moffitt Cancer Center" style="height:40px;" />
+            <img src="/logos/baycare.png" alt="BayCare" style="height:32px;" />
+            <img src="/logos/brookdale.png" alt="Brookdale Senior Living" style="height:38px;" />
+            <img src="/logos/discovery.png" alt="Discovery Senior Living" style="height:48px;" />
+            <img src="/logos/enhabit.png" alt="Enhabit Home Health &amp; Hospice" style="height:40px;" />
+          </div>
+          <button class="lc-arrow" type="button" aria-label="Scroll logos right" onclick="scrollLogos(1)">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
       </div>
 
@@ -893,6 +936,12 @@
     button.textContent = 'Thanks — we\'ll be in touch';
     button.disabled = true;
     Array.from(form.querySelectorAll('input, textarea')).forEach(el => el.disabled = true);
+  }
+
+  function scrollLogos(dir) {
+    var t = document.getElementById('logoTrack');
+    if (!t) return;
+    t.scrollBy({ left: dir * Math.max(240, Math.round(t.clientWidth * 0.72)), behavior: 'smooth' });
   }
 </script>
 
