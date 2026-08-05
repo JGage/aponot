@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aponot for Employers — Mockup</title>
+  <title>Aponot — Home care that works for your workforce</title>
   <meta name="description" content="Home care support as an employee benefit — for the sandwich generation your business depends on." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,6 +63,16 @@
       transition: background .15s, border-color .15s, color .15s;
     }
     header .login-link:hover { background: var(--terra-soft); border-color: var(--terra); color: var(--terra); }
+
+    header .topnav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    header .topnav a { color: inherit; transition: color .15s; }
+    header .topnav a:not(.login-link):hover { color: var(--text); }
 
 
     main {
@@ -364,8 +374,47 @@
       flex-wrap: wrap;
     }
 
+    .sources {
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Founding team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      max-width: 640px;
+    }
+    .team-card { display: flex; flex-direction: column; gap: 10px; }
+    .team-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--terra-soft); color: var(--terra);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500;
+    }
+    .team-name { font-size: 15px; font-weight: 500; color: var(--text); }
+    .team-role { font-size: 13px; color: var(--muted); margin-top: -6px; }
+    .team-link { font-size: 13px; color: var(--terra); text-decoration: none; }
+    .team-link:hover { text-decoration: underline; }
+
+    /* Primary CTA button (link styled) */
+    .cta-row { margin-top: 28px; }
+    .cta-button {
+      display: inline-block;
+      background: var(--crimson); color: #fff;
+      padding: 14px 28px; border-radius: 999px;
+      font-size: 14px; font-weight: 500; letter-spacing: 0.01em;
+      transition: background-color 120ms;
+    }
+    .cta-button:hover { background: var(--crimson-hover); }
+
     @media (max-width: 640px) {
       .page { padding: 24px; }
+      .team-grid { grid-template-columns: 1fr; gap: 28px; }
       h1 { font-size: 36px; }
       .lede { font-size: 16px; margin-bottom: 64px; }
       main { padding: 40px 0 20px; }
@@ -391,7 +440,12 @@
 
   <header>
     <a href="/" class="brand"><img src="/logo.png" alt="Aponot" /></a>
-    <a class="login-link" href="https://app.aponot.com/sign-in">Log in</a>
+    <nav class="topnav">
+      <a href="/agencies">For agencies</a>
+      <a href="/articles">Resources</a>
+      <a href="/how-it-works">How it works</a>
+      <a class="login-link" href="https://app.aponot.com/sign-in">Log in</a>
+    </nav>
   </header>
 
   <main>
@@ -464,6 +518,11 @@
         <strong>$5-8M in annual productivity cost</strong> before you count
         turnover.
       </div>
+
+      <p class="sources">
+        Figures drawn from research by Pew Research Center, AARP, and Harvard
+        Business School&rsquo;s <em>The Caring Company</em>.
+      </p>
     </section>
 
     <section class="block">
@@ -533,20 +592,92 @@
     </section>
 
     <section class="block">
+      <div class="kicker">Built on licensed, credentialed care</div>
+      <p class="muted">
+        Aponot isn&rsquo;t a call center or a directory. Care is delivered by
+        real, licensed agencies and credentialed caregivers — and we hold the
+        network to it.
+      </p>
+
+      <div class="miss-list">
+        <div class="miss-item">
+          <div class="miss-marker">Licensed</div>
+          <div class="miss-body">
+            <strong>State-licensed home care agencies.</strong> Every agency in
+            the network operates under its own state license, insurance, and
+            workers&rsquo; compensation coverage.
+          </div>
+        </div>
+
+        <div class="miss-item">
+          <div class="miss-marker">Credentialed</div>
+          <div class="miss-body">
+            <strong>Vetted, certified caregivers.</strong> Caregivers are
+            credentialed (CNA or HHA), background-checked, and verified through
+            the licensed agency employing them.
+          </div>
+        </div>
+
+        <div class="miss-item">
+          <div class="miss-marker">Compliant</div>
+          <div class="miss-body">
+            <strong>HIPAA-compliant by design.</strong> Administrative,
+            physical, and technical safeguards, with Business Associate
+            Agreements available to employers and plans on request.
+          </div>
+        </div>
+
+        <div class="miss-item">
+          <div class="miss-marker">Insured</div>
+          <div class="miss-body">
+            <strong>Fully insured.</strong> Aponot carries general, professional
+            (E&amp;O), and cyber liability coverage; certificates available on
+            request.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
       <div class="kicker">Who we are</div>
       <p>
-        <span class="credentials-line">
-          We're a group of ex-management consultants,
-          <span class="mit">MIT alumni</span>, and home care industry veterans
-          who've spent years operating in this space and studying it from
-          the inside.
-        </span>
+        Aponot is built by the operators of <strong>[Your Agency Name]</strong>,
+        a licensed and insured Florida home care agency — not a tech company
+        guessing at care from the outside. We run the operations, employ
+        caregivers, and answer the 2 a.m. calls.
       </p>
       <p>
-        We built Aponot to close a gap the benefits industry has been circling
-        around but never solved — actual care delivery, at scale, at moments
-        that matter.
+        Our founding team&rsquo;s background spans years working alongside
+        leading health systems and senior-living communities — including
+        AdventHealth, HCA, Moffitt Cancer Center, and Brookdale — together with
+        ex-management consultants and <span class="mit">MIT alumni</span>.
       </p>
+      <p>
+        We built Aponot to close a gap the benefits industry has circled but
+        never solved: actual care delivery, at scale, at the moments that matter.
+      </p>
+
+      <!-- FOUNDING TEAM — replace bracketed placeholders before publishing -->
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">A</div>
+          <div class="team-name">[Founder Name]</div>
+          <div class="team-role">[Co-founder &amp; CEO]</div>
+          <a class="team-link" href="[LinkedIn URL]">LinkedIn →</a>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">B</div>
+          <div class="team-name">[Founder Name]</div>
+          <div class="team-role">[Co-founder &amp; COO]</div>
+          <a class="team-link" href="[LinkedIn URL]">LinkedIn →</a>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">C</div>
+          <div class="team-name">[Founder Name]</div>
+          <div class="team-role">[Co-founder &amp; Head of Care]</div>
+          <a class="team-link" href="[LinkedIn URL]">LinkedIn →</a>
+        </div>
+      </div>
     </section>
 
     <section class="form-block">
@@ -555,6 +686,14 @@
         If you're an HR leader, benefits consultant, or broker who wants to
         hear more about bringing real home care to your employees, we'd love
         to talk&hellip;
+      </p>
+
+      <div class="cta-row">
+        <a class="cta-button" href="[YOUR CALENDLY LINK]">Book a 15-minute intro →</a>
+      </div>
+
+      <p class="muted" style="font-size:15px; margin-top:28px; margin-bottom:0;">
+        Prefer email? Leave your details and we&rsquo;ll reach out.
       </p>
 
       <form onsubmit="handleSubmit(event)" id="signup-form">
@@ -571,8 +710,9 @@
   <footer>
     <div>&copy; 2026 Aponot</div>
     <nav class="footer-nav">
-      <a href="/how-it-works">How it works</a>
       <a href="/agencies">For agencies</a>
+      <a href="/articles">Resources</a>
+      <a href="/how-it-works">How it works</a>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
       <a href="/hipaa">HIPAA</a>

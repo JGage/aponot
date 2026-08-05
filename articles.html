@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — Aponot</title>
+  <meta name="description" content="Perspectives on the sandwich generation, eldercare benefits, and what real home care looks like — from the Aponot team." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg:#ffffff; --text:#1c1a17; --muted:#8a857e;
+      --line:rgba(28,26,23,0.12); --line-strong:rgba(28,26,23,0.22);
+      --terra:#c66540; --terra-soft:rgba(198,101,64,0.12); --crimson:#a31f34;
+    }
+    html,body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    .page{min-height:100vh;display:flex;flex-direction:column;padding:40px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    header .brand img{height:26px;width:auto;display:block;}
+    header nav{display:flex;gap:22px;align-items:center;font-size:14px;color:var(--muted);}
+    header nav a:hover{color:var(--text);}
+    header nav a.login{color:var(--text);padding:8px 18px;border:1px solid var(--line-strong);border-radius:999px;}
+    header nav a.login:hover{background:var(--terra-soft);border-color:var(--terra);color:var(--terra);}
+    main{flex:1;max-width:880px;margin:0 auto;width:100%;padding:72px 0 40px;}
+    .kicker{font-size:11px;font-weight:500;color:var(--terra);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:22px;}
+    h1{font-family:'Fraunces',Georgia,serif;font-size:46px;font-weight:500;letter-spacing:-0.02em;line-height:1.08;margin-bottom:20px;max-width:720px;}
+    .lede{font-size:18px;color:var(--muted);max-width:600px;margin-bottom:64px;}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+    .card{background:var(--bg);padding:32px 30px;display:flex;flex-direction:column;gap:12px;transition:background .15s;}
+    .card:hover{background:#faf9f8;}
+    .tag{font-size:11px;font-weight:500;color:var(--terra);text-transform:uppercase;letter-spacing:0.12em;}
+    .card h2{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:500;line-height:1.2;letter-spacing:-0.01em;}
+    .card p{font-size:15px;color:var(--muted);line-height:1.5;}
+    .meta{font-size:13px;color:var(--muted);margin-top:auto;padding-top:6px;}
+    footer{padding:60px 40px 32px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;max-width:880px;margin:0 auto;width:100%;}
+    footer a{text-decoration:underline;text-decoration-color:var(--line-strong);}
+    footer .footer-nav{display:flex;gap:20px;flex-wrap:wrap;}
+    @media (max-width:640px){.page{padding:24px;}h1{font-size:32px;}.grid{grid-template-columns:1fr;}header nav{gap:14px;}footer{flex-direction:column;align-items:flex-start;}}
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <a href="/" class="brand"><img src="/logo.png" alt="Aponot" /></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/how-it-works">How it works</a>
+      <a class="login" href="https://app.aponot.com/sign-in">Log in</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="kicker">Resources</div>
+    <h1>Home care, the workforce, and what actually helps.</h1>
+    <p class="lede">Perspectives from the Aponot team on the sandwich generation, the real cost of caregiving, and what separates genuine care from a phone number.</p>
+
+    <div class="grid">
+      <a class="card" href="/sandwich-generation-workforce">
+        <span class="tag">Workforce</span>
+        <h2>The Sandwich Generation Is Quietly Reshaping Your Workforce</h2>
+        <p>Nearly half of employees in their 40s and 50s are caring for an aging parent while holding down a career. Here's what that means for the businesses that employ them.</p>
+        <div class="meta">July 2026 · 5 min read</div>
+      </a>
+      <a class="card" href="/eldercare-next-benefit">
+        <span class="tag">Benefits</span>
+        <h2>Why Eldercare Is Becoming the Next Must-Have Employee Benefit</h2>
+        <p>Childcare support went from perk to expectation in a decade. Eldercare is on the same trajectory — and moving faster.</p>
+        <div class="meta">June 2026 · 4 min read</div>
+      </a>
+      <a class="card" href="/navigation-isnt-care">
+        <span class="tag">Industry</span>
+        <h2>Care Navigation Isn't Care: The Gap in Today's Eldercare Benefits</h2>
+        <p>Most eldercare benefits help employees think about care. Very few actually deliver it — and that difference is everything in a crisis.</p>
+        <div class="meta">June 2026 · 5 min read</div>
+      </a>
+      <a class="card" href="/hidden-cost-of-caregiving">
+        <span class="tag">Employers</span>
+        <h2>The Hidden Cost of Caregiving on Your Bottom Line</h2>
+        <p>Absenteeism, presenteeism, and turnover from employee caregiving rarely show up as a line item — but they add up to real money.</p>
+        <div class="meta">May 2026 · 6 min read</div>
+      </a>
+      <a class="card" href="/home-care-101">
+        <span class="tag">Care Guide</span>
+        <h2>Home Care 101: What Families Actually Need When a Parent Declines</h2>
+        <p>Bathing, mobility, medication, meals — a plain-language guide to what non-medical home care covers, and when to bring it in.</p>
+        <div class="meta">May 2026 · 5 min read</div>
+      </a>
+      <a class="card" href="/what-quality-means">
+        <span class="tag">Quality</span>
+        <h2>Licensed, Certified, Vetted: What "Quality" Really Means in Home Care</h2>
+        <p>Not everyone who calls themselves a "caregiver" is the same. Here's how licensing, certification, and vetting actually protect the person receiving care.</p>
+        <div class="meta">April 2026 · 4 min read</div>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <div>&copy; 2026 Aponot</div>
+    <nav class="footer-nav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/articles">Resources</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/hipaa">HIPAA</a>
+      <a href="mailto:hello@aponot.com">Contact</a>
+    </nav>
+  </footer>
+</div>
+</body>
+</html>
