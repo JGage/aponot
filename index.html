@@ -256,6 +256,30 @@
       font-weight: 500;
     }
 
+    /* Workforce cost visualization */
+    .wf-viz { margin-top: 44px; display: grid; grid-template-columns: minmax(0,430px) 1fr; gap: 48px; align-items: center; }
+    .wf-label { font-size: 12px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .wf-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 9px; }
+    .wf-grid span { display: block; }
+    .wf-grid svg, .wf-note .swatch svg { width: 100%; height: auto; display: block; }
+    .p-none { color: #201d1a; }
+    .p-care { color: var(--crimson); }
+    .p-leave { color: #c8c2ba; }
+    .wf-notes { display: flex; flex-direction: column; gap: 22px; }
+    .wf-note { display: flex; gap: 14px; align-items: flex-start; }
+    .wf-note .swatch { flex: 0 0 auto; width: 26px; height: 26px; margin-top: 2px; }
+    .wf-note p { font-size: 16px; line-height: 1.5; color: var(--text); margin: 0; max-width: none; }
+    .wf-note strong { font-weight: 500; }
+    .wf-note.care strong { color: var(--crimson); }
+    .wf-note.leave strong { color: #8a857e; }
+    .cost-head { margin-top: 46px; font-size: 12px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.11em; }
+    .cost-bullets { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .cost-cell { background: var(--bg); padding: 26px 24px; }
+    .cost-num { font-family: 'Fraunces', Georgia, serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; color: var(--crimson); }
+    .cost-cell:not(:first-child) .cost-num { color: var(--text); }
+    .cost-desc { font-size: 14px; color: var(--muted); line-height: 1.5; margin-top: 12px; }
+    @media (max-width: 760px) { .wf-viz { grid-template-columns: 1fr; gap: 30px; } .wf-grid { max-width: 380px; } .cost-bullets { grid-template-columns: 1fr; } }
+
     /* Who we are — MIT emphasis */
     .credentials-line {
       display: inline;
@@ -436,7 +460,7 @@
     /* Icon trust cards */
     .trust-cards {
       display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-      margin-top: 0; max-width: none;
+      margin-top: 36px; max-width: 720px;
     }
     .trust-card {
       position: relative; overflow: hidden;
@@ -492,14 +516,14 @@
     }
     .lc-track img:hover { filter: grayscale(0%); opacity: 1; }
     .lc-arrow {
-      flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%;
-      border: 1px solid var(--line-strong); background: #ffffff; color: var(--muted);
-      display: flex; align-items: center; justify-content: center; cursor: pointer;
-      transition: color .15s, border-color .15s, background .15s;
+      flex: 0 0 auto; width: 30px; height: 36px; border: none; background: none; padding: 0;
+      color: var(--muted); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: color .15s;
     }
-    .lc-arrow:hover { color: var(--terra); border-color: var(--terra); background: var(--terra-soft); }
-    .lc-arrow svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    @media (max-width: 640px) { .lc-track { gap: 30px; } .lc-arrow { width: 32px; height: 32px; } }
+    .lc-arrow:hover { color: var(--terra); }
+    .lc-arrow svg { width: 16px; height: 16px; fill: currentColor; display: block; }
+    @media (max-width: 640px) { .lc-track { gap: 30px; } }
 
     /* Numbered steps */
     .steps-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 36px; }
@@ -512,6 +536,9 @@
     }
     .step-item h3 { font-size: 16px; font-weight: 500; color: var(--text); }
     .step-item p { font-size: 15px; color: var(--muted); line-height: 1.55; margin: 0; max-width: none; }
+    .step-photo { position: relative; width: 128px; height: 128px; margin-bottom: 4px; }
+    .step-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; box-shadow: 0 2px 6px rgba(28,26,23,0.08), 0 12px 28px rgba(28,26,23,0.12); }
+    .step-badge { position: absolute; bottom: -2px; right: -2px; width: 36px; height: 36px; border-radius: 50%; background: var(--crimson); color: #fff; font-family: 'Fraunces', Georgia, serif; font-size: 17px; display: flex; align-items: center; justify-content: center; border: 3px solid var(--bg); }
 
     /* Hero — full-bleed photo banner with white text overlay */
     .hero {
@@ -672,45 +699,59 @@
         invisible until you look for it.
       </p>
 
-      <div class="impact-grid">
-        <div class="impact-cell">
-          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2" fill="rgba(198,101,64,0.16)" stroke-width="1.5"/><path d="M12 6.4v11.2" stroke-width="1.5"/><path d="M14.7 8.7c-.7-.9-1.8-1.2-2.9-1.2-1.5 0-2.8.8-2.8 2.1 0 1.4 1.3 1.8 2.8 2.1 1.5.3 2.9.8 2.9 2.2 0 1.3-1.3 2.1-2.8 2.1-1.2 0-2.3-.4-3-1.3" stroke-width="1.5"/></svg></div>
-          <div class="impact-value">$50B</div>
-          <div class="impact-label">Lost to US employers annually from caregiver-employee productivity impacts.</div>
+      <div class="wf-viz">
+        <div>
+          <div class="wf-label">Your workforce</div>
+          <div class="wf-grid">
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-care"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-care"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-care"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-care"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <span class="p-leave"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+          </div>
         </div>
-
-        <div class="impact-cell">
-          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.2" fill="rgba(198,101,64,0.16)" stroke-width="1.5"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5" stroke-width="1.5"/><line x1="8" y1="3" x2="8" y2="6.2" stroke-width="1.5"/><line x1="16" y1="3" x2="16" y2="6.2" stroke-width="1.5"/><path d="M10.4 13.2l3.2 3.2M13.6 13.2l-3.2 3.2" stroke-width="1.6"/></svg></div>
-          <div class="impact-value">126M</div>
-          <div class="impact-label">Workdays missed each year by caregivers in the US workforce.</div>
-        </div>
-
-        <div class="impact-cell">
-          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2" fill="rgba(198,101,64,0.16)" stroke-width="1.5"/><path d="M12 6.8v5.4l3.6 2.1" stroke-width="1.6"/></svg></div>
-          <div class="impact-value">8 hrs</div>
-          <div class="impact-label">Average per week that a caregiving employee loses to distraction, phone calls, and coordination.</div>
-        </div>
-
-        <div class="impact-cell">
-          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4H6.5A1.5 1.5 0 0 0 5 5.5v13A1.5 1.5 0 0 0 6.5 20H13" fill="rgba(198,101,64,0.16)" stroke-width="1.5"/><path d="M14 12h7" stroke-width="1.6"/><path d="M18 8.5l3.2 3.5-3.2 3.5" stroke-width="1.6"/></svg></div>
-          <div class="impact-value">1 in 5</div>
-          <div class="impact-label">Caregiving employees will eventually quit, reduce hours, or take leave.</div>
+        <div class="wf-notes">
+          <div class="wf-note care">
+            <span class="swatch p-care"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <p>About <strong>1 in 4</strong> employees is quietly caring for an aging parent or family member.</p>
+          </div>
+          <div class="wf-note leave">
+            <span class="swatch p-leave"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+            <p>And <strong>1 in 5</strong> of those caregivers will eventually quit, cut their hours, or take leave.</p>
+          </div>
         </div>
       </div>
 
-      <div class="impact-scenario">
-        <strong>For a 5,000-employee company:</strong>
-        roughly 850 employees are already carrying caregiving responsibilities.
-        At 8 hours/week of lost productivity each, that's over
-        <strong>350,000 hours per year</strong> — and typically
-        <strong>$5-8M in annual productivity cost</strong> before you count
-        turnover.
+      <div class="cost-head">What that quietly costs &mdash; per 1,000 employees</div>
+      <div class="cost-bullets">
+        <div class="cost-cell">
+          <div class="cost-num">$1M+</div>
+          <div class="cost-desc">estimated lost each year to reduced productivity, absence, and turnover.</div>
+        </div>
+        <div class="cost-cell">
+          <div class="cost-num">~1,500</div>
+          <div class="cost-desc">workdays missed a year as employees step away to manage care.</div>
+        </div>
+        <div class="cost-cell">
+          <div class="cost-num">~2,000</div>
+          <div class="cost-desc">hours a week lost to phone calls, scheduling, and coordinating care.</div>
+        </div>
       </div>
-
-      <p class="sources">
-        Figures drawn from research by Pew Research Center, AARP, and Harvard
-        Business School&rsquo;s <em>The Caring Company</em>.
-      </p>
     </section>
 
     <section class="block">
@@ -776,17 +817,17 @@
 
       <div class="steps-row">
         <div class="step-item">
-          <div class="step-num">1</div>
+          <div class="step-photo"><img src="/step-request.jpg" alt="An employee setting up care from her desk at work" /><span class="step-badge">1</span></div>
           <h3>Request</h3>
           <p>Employees log in and describe what their loved one needs — often in minutes. No phone tag, no hunting for an agency.</p>
         </div>
         <div class="step-item">
-          <div class="step-num">2</div>
+          <div class="step-photo"><img src="/step-match.jpg" alt="A caregiver arriving at an older man's home" /><span class="step-badge">2</span></div>
           <h3>Match</h3>
           <p>Aponot matches them with a vetted local agency and arranges a credentialed, background-checked caregiver.</p>
         </div>
         <div class="step-item">
-          <div class="step-num">3</div>
+          <div class="step-photo"><img src="/step-care.jpg" alt="A caregiver helping an older man with mobility exercises" /><span class="step-badge">3</span></div>
           <h3>Care</h3>
           <p>Care is delivered in the home. Aponot handles scheduling, payment, and follow-up from there.</p>
         </div>
@@ -806,11 +847,6 @@
         network to it.
       </p>
 
-      <div class="trust-layout">
-      <div class="cred-seals">
-        <img src="/logos/ahca.png" alt="Licensed by the Florida Agency for Health Care Administration" style="width:104px;" />
-        <img src="/logos/hipaa.png" alt="HIPAA compliant" style="width:150px;" />
-      </div>
       <div class="trust-cards">
         <div class="trust-card">
           <div class="trust-watermark">
@@ -841,7 +877,6 @@
           <p>General, professional (E&amp;O), and cyber liability coverage; certificates available on request.</p>
         </div>
       </div>
-      </div>
     </section>
 
     <section class="block band band-grey">
@@ -866,7 +901,7 @@
         <div class="logo-strip-label">Healthcare &amp; senior-care companies our founders have worked closely with</div>
         <div class="logo-carousel">
           <button class="lc-arrow" type="button" aria-label="Scroll logos left" onclick="scrollLogos(-1)">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 4 L6 12 L16 20 Z"></path></svg>
           </button>
           <div class="lc-track" id="logoTrack">
             <img src="/logos/advent.png" alt="AdventHealth" style="height:30px;" />
@@ -878,7 +913,7 @@
             <img src="/logos/enhabit.png" alt="Enhabit Home Health &amp; Hospice" style="height:40px;" />
           </div>
           <button class="lc-arrow" type="button" aria-label="Scroll logos right" onclick="scrollLogos(1)">
-            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 4 L18 12 L8 20 Z"></path></svg>
           </button>
         </div>
       </div>

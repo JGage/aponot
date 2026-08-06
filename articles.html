@@ -26,19 +26,26 @@
     header nav a.login:hover{background:var(--terra-soft);border-color:var(--terra);color:var(--terra);}
     main{flex:1;max-width:880px;margin:0 auto;width:100%;padding:72px 0 40px;}
     .kicker{font-size:11px;font-weight:500;color:var(--terra);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:22px;}
-    h1{font-family:'Fraunces',Georgia,serif;font-size:46px;font-weight:500;letter-spacing:-0.02em;line-height:1.08;margin-bottom:20px;max-width:720px;}
-    .lede{font-size:18px;color:var(--muted);max-width:600px;margin-bottom:64px;}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
-    .card{background:var(--bg);padding:32px 30px;display:flex;flex-direction:column;gap:12px;transition:background .15s;}
-    .card:hover{background:#faf9f8;}
-    .tag{font-size:11px;font-weight:500;color:var(--terra);text-transform:uppercase;letter-spacing:0.12em;}
-    .card h2{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:500;line-height:1.2;letter-spacing:-0.01em;}
-    .card p{font-size:15px;color:var(--muted);line-height:1.5;}
-    .meta{font-size:13px;color:var(--muted);margin-top:auto;padding-top:6px;}
+    h1{font-family:'Fraunces',Georgia,serif;font-size:52px;font-weight:500;letter-spacing:-0.02em;line-height:1.06;margin-bottom:22px;max-width:740px;}
+    .lede{font-size:20px;color:var(--muted);max-width:640px;margin-bottom:34px;}
+    .res-hero{border-radius:14px;overflow:hidden;margin-bottom:56px;box-shadow:0 1px 3px rgba(28,26,23,0.06),0 12px 34px rgba(28,26,23,0.08);}
+    .res-hero img{width:100%;height:340px;object-fit:cover;object-position:center 32%;display:block;}
+    @media(max-width:640px){.res-hero img{height:220px;}}
+    .article-list{border-bottom:1px solid var(--line);}
+    .article-row{display:block;padding:40px 0;border-top:1px solid var(--line);}
+    .art-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;}
+    .art-tag{font-size:12px;font-weight:500;color:var(--terra);text-transform:uppercase;letter-spacing:0.12em;}
+    .art-meta{font-size:13px;color:var(--muted);white-space:nowrap;}
+    .art-title{font-family:'Fraunces',Georgia,serif;font-size:31px;font-weight:500;line-height:1.14;letter-spacing:-0.015em;transition:color .15s;}
+    .article-row:hover .art-title{color:var(--terra);}
+    .art-desc{font-size:18px;color:var(--muted);line-height:1.55;margin-top:13px;max-width:760px;}
+    .more-row{margin-top:48px;text-align:center;}
+    .more-link{display:inline-block;font-size:15px;font-weight:500;color:var(--crimson);padding:13px 28px;border:1px solid var(--line-strong);border-radius:999px;transition:background .15s,border-color .15s,color .15s;}
+    .more-link:hover{background:var(--terra-soft);border-color:var(--terra);color:var(--terra);}
     footer{padding:60px 40px 32px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;max-width:880px;margin:0 auto;width:100%;}
     footer a{text-decoration:underline;text-decoration-color:var(--line-strong);}
     footer .footer-nav{display:flex;gap:20px;flex-wrap:wrap;}
-    @media (max-width:640px){.page{padding:24px;}h1{font-size:32px;}.grid{grid-template-columns:1fr;}header nav{gap:14px;}footer{flex-direction:column;align-items:flex-start;}}
+    @media (max-width:640px){.page{padding:24px;}h1{font-size:34px;}.lede{font-size:17px;}.art-title{font-size:24px;}.art-desc{font-size:16px;}.art-head{flex-direction:column;align-items:flex-start;gap:5px;}header nav{gap:14px;}footer{flex-direction:column;align-items:flex-start;}}
   
     /* unified-header */
     header { display:flex; align-items:center; justify-content:space-between; gap:16px; }
@@ -68,43 +75,43 @@
     <h1>Home care, the workforce, and what actually helps.</h1>
     <p class="lede">Perspectives from the Aponot team on the sandwich generation, the real cost of caregiving, and what separates genuine care from a phone number.</p>
 
-    <div class="grid">
-      <a class="card" href="/sandwich-generation-workforce">
-        <span class="tag">Workforce</span>
-        <h2>The Sandwich Generation Is Quietly Reshaping Your Workforce</h2>
-        <p>Nearly half of employees in their 40s and 50s are caring for an aging parent while holding down a career. Here's what that means for the businesses that employ them.</p>
-        <div class="meta">July 2026 · 5 min read</div>
+    <div class="res-hero"><img src="/resources-hero.jpg" alt="An older man and his adult daughter smiling together at home" /></div>
+
+    <div class="article-list">
+      <a class="article-row" href="/sandwich-generation-workforce">
+        <div class="art-head"><span class="art-tag">Workforce</span><span class="art-meta">July 2026 · 5 min read</span></div>
+        <h2 class="art-title">The Sandwich Generation Is Quietly Reshaping Your Workforce</h2>
+        <p class="art-desc">Nearly half of employees in their 40s and 50s are caring for an aging parent while holding down a career. Here's what that means for the businesses that employ them.</p>
       </a>
-      <a class="card" href="/eldercare-next-benefit">
-        <span class="tag">Benefits</span>
-        <h2>Why Eldercare Is Becoming the Next Must-Have Employee Benefit</h2>
-        <p>Childcare support went from perk to expectation in a decade. Eldercare is on the same trajectory — and moving faster.</p>
-        <div class="meta">June 2026 · 4 min read</div>
+      <a class="article-row" href="/eldercare-next-benefit">
+        <div class="art-head"><span class="art-tag">Benefits</span><span class="art-meta">June 2026 · 4 min read</span></div>
+        <h2 class="art-title">Why Eldercare Is Becoming the Next Must-Have Employee Benefit</h2>
+        <p class="art-desc">Childcare support went from perk to expectation in a decade. Eldercare is on the same trajectory — and moving faster.</p>
       </a>
-      <a class="card" href="/navigation-isnt-care">
-        <span class="tag">Industry</span>
-        <h2>Care Navigation Isn't Care: The Gap in Today's Eldercare Benefits</h2>
-        <p>Most eldercare benefits help employees think about care. Very few actually deliver it — and that difference is everything in a crisis.</p>
-        <div class="meta">June 2026 · 5 min read</div>
+      <a class="article-row" href="/navigation-isnt-care">
+        <div class="art-head"><span class="art-tag">Industry</span><span class="art-meta">June 2026 · 5 min read</span></div>
+        <h2 class="art-title">Care Navigation Isn't Care: The Gap in Today's Eldercare Benefits</h2>
+        <p class="art-desc">Most eldercare benefits help employees think about care. Very few actually deliver it — and that difference is everything in a crisis.</p>
       </a>
-      <a class="card" href="/hidden-cost-of-caregiving">
-        <span class="tag">Employers</span>
-        <h2>The Hidden Cost of Caregiving on Your Bottom Line</h2>
-        <p>Absenteeism, presenteeism, and turnover from employee caregiving rarely show up as a line item — but they add up to real money.</p>
-        <div class="meta">May 2026 · 6 min read</div>
+      <a class="article-row" href="/hidden-cost-of-caregiving">
+        <div class="art-head"><span class="art-tag">Employers</span><span class="art-meta">May 2026 · 6 min read</span></div>
+        <h2 class="art-title">The Hidden Cost of Caregiving on Your Bottom Line</h2>
+        <p class="art-desc">Absenteeism, presenteeism, and turnover from employee caregiving rarely show up as a line item — but they add up to real money.</p>
       </a>
-      <a class="card" href="/home-care-101">
-        <span class="tag">Care Guide</span>
-        <h2>Home Care 101: What Families Actually Need When a Parent Declines</h2>
-        <p>Bathing, mobility, medication, meals — a plain-language guide to what non-medical home care covers, and when to bring it in.</p>
-        <div class="meta">May 2026 · 5 min read</div>
+      <a class="article-row" href="/home-care-101">
+        <div class="art-head"><span class="art-tag">Care Guide</span><span class="art-meta">May 2026 · 5 min read</span></div>
+        <h2 class="art-title">Home Care 101: What Families Actually Need When a Parent Declines</h2>
+        <p class="art-desc">Bathing, mobility, medication, meals — a plain-language guide to what non-medical home care covers, and when to bring it in.</p>
       </a>
-      <a class="card" href="/what-quality-means">
-        <span class="tag">Quality</span>
-        <h2>Licensed, Certified, Vetted: What "Quality" Really Means in Home Care</h2>
-        <p>Not everyone who calls themselves a "caregiver" is the same. Here's how licensing, certification, and vetting actually protect the person receiving care.</p>
-        <div class="meta">April 2026 · 4 min read</div>
+      <a class="article-row" href="/what-quality-means">
+        <div class="art-head"><span class="art-tag">Quality</span><span class="art-meta">April 2026 · 4 min read</span></div>
+        <h2 class="art-title">Licensed, Certified, Vetted: What "Quality" Really Means in Home Care</h2>
+        <p class="art-desc">Not everyone who calls themselves a "caregiver" is the same. Here's how licensing, certification, and vetting actually protect the person receiving care.</p>
       </a>
+    </div>
+
+    <div class="more-row">
+      <a class="more-link" href="#">Read more articles →</a>
     </div>
   </main>
 
