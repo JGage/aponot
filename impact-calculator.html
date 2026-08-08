@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impact Calculator — What caregiving costs your workforce — Aponot</title>
+  <meta name="description" content="Estimate the hidden cost of employee caregiving on your business — lost productivity, missed days, and turnover — in two numbers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg:#ffffff; --text:#1c1a17; --muted:#8a857e;
+      --line:rgba(28,26,23,0.12); --line-strong:rgba(28,26,23,0.22);
+      --terra:#c66540; --terra-soft:rgba(198,101,64,0.12); --crimson:#a31f34; --crimson-hover:#b32540;
+    }
+    html,body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    .page{min-height:100vh;display:flex;flex-direction:column;padding:0 40px 40px;}
+    main{flex:1;max-width:880px;margin:0 auto;width:100%;padding:52px 0 40px;}
+
+    /* unified header */
+    header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:30px 0 0; }
+    header .brand img { height:28px; width:auto; display:block; }
+    header .topnav { display:flex; align-items:center; gap:22px; font-size:14px; color:var(--muted); flex-wrap:wrap; }
+    header .topnav a { text-decoration:none; color:inherit; transition:color .15s; }
+    header .topnav a:not(.login-link):hover { color:var(--text); }
+    header .login-link { color:var(--text); padding:8px 18px; border:1px solid var(--line-strong); border-radius:999px; transition:background .15s,border-color .15s,color .15s; }
+    header .login-link:hover { background:var(--terra-soft); border-color:var(--terra); color:var(--terra); }
+    @media (max-width:640px){ header .topnav a:not(.login-link){ display:none; } }
+
+    .kicker{font-size:11px;font-weight:500;color:var(--terra);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:20px;}
+    h1{font-family:'Fraunces',Georgia,serif;font-size:44px;font-weight:500;letter-spacing:-0.02em;line-height:1.06;margin-bottom:18px;max-width:720px;}
+    .lede{font-size:18px;color:var(--muted);max-width:600px;margin-bottom:44px;}
+
+    .calc{display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:start;}
+    .inputs{background:#faf9f7;border:1px solid var(--line);border-radius:16px;padding:28px 26px;}
+    .field{margin-bottom:22px;}
+    .field:last-child{margin-bottom:0;}
+    .field label{display:block;font-size:13px;font-weight:500;color:var(--text);margin-bottom:8px;}
+    .field .hint{font-size:12px;color:var(--muted);margin-top:6px;}
+    .input-wrap{position:relative;}
+    .input-wrap .pre{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:16px;pointer-events:none;}
+    .field input{width:100%;font-size:18px;font-family:'Inter',sans-serif;color:var(--text);background:#fff;border:1px solid var(--line-strong);border-radius:10px;padding:12px 14px;transition:border-color .15s;}
+    .field input.haspre{padding-left:26px;}
+    .field input:focus{outline:none;border-color:var(--terra);}
+
+    .results{display:flex;flex-direction:column;gap:14px;}
+    .rgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .rcard{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:20px 22px;}
+    .rcard .rlabel{font-size:12.5px;color:var(--muted);line-height:1.4;}
+    .rcard .rval{font-family:'Fraunces',Georgia,serif;font-size:30px;font-weight:500;letter-spacing:-0.02em;line-height:1;margin-top:8px;color:var(--text);}
+    .rcard.total{background:#fbf3f2;border-color:rgba(163,31,52,0.3);}
+    .rcard.total .rval{color:var(--crimson);font-size:40px;}
+    .rcard.total .rlabel{color:var(--crimson);font-weight:500;text-transform:uppercase;letter-spacing:0.08em;font-size:11.5px;}
+    .compare{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;padding:18px 22px;border:1px dashed var(--line-strong);border-radius:12px;font-size:15px;color:var(--text);line-height:1.5;}
+    .compare strong{color:var(--terra);font-weight:500;}
+    .compare .big{font-family:'Fraunces',Georgia,serif;font-size:22px;color:var(--crimson);letter-spacing:-0.01em;}
+
+    .cta-row{margin-top:36px;}
+    .cta-button{display:inline-block;background:var(--crimson);color:#fff;padding:14px 28px;border-radius:999px;font-size:14px;font-weight:500;transition:background-color 120ms;}
+    .cta-button:hover{background:var(--crimson-hover);}
+
+    .assump{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.6;max-width:760px;}
+    .assump strong{color:var(--text);font-weight:500;}
+
+    footer{padding:56px 0 8px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;max-width:880px;margin:0 auto;width:100%;}
+    footer a{text-decoration:underline;text-decoration-color:var(--line-strong);}
+    footer .footer-nav{display:flex;gap:20px;flex-wrap:wrap;}
+
+    @media (max-width:760px){
+      .calc{grid-template-columns:1fr;gap:24px;}
+      .inputs{position:relative;}
+    }
+    @media (max-width:640px){
+      .page{padding:0 24px 24px;}
+      h1{font-size:32px;}
+      main{padding:36px 0 20px;}
+      .rgrid{grid-template-columns:1fr;}
+      footer{flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <a href="/" class="brand"><img src="/logo-red.png" alt="Aponot" /></a>
+    <nav class="topnav">
+      <a href="/agencies">For agencies</a>
+      <a href="/articles">Resources</a>
+      <a href="/how-it-works">How it works</a>
+      <a href="/impact-calculator">Impact calculator</a>
+      <a class="login-link" href="https://app.aponot.com/sign-in">Log in</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="kicker">Impact calculator</div>
+    <h1>What is caregiving quietly costing your business?</h1>
+    <p class="lede">Employee caregiving rarely shows up as a line item — but it's there, in missed days, lost focus, and turnover. Enter two numbers to see your estimated annual exposure.</p>
+
+    <div class="calc">
+      <div class="inputs">
+        <div class="field">
+          <label for="emp">Workforce size</label>
+          <div class="input-wrap">
+            <input id="emp" type="text" inputmode="numeric" value="500" autocomplete="off" />
+          </div>
+          <div class="hint">Total employees</div>
+        </div>
+        <div class="field">
+          <label for="rev">Annual revenue</label>
+          <div class="input-wrap">
+            <span class="pre">$</span>
+            <input id="rev" class="haspre" type="text" inputmode="numeric" value="50,000,000" autocomplete="off" />
+          </div>
+          <div class="hint">Used to value lost productive time</div>
+        </div>
+      </div>
+
+      <div class="results">
+        <div class="rgrid">
+          <div class="rcard">
+            <div class="rlabel">Employees quietly caregiving</div>
+            <div class="rval" id="outCare">—</div>
+          </div>
+          <div class="rcard">
+            <div class="rlabel">Workdays lost to caregiving / year</div>
+            <div class="rval" id="outDays">—</div>
+          </div>
+          <div class="rcard">
+            <div class="rlabel">Lost productivity &amp; output / year</div>
+            <div class="rval" id="outProd">—</div>
+          </div>
+          <div class="rcard">
+            <div class="rlabel">Turnover &amp; recruiting exposure / year</div>
+            <div class="rval" id="outTurn">—</div>
+          </div>
+        </div>
+        <div class="rcard total">
+          <div class="rlabel">Estimated total annual exposure</div>
+          <div class="rval" id="outTotal">—</div>
+        </div>
+        <div class="compare">
+          <span>Aponot addresses it for about <span class="big" id="outAponot">—</span></span>
+          <span>— roughly <strong id="outRatio">—</strong> less than the exposure above.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a class="cta-button" href="/#contact">See what Aponot would look like for your team →</a>
+    </div>
+
+    <div class="assump">
+      <strong>How this is estimated.</strong> Figures are directional and vary by industry and workforce.
+      We assume roughly <strong>1 in 4</strong> employees is an active family caregiver, each missing about
+      <strong>6.6 workdays a year</strong> to caregiving (Gallup), with on-the-job lost focus (presenteeism)
+      valued at ~1.5&times; that. Lost time is valued from your revenue per employee. Turnover exposure assumes a
+      small share of caregivers leave each year for caregiving reasons, at a replacement cost of roughly a
+      quarter of a year's per-employee value. Aponot's cost assumes ~$5 per employee per month. Sources:
+      Gallup, AARP, SHRM, and Harvard Business School's <em>The Caring Company</em>.
+    </div>
+  </main>
+
+  <footer>
+    <div>&copy; 2026 Aponot</div>
+    <nav class="footer-nav">
+      <a href="/agencies">For agencies</a>
+      <a href="/articles">Resources</a>
+      <a href="/how-it-works">How it works</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/hipaa">HIPAA</a>
+      <a href="mailto:hello@aponot.com">Contact</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+  var CFG = { share:0.25, absDays:6.6, workdays:260, presentMult:1.5, turnover:0.04, replYears:0.25, pepm:5 };
+  function num(id){ return parseFloat((document.getElementById(id).value||'').replace(/[^0-9.]/g,'')) || 0; }
+  function fmtMoney(x){
+    if(!isFinite(x) || x<=0) return '$0';
+    if(x>=1e6) return '$'+(x/1e6).toFixed(x/1e6>=10?1:2)+'M';
+    if(x>=1e3) return '$'+Math.round(x/1e3).toLocaleString()+'K';
+    return '$'+Math.round(x).toLocaleString();
+  }
+  function fmtInt(x){ return Math.round(x).toLocaleString(); }
+  function set(id,v){ document.getElementById(id).textContent = v; }
+  function calc(){
+    var N = num('emp'), R = num('rev');
+    var caregivers = N*CFG.share;
+    var days = caregivers*CFG.absDays;
+    var valEmp = N>0 ? R/N : 0;
+    var valDay = valEmp/CFG.workdays;
+    var absLoss = days*valDay;
+    var prodLoss = absLoss*(1+CFG.presentMult);
+    var departures = caregivers*CFG.turnover;
+    var turnLoss = departures*(valEmp*CFG.replYears);
+    var total = prodLoss+turnLoss;
+    var aponot = N*CFG.pepm*12;
+    set('outCare', N>0 ? fmtInt(caregivers) : '—');
+    set('outDays', N>0 ? fmtInt(days)+' days' : '—');
+    set('outProd', fmtMoney(prodLoss));
+    set('outTurn', fmtMoney(turnLoss));
+    set('outTotal', fmtMoney(total));
+    set('outAponot', fmtMoney(aponot)+'/yr');
+    var ratio = aponot>0 ? total/aponot : 0;
+    set('outRatio', ratio>=2 ? Math.round(ratio)+'×' : '—');
+  }
+  function group(e){
+    var v = e.target.value.replace(/[^0-9]/g,'');
+    e.target.value = v ? Number(v).toLocaleString() : '';
+    calc();
+  }
+  document.getElementById('emp').addEventListener('input', group);
+  document.getElementById('rev').addEventListener('input', group);
+  calc();
+</script>
+</body>
+</html>
