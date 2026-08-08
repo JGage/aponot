@@ -54,6 +54,7 @@
     .rcard.total{background:#fbf3f2;border-color:rgba(163,31,52,0.3);}
     .rcard.total .rval{color:var(--crimson);font-size:40px;}
     .rcard.total .rlabel{color:var(--crimson);font-weight:500;text-transform:uppercase;letter-spacing:0.08em;font-size:11.5px;}
+    .rcard.total .tbreak{font-size:13.5px;color:var(--muted);margin-top:14px;line-height:1.5;}
     .compare{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;padding:18px 22px;border:1px dashed var(--line-strong);border-radius:12px;font-size:15px;color:var(--text);line-height:1.5;}
     .compare strong{color:var(--terra);font-weight:500;}
     .compare .big{font-family:'Fraunces',Georgia,serif;font-size:22px;color:var(--crimson);letter-spacing:-0.01em;}
@@ -129,22 +130,15 @@
             <div class="rlabel">Workdays lost to caregiving / year</div>
             <div class="rval" id="outDays">—</div>
           </div>
-          <div class="rcard">
-            <div class="rlabel">Lost productivity &amp; output / year</div>
-            <div class="rval" id="outProd">—</div>
-          </div>
-          <div class="rcard">
-            <div class="rlabel">Turnover &amp; recruiting exposure / year</div>
-            <div class="rval" id="outTurn">—</div>
-          </div>
         </div>
         <div class="rcard total">
-          <div class="rlabel">Estimated total annual exposure</div>
+          <div class="rlabel">Estimated annual cost</div>
           <div class="rval" id="outTotal">—</div>
+          <div class="tbreak" id="outBreak">—</div>
         </div>
         <div class="compare">
           <span>Aponot addresses it for about <span class="big" id="outAponot">—</span></span>
-          <span>— roughly <strong id="outRatio">—</strong> less than the exposure above.</span>
+          <span>— roughly <strong id="outRatio">—</strong> less than the cost above.</span>
         </div>
       </div>
     </div>
@@ -154,13 +148,14 @@
     </div>
 
     <div class="assump">
-      <strong>How this is estimated.</strong> Figures are directional and vary by industry and workforce.
-      We assume roughly <strong>1 in 4</strong> employees is an active family caregiver, each missing about
-      <strong>6.6 workdays a year</strong> to caregiving (Gallup), with on-the-job lost focus (presenteeism)
-      valued at ~1.5&times; that. Lost time is valued from your revenue per employee. Turnover exposure assumes a
-      small share of caregivers leave each year for caregiving reasons, at a replacement cost of roughly a
-      quarter of a year's per-employee value. Aponot's cost assumes ~$5 per employee per month. Sources:
-      Gallup, AARP, SHRM, and Harvard Business School's <em>The Caring Company</em>.
+      <strong>These are deliberately conservative, directional estimates</strong> and vary by industry and workforce.
+      We assume roughly <strong>1 in 4</strong> employees is an active family caregiver, and that each loses on the
+      order of <strong>10 productive workdays a year</strong> to caregiving &mdash; missed days and lost focus
+      combined (Gallup puts documented absence alone near 7). That lost time is valued at roughly
+      <strong>40% of revenue per employee</strong> &mdash; not the full figure &mdash; to reflect the margin labor
+      actually drives, not top-line revenue. Turnover exposure assumes only a small share of caregivers leave each
+      year for caregiving reasons. Aponot's cost assumes ~$5 per employee per month.
+      Sources: Gallup, AARP, SHRM, and Harvard Business School's <em>The Caring Company</em>.
     </div>
   </main>
 
@@ -179,7 +174,7 @@
 </div>
 
 <script>
-  var CFG = { share:0.25, absDays:6.6, workdays:260, presentMult:1.5, turnover:0.04, replYears:0.25, pepm:5 };
+  var CFG = { share:0.25, lostDays:10, workdays:260, turnover:0.04, replYears:0.25, pepm:5, marginFactor:0.40 };
   function num(id){ return parseFloat((document.getElementById(id).value||'').replace(/[^0-9.]/g,'')) || 0; }
   function fmtMoney(x){
     if(!isFinite(x) || x<=0) return '$0';
@@ -192,20 +187,18 @@
   function calc(){
     var N = num('emp'), R = num('rev');
     var caregivers = N*CFG.share;
-    var days = caregivers*CFG.absDays;
-    var valEmp = N>0 ? R/N : 0;
+    var days = caregivers*CFG.lostDays;
+    var valEmp = N>0 ? (R/N)*CFG.marginFactor : 0;
     var valDay = valEmp/CFG.workdays;
-    var absLoss = days*valDay;
-    var prodLoss = absLoss*(1+CFG.presentMult);
+    var timeLoss = days*valDay;
     var departures = caregivers*CFG.turnover;
     var turnLoss = departures*(valEmp*CFG.replYears);
-    var total = prodLoss+turnLoss;
+    var total = timeLoss+turnLoss;
     var aponot = N*CFG.pepm*12;
     set('outCare', N>0 ? fmtInt(caregivers) : '—');
     set('outDays', N>0 ? fmtInt(days)+' days' : '—');
-    set('outProd', fmtMoney(prodLoss));
-    set('outTurn', fmtMoney(turnLoss));
     set('outTotal', fmtMoney(total));
+    set('outBreak', (N>0 && R>0) ? ('≈ '+fmtMoney(timeLoss)+' in lost productive time + '+fmtMoney(turnLoss)+' in turnover & recruiting') : '');
     set('outAponot', fmtMoney(aponot)+'/yr');
     var ratio = aponot>0 ? total/aponot : 0;
     set('outRatio', ratio>=2 ? Math.round(ratio)+'×' : '—');
