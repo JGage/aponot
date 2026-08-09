@@ -442,6 +442,33 @@
     .calc-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 34px; font-size: 15px; font-weight: 500; color: var(--crimson); padding: 13px 26px; border: 1px solid var(--line-strong); border-radius: 999px; transition: background .15s, border-color .15s, color .15s; }
     .calc-cta:hover { background: var(--terra-soft); border-color: var(--terra); color: var(--terra); }
 
+    /* Agency partners comparison */
+    .cmp-list { margin-top: 20px; }
+    .cmp-row { display: grid; grid-template-columns: 230px 1fr; gap: 40px; align-items: center; padding: 30px 0; border-top: 1px solid var(--line); }
+    .cmp-hero .big { font-family: 'Fraunces', Georgia, serif; font-size: 50px; font-weight: 500; color: var(--crimson); line-height: 0.95; letter-spacing: -0.025em; }
+    .cmp-hero .lab { font-size: 16px; font-weight: 500; color: var(--text); margin-top: 10px; line-height: 1.35; }
+    .cmp-hero .dir { font-size: 12px; color: var(--muted); margin-top: 8px; }
+    .cmp-metric { font-size: 11.5px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .cmp-bars { display: flex; flex-direction: column; gap: 12px; }
+    .cmp-bar { display: grid; grid-template-columns: 120px 1fr auto; gap: 14px; align-items: center; }
+    .cmp-bname { font-size: 13px; color: var(--muted); text-align: right; white-space: nowrap; }
+    .cmp-bname.ours { color: var(--text); font-weight: 500; }
+    .cmp-track { background: rgba(28,26,23,0.05); border-radius: 999px; height: 24px; overflow: hidden; }
+    .cmp-fill { height: 24px; border-radius: 999px; min-width: 8px; }
+    .cmp-fill.ours { background: var(--crimson); }
+    .cmp-fill.them { background: #c9c3bb; }
+    .cmp-val { font-size: 14px; font-weight: 500; color: var(--text); white-space: nowrap; min-width: 62px; text-align: right; }
+    .cmp-src { margin-top: 30px; font-size: 11.5px; color: var(--muted); line-height: 1.6; max-width: 760px; }
+    @media (max-width: 760px) {
+      .cmp-row { grid-template-columns: 1fr; gap: 18px; padding: 26px 0; }
+      .cmp-hero .big { font-size: 44px; }
+    }
+    @media (max-width: 640px) {
+      .cmp-bar { grid-template-columns: 84px 1fr auto; gap: 10px; }
+      .cmp-bname { font-size: 12px; }
+      .cmp-val { min-width: 54px; font-size: 13px; }
+    }
+
     /* Credential seals + cards layout */
     .trust-layout {
       display: grid; grid-template-columns: 172px 1fr; gap: 44px;
@@ -924,6 +951,84 @@
       </div>
 
       </div>
+    </section>
+
+    <section class="block">
+      <div class="kicker">Our agency partners</div>
+      <p class="muted">
+        Our agency partners don&rsquo;t just meet the standard &mdash; they lead the industry on the
+        measures that actually shape care: keeping their best caregivers, retaining clients, and earning
+        top marks from the families they serve. We vet to that bar, then hold the network to it.
+      </p>
+
+      <div class="cmp-list">
+        <div class="cmp-row">
+          <div class="cmp-hero">
+            <div class="big">40%</div>
+            <div class="lab">lower caregiver turnover</div>
+            <div class="dir">&darr; lower is better</div>
+          </div>
+          <div>
+            <div class="cmp-metric">Caregiver turnover / year</div>
+            <div class="cmp-bars">
+              <div class="cmp-bar"><div class="cmp-bname ours">Aponot network</div><div class="cmp-track"><div class="cmp-fill ours" style="width:47.6%"></div></div><div class="cmp-val">47.6%</div></div>
+              <div class="cmp-bar"><div class="cmp-bname">Industry avg</div><div class="cmp-track"><div class="cmp-fill them" style="width:79.2%"></div></div><div class="cmp-val">~79%</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="cmp-hero">
+            <div class="big">5&times;</div>
+            <div class="lab">more CNAs than the industry norm</div>
+            <div class="dir">&uarr; higher is better</div>
+          </div>
+          <div>
+            <div class="cmp-metric">Caregivers who are CNAs &middot; the more clinically-trained credential</div>
+            <div class="cmp-bars">
+              <div class="cmp-bar"><div class="cmp-bname ours">Aponot network</div><div class="cmp-track"><div class="cmp-fill ours" style="width:67%"></div></div><div class="cmp-val">~67%</div></div>
+              <div class="cmp-bar"><div class="cmp-bname">Industry avg</div><div class="cmp-track"><div class="cmp-fill them" style="width:13%"></div></div><div class="cmp-val">~13%</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="cmp-hero">
+            <div class="big">83%</div>
+            <div class="lab">longer client relationships</div>
+            <div class="dir">&uarr; higher is better</div>
+          </div>
+          <div>
+            <div class="cmp-metric">Client length of service &middot; private pay</div>
+            <div class="cmp-bars">
+              <div class="cmp-bar"><div class="cmp-bname ours">Aponot network</div><div class="cmp-track"><div class="cmp-fill ours" style="width:91.7%"></div></div><div class="cmp-val">11 mo</div></div>
+              <div class="cmp-bar"><div class="cmp-bname">Industry avg</div><div class="cmp-track"><div class="cmp-fill them" style="width:50%"></div></div><div class="cmp-val">~6 mo</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="cmp-hero">
+            <div class="big">40%</div>
+            <div class="lab">higher client satisfaction</div>
+            <div class="dir">&uarr; higher is better</div>
+          </div>
+          <div>
+            <div class="cmp-metric">Average client rating</div>
+            <div class="cmp-bars">
+              <div class="cmp-bar"><div class="cmp-bname ours">Aponot network</div><div class="cmp-track"><div class="cmp-fill ours" style="width:94%"></div></div><div class="cmp-val">9.4 / 10</div></div>
+              <div class="cmp-bar"><div class="cmp-bname">Industry avg</div><div class="cmp-track"><div class="cmp-fill them" style="width:67%"></div></div><div class="cmp-val">~6.7 / 10</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="cmp-src">
+        Industry caregiver turnover ~79% (Activated Insights / Home Care Pulse 2024 benchmark). CNA share
+        reflects an estimated industry HHA:CNA mix of ~6.5:1 (ranges ~4:1&ndash;9:1 by state) vs ~1:2 across the
+        Aponot network; private-pay tenure and client rating reflect industry norms. Aponot figures reflect the
+        current network of partner agencies.
+      </p>
     </section>
 
     <section class="form-block" id="contact">
