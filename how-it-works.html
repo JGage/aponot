@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How It Works — Aponot</title>
-  <meta name="description" content="How Aponot delivers real home care as an employee benefit." />
+  <meta name="description" content="How Aponot works: concierge care navigation for every employee, plus real, licensed home care when it's needed." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@
       --line: rgba(28, 26, 23, 0.12);
       --line-strong: rgba(28, 26, 23, 0.22);
       --terra: #c66540;
+      --terra-soft: rgba(198, 101, 64, 0.09);
       --crimson: #a31f34;
       --crimson-hover: #b32540;
     }
@@ -142,6 +143,28 @@
       border: 1px solid var(--line-strong);
     }
 
+    .tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-bottom: 30px; }
+    .track { border: 1px solid var(--line); border-radius: 16px; padding: 30px 30px 26px; }
+    .track .tnum { font-size: 11px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+    .track h2 { font-family: 'Fraunces', Georgia, serif; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 12px; line-height: 1.1; }
+    .track .tsub { font-size: 15px; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
+    .track ul { list-style: none; }
+    .track li { font-size: 15px; color: var(--text); line-height: 1.5; padding: 9px 0 9px 22px; border-top: 1px solid var(--line); position: relative; }
+    .track li:first-child { border-top: none; }
+    .track li::before { content: ''; position: absolute; left: 2px; top: 15px; width: 6px; height: 6px; border-radius: 50%; background: var(--terra); }
+    .track li strong { font-weight: 500; }
+    .track-note { font-size: 15px; color: var(--muted); max-width: 700px; margin-bottom: 4px; }
+    @media (max-width: 720px){ .tracks { grid-template-columns: 1fr; } }
+
+    .flow { margin-bottom: 44px; }
+    .fstep { display: grid; grid-template-columns: 56px 1fr; gap: 26px; padding: 28px 0; border-top: 1px solid var(--line); }
+    .fstep:last-child { border-bottom: 1px solid var(--line); }
+    .fnum { font-family: 'Fraunces', Georgia, serif; font-size: 34px; font-weight: 500; color: var(--terra); line-height: 1; }
+    .fbody h2 { font-family: 'Fraunces', Georgia, serif; font-size: 23px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 9px; color: var(--text); }
+    .fbody p { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 640px; }
+    .flow-note { font-size: 16px; color: var(--muted); max-width: 660px; margin-bottom: 40px; }
+    @media (max-width: 640px){ .fstep { grid-template-columns: 40px 1fr; gap: 16px; padding: 22px 0; } .fnum { font-size: 26px; } .fbody h2 { font-size: 19px; } .fbody p, .flow-note { font-size: 15px; } }
+
     footer {
       padding: 60px 40px 32px;
       font-size: 13px;
@@ -204,26 +227,49 @@
   <main>
 
     <h1>How Aponot works.</h1>
-    <p class="lede">
-      A real home care benefit that fits into your existing benefits stack —
-      without the complexity or cost of building it yourself.
+    <p class="lede" style="margin-bottom:40px;">
+      Aponot adds an eldercare benefit to an organization's existing offering with
+      minimal setup — giving employees access to care navigation and, when it's
+      needed, licensed home care arranged on their behalf.
     </p>
 
-    <section class="placeholder-block">
-      <div class="placeholder-kicker">Coming soon</div>
-      <p>
-        We&rsquo;re still writing the detailed version of this page.
-      </p>
-      <p class="muted">
-        In the meantime, we&rsquo;d rather show you than tell you. Reach out
-        for a walkthrough tailored to your team.
-      </p>
-
-      <div class="cta-row">
-        <a href="/#signup-form" class="cta-button">Get in touch</a>
-        <a href="/" class="cta-button secondary">Back to home</a>
+    <div class="flow">
+      <div class="fstep">
+        <div class="fnum">1</div>
+        <div class="fbody">
+          <h2>The employer enrolls</h2>
+          <p>Aponot is added alongside an organization's existing benefits. There is no new system to run and no hourly cost to the employer.</p>
+        </div>
       </div>
-    </section>
+      <div class="fstep">
+        <div class="fnum">2</div>
+        <div class="fbody">
+          <h2>The benefit is made available to employees</h2>
+          <p>Eligible employees gain access to the Aponot platform and a dedicated care advisor. We handle the enrollment communications.</p>
+        </div>
+      </div>
+      <div class="fstep">
+        <div class="fnum">3</div>
+        <div class="fbody">
+          <h2>Employees engage care navigation</h2>
+          <p>Employees can work with an advisor to understand and plan for a parent's care — from early questions to home care, assisted living, and benefits — well before any crisis.</p>
+        </div>
+      </div>
+      <div class="fstep">
+        <div class="fnum">4</div>
+        <div class="fbody">
+          <h2>When needed, licensed home care is arranged</h2>
+          <p>If hands-on help is required, Aponot arranges and manages real, credentialed in-home care through a vetted local agency — scheduled and overseen on the employee's behalf.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="flow-note">Care navigation is available to every employee from day one. Hands-on home care is there the moment it is needed — one benefit, at every stage.</p>
+
+    <div class="cta-row" style="justify-content:flex-start;">
+      <a href="https://calendly.com/joshua-aponot" class="cta-button">Book an intro</a>
+      <a href="/impact-calculator" class="cta-button secondary">Impact calculator</a>
+    </div>
 
   </main>
 
