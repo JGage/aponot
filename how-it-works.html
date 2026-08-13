@@ -165,6 +165,28 @@
     .flow-note { font-size: 16px; color: var(--muted); max-width: 660px; margin-bottom: 40px; }
     @media (max-width: 640px){ .fstep { grid-template-columns: 40px 1fr; gap: 16px; padding: 22px 0; } .fnum { font-size: 26px; } .fbody h2 { font-size: 19px; } .fbody p, .flow-note { font-size: 15px; } }
 
+    .hiw-sec { margin-top: 72px; }
+    .sec-h { font-family: 'Fraunces', Georgia, serif; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 28px; color: var(--text); }
+
+    .sides { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .side { border: 1px solid var(--line); border-radius: 16px; padding: 30px 30px 24px; }
+    .side .slab { font-size: 12px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+    .side ul { list-style: none; }
+    .side li { font-size: 16px; color: var(--muted); line-height: 1.5; padding: 11px 0 11px 24px; border-top: 1px solid var(--line); position: relative; }
+    .side li:first-child { border-top: none; }
+    .side li::before { content: ''; position: absolute; left: 2px; top: 18px; width: 7px; height: 7px; border-radius: 50%; background: var(--terra); }
+
+    .trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 30px 0; }
+    .trust .tt { display: flex; align-items: center; gap: 8px; font-size: 15.5px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .trust .chk { width: 15px; height: 15px; color: var(--crimson); flex: none; }
+    .trust .td { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+
+    .faq2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 40px; }
+    .faq2 .q { font-size: 17px; font-weight: 500; color: var(--text); margin-bottom: 7px; }
+    .faq2 .a { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+    @media (max-width: 720px){ .sides, .trust, .faq2 { grid-template-columns: 1fr; } .trust { gap: 22px; } .hiw-sec { margin-top: 56px; } .sec-h { font-size: 25px; } }
+
     footer {
       padding: 60px 40px 32px;
       font-size: 13px;
@@ -265,6 +287,64 @@
     </div>
 
     <p class="flow-note">Care navigation is available to every employee from day one. Hands-on home care is there the moment it is needed — one benefit, at every stage.</p>
+
+    <section class="hiw-sec">
+      <h2 class="sec-h">What it looks like on each side</h2>
+      <div class="sides">
+        <div class="side">
+          <div class="slab">For the employer</div>
+          <ul>
+            <li>Sits alongside existing benefits — no new system to run</li>
+            <li>A flat, predictable subscription with no hourly cost</li>
+            <li>We handle the enrollment communications</li>
+            <li>Utilization and impact reporting</li>
+          </ul>
+        </div>
+        <div class="side">
+          <div class="slab">For the employee</div>
+          <ul>
+            <li>A dedicated care advisor — a real person, not a hotline</li>
+            <li>Help planning a parent's care early, or in a crisis</li>
+            <li>Licensed in-home care arranged and managed for them</li>
+            <li>Discounted rates, paid only for the care used</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="hiw-sec">
+      <h2 class="sec-h">Licensed, credentialed, and insured</h2>
+      <div class="trust">
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>State-licensed agencies</div>
+          <div class="td">Each operates under its own state license and insurance.</div>
+        </div>
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Credentialed caregivers</div>
+          <div class="td">CNA or HHA, background-checked and agency-verified.</div>
+        </div>
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>HIPAA-compliant</div>
+          <div class="td">Business Associate Agreements available on request.</div>
+        </div>
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Fully insured</div>
+          <div class="td">General, professional, and cyber liability coverage.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hiw-sec">
+      <h2 class="sec-h">Common questions</h2>
+      <div class="faq2">
+        <div class="qa"><div class="q">Who actually delivers the care?</div><div class="a">Licensed local home care agencies in our vetted network, with credentialed (CNA/HHA), background-checked caregivers. Aponot arranges and manages it end-to-end.</div></div>
+        <div class="qa"><div class="q">What does it cost?</div><div class="a">Employers pay a flat subscription — about $5 per employee per month — with no hourly cost. Employees pay discounted rates only for the hands-on care they use.</div></div>
+        <div class="qa"><div class="q">What if a parent lives in another state?</div><div class="a">Care navigation is available anywhere. Hands-on home care is delivered where we have agency coverage, which is expanding.</div></div>
+        <div class="qa"><div class="q">How quickly can care start?</div><div class="a">Advisor support is immediate. Hands-on care is typically arranged within about 24 hours, depending on location and shift needs.</div></div>
+        <div class="qa"><div class="q">Is it HIPAA-compliant and insured?</div><div class="a">Yes — HIPAA-compliant with BAAs available, and both Aponot and its network agencies carry appropriate liability coverage.</div></div>
+        <div class="qa"><div class="q">How hard is it to set up?</div><div class="a">Minimal. It's added to the benefits offering with a roster and an announcement we provide — a pilot can launch within 2–3 weeks.</div></div>
+      </div>
+    </section>
 
     <div class="cta-row" style="justify-content:flex-start;">
       <a href="https://calendly.com/joshua-aponot" class="cta-button">Book an intro</a>
