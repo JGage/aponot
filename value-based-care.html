@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Value-Based Care — Aponot</title>
+  <meta name="description" content="Aponot is a healthcare company working to bring value-based care to home care — integrating home care with the health system, aligning incentives across payers, providers, and patients, and connecting care delivery to health outcomes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --text: #1c1a17;
+      --ink-soft: #4a4744;
+      --muted: #8a857e;
+      --line: rgba(28, 26, 23, 0.12);
+      --line-soft: rgba(28, 26, 23, 0.07);
+      --line-strong: rgba(28, 26, 23, 0.22);
+      --track: rgba(28, 26, 23, 0.07);
+      --terra: #c66540;
+      --terra-soft: rgba(198, 101, 64, 0.09);
+      --crimson: #a31f34;
+      --crimson-hover: #b32540;
+      --crimson-soft: rgba(163, 31, 52, 0.06);
+      --band: #f4f2ef;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; padding: 40px; }
+
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    header .brand img { height: 28px; width: auto; display: block; }
+    header .topnav { display: flex; align-items: center; gap: 22px; font-size: 14px; color: var(--muted); flex-wrap: wrap; }
+    header .topnav a { text-decoration: none; color: inherit; transition: color .15s; }
+    header .topnav a:not(.login-link):hover { color: var(--text); }
+    header .topnav a.active { color: var(--text); }
+    header .login-link { color: var(--text); padding: 8px 18px; border: 1px solid var(--line-strong); border-radius: 999px; transition: background .15s, border-color .15s, color .15s; }
+    header .login-link:hover { background: var(--terra-soft); border-color: var(--terra); color: var(--terra); }
+    @media (max-width: 640px){ header .topnav a:not(.login-link){ display: none; } }
+
+    main { flex: 1; max-width: 880px; margin: 0 auto; width: 100%; padding: 80px 0 40px; }
+
+    .eyebrow { font-size: 11px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 22px; }
+
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 56px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.05;
+      margin-bottom: 30px; color: var(--text); max-width: 780px;
+    }
+
+    .lede { font-size: 19px; color: var(--muted); max-width: 680px; margin-bottom: 20px; }
+    .lede strong { color: var(--text); font-weight: 500; }
+
+    section { margin-top: 96px; }
+    .sec-h { font-family: 'Fraunces', Georgia, serif; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 24px; color: var(--text); max-width: 720px; }
+    .prose { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 680px; margin-bottom: 18px; }
+    .prose strong { color: var(--text); font-weight: 500; }
+
+    /* comparison chart */
+    .chart { border-top: 1px solid var(--line); padding-top: 6px; margin-top: 40px; }
+    .crow { display: grid; grid-template-columns: 180px 1fr 92px; gap: 20px; align-items: start; padding: 17px 0; border-bottom: 1px solid var(--line-soft); }
+    .crow.hl { background: var(--crimson-soft); margin: 0 -16px; padding: 17px 16px; border-radius: 10px; border-bottom: 1px solid transparent; }
+    .crow .setting { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.3; }
+    .crow .setting small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); margin-top: 3px; }
+    .barwrap { display: flex; flex-direction: column; gap: 8px; }
+    .track { height: 14px; background: var(--track); border-radius: 4px; overflow: hidden; }
+    .fill { height: 100%; border-radius: 4px; background: var(--terra); }
+    .fill.crim { background: var(--crimson); }
+    .prog { font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; }
+    .prog.none { color: var(--crimson); font-weight: 500; }
+    .tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-align: right; }
+    .tag.none { color: var(--crimson); }
+    .cap { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-top: 22px; max-width: 760px; }
+    .cap strong { color: var(--ink-soft); font-weight: 600; }
+
+    /* stat tiles */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+    .stat { border: 1px solid var(--line); border-radius: 14px; border-top: 2px solid var(--terra); padding: 22px 22px 20px; }
+    .stat .n { font-family: 'Fraunces', Georgia, serif; font-size: 32px; font-weight: 500; color: var(--crimson); line-height: 1.02; letter-spacing: -0.01em; }
+    .stat .n small { font-size: 15px; color: var(--ink-soft); font-weight: 400; }
+    .stat .l { font-size: 14px; color: var(--ink-soft); line-height: 1.5; margin-top: 12px; }
+    .sources { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin-top: 20px; max-width: 760px; }
+    @media (max-width: 720px){ .crow { grid-template-columns: 1fr; gap: 8px; } .crow .tag { text-align: left; } .stats { grid-template-columns: 1fr; } }
+
+    /* outcomes */
+    .outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 8px; }
+    .ocard { border: 1px solid var(--line); border-radius: 16px; padding: 26px 26px 22px; background: #fff; box-shadow: 0 1px 2px rgba(28,26,23,0.03); }
+    .ocard .oname { font-family: 'Fraunces', Georgia, serif; font-size: 21px; font-weight: 500; line-height: 1.15; margin-bottom: 10px; color: var(--text); }
+    .ocard .omech { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+    .ocard .oevi { font-size: 13px; color: var(--ink-soft); line-height: 1.5; border-top: 1px solid var(--line); padding-top: 13px; }
+    .ocard .oevi .lab { display: block; font-size: 10.5px; font-weight: 600; color: var(--terra); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
+    .ocard .oevi strong { color: var(--crimson); font-weight: 600; }
+    .outcome-note { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 680px; margin-top: 26px; }
+    .outcome-note strong { color: var(--text); font-weight: 500; }
+    @media (max-width: 720px){ .outcomes { grid-template-columns: 1fr; } }
+
+    /* full-bleed grey band */
+    section.band { margin: 88px calc(50% - 50vw); padding: 76px calc(50vw - 50%); background: var(--band); }
+    section.band > *:first-child { margin-top: 0; }
+
+    /* numbered pillars / flow */
+    .flow { margin-top: 8px; }
+    .fstep { display: grid; grid-template-columns: 56px 1fr; gap: 26px; padding: 30px 0; border-top: 1px solid var(--line); }
+    .fstep:last-child { border-bottom: 1px solid var(--line); }
+    .fnum { font-family: 'Fraunces', Georgia, serif; font-size: 34px; font-weight: 500; color: var(--terra); line-height: 1; }
+    .fbody h3 { font-family: 'Fraunces', Georgia, serif; font-size: 23px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 10px; color: var(--text); }
+    .fbody p { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 660px; }
+    .fbody p strong { color: var(--text); font-weight: 500; }
+    @media (max-width: 640px){ .fstep { grid-template-columns: 40px 1fr; gap: 16px; padding: 24px 0; } .fnum { font-size: 26px; } .fbody h3 { font-size: 19px; } .fbody p { font-size: 15px; } }
+
+    /* three-column audiences */
+    .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card { border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px 24px; }
+    .card .clab { font-size: 12px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+    .card h3 { font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1.15; margin-bottom: 10px; }
+    .card p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+    @media (max-width: 720px){ .three { grid-template-columns: 1fr; } }
+
+    /* trust strip */
+    .trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 30px 0; }
+    .trust .tt { display: flex; align-items: center; gap: 8px; font-size: 15.5px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .trust .chk { width: 15px; height: 15px; color: var(--crimson); flex: none; }
+    .trust .td { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+    @media (max-width: 720px){ .trust { grid-template-columns: 1fr 1fr; gap: 22px; } }
+
+    /* close / cta */
+    .close { margin-top: 96px; border-top: 1px solid var(--line); padding-top: 48px; }
+    .close p { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 680px; margin-bottom: 10px; }
+    .close p strong { color: var(--text); font-weight: 500; }
+    .cta-row { margin-top: 30px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .cta-button { background: var(--crimson); color: #fff; padding: 14px 28px; font-size: 14px; font-weight: 500; border-radius: 999px; transition: background-color 120ms; }
+    .cta-button:hover { background: var(--crimson-hover); }
+    .cta-button.secondary { background: transparent; color: var(--text); border: 1px solid var(--line-strong); }
+
+    footer { padding: 60px 40px 32px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; max-width: 880px; margin: 0 auto; width: 100%; }
+    footer .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    footer .footer-nav a { text-decoration: underline; text-decoration-color: var(--line-strong); }
+
+    @media (max-width: 640px) {
+      .page { padding: 24px; }
+      h1 { font-size: 33px; }
+      .lede { font-size: 16px; }
+      main { padding: 40px 0 20px; }
+      section { margin-top: 64px; }
+      .sec-h { font-size: 25px; }
+      footer { padding: 40px 24px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <header>
+    <a href="/" class="brand"><img src="/logo-red.png" alt="Aponot" /></a>
+    <nav class="topnav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/value-based-care" class="active">Value-based care</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/articles">Resources</a>
+      <a class="login-link" href="https://app.aponot.com/sign-in">Log in</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="eyebrow">Our mission</div>
+    <h1>Bringing value-based care to home care.</h1>
+    <p class="lede">
+      Aponot is a healthcare company working to make home care a <strong>measured, accountable part of the health system</strong>. We do it by more closely integrating home care with existing skilled-care and benefits infrastructure, aligning incentives across payers, providers, and patients, and connecting care delivery to the health outcomes that matter.
+    </p>
+
+    <!-- THE GAP -->
+    <section>
+      <h2 class="sec-h">The system is shifting to paying for outcomes. Home care hasn't caught up.</h2>
+      <p class="prose">
+        Healthcare is steadily moving from paying for volume to paying for results — through Medicare Advantage, accountable care organizations, and readmission-based penalties. Home care sits directly on many of those outcomes: whether an aging parent takes their medication, eats well, stays mobile, and avoids a fall or a hospital stay often comes down to what happens between visits, at home.
+      </p>
+      <p class="prose">
+        Yet home care remains one of the largest, most fragmented, and least connected parts of the system. It is delivered by thousands of independent agencies, <strong>paid mostly by the hour</strong>, and rarely linked to the medical results it influences. The care that could prevent the costliest events is disconnected from the parties who would benefit from preventing them.
+      </p>
+
+      <div class="chart">
+        <div class="crow">
+          <div class="setting">Primary care</div>
+          <div class="barwrap"><div class="track"><div class="fill" style="width:92%"></div></div><div class="prog">ACOs (Medicare Shared Savings, ACO REACH), Medicare Advantage capitation, patient-centered medical homes</div></div>
+          <div class="tag">Established</div>
+        </div>
+        <div class="crow">
+          <div class="setting">Hospital &amp; inpatient</div>
+          <div class="barwrap"><div class="track"><div class="fill" style="width:88%"></div></div><div class="prog">Readmissions Reduction Program, Hospital Value-Based Purchasing, bundled payments (BPCI, TEAM)</div></div>
+          <div class="tag">Established</div>
+        </div>
+        <div class="crow">
+          <div class="setting">Skilled nursing &amp; post-acute</div>
+          <div class="barwrap"><div class="track"><div class="fill" style="width:64%"></div></div><div class="prog">SNF Value-Based Purchasing, post-acute bundled payments</div></div>
+          <div class="tag">Maturing</div>
+        </div>
+        <div class="crow">
+          <div class="setting">Skilled home health<small>Medicare-certified</small></div>
+          <div class="barwrap"><div class="track"><div class="fill" style="width:56%"></div></div><div class="prog">Home Health Value-Based Purchasing — expanded nationwide in 2023</div></div>
+          <div class="tag">Maturing</div>
+        </div>
+        <div class="crow">
+          <div class="setting">Specialty care<small>oncology, kidney, cardiology</small></div>
+          <div class="barwrap"><div class="track"><div class="fill" style="width:38%"></div></div><div class="prog">Enhancing Oncology Model, Kidney Care Choices, specialty episode models</div></div>
+          <div class="tag">Emerging</div>
+        </div>
+        <div class="crow hl">
+          <div class="setting">Non-skilled home care<small>personal &amp; in-home support</small></div>
+          <div class="barwrap"><div class="track"><div class="fill crim" style="width:4%"></div></div><div class="prog none">No federal value-based program — paid by the hour, disconnected from outcomes</div></div>
+          <div class="tag none">Virtually none</div>
+        </div>
+      </div>
+      <p class="cap"><strong>How to read this:</strong> bar length reflects the relative maturity of value-based payment in each setting — based on the reach and establishment of federal programs — not precise penetration. For context, roughly <strong>40% of all U.S. healthcare payments</strong> now flow through value-based models overall; non-skilled home care sits almost entirely outside them, despite sitting directly on the outcomes those models are built to improve.</p>
+    </section>
+
+    <!-- POTENTIAL -->
+    <section>
+      <h2 class="sec-h">Value-based home care can significantly reduce the overall cost of care.</h2>
+      <p class="prose">Home care is uniquely positioned to influence the highest-cost outcomes — yet it's the one setting still paid for inputs, not results. Bringing it into the fold is where the next wave of value creation sits.</p>
+      <div class="stats">
+        <div class="stat"><div class="n"><small>~</small>50%</div><div class="l">of healthcare spending is driven by the sickest ~5% of patients — the high-need population largely supported at home, where much of the cost is preventable.</div></div>
+        <div class="stat"><div class="n">10&ndash;25%</div><div class="l">total-cost-of-care reduction reported by intensive in-home care models for high-risk populations — the impact non-skilled home care could extend if measured and rewarded.</div></div>
+        <div class="stat"><div class="n"><small>~</small>30%</div><div class="l">lower cost observed in hospital-at-home programs versus traditional inpatient care — evidence that well-managed home-based care bends the curve.</div></div>
+      </div>
+      <p class="sources">Sources: HCPLAN APM Measurement; CMS (Home Health Value-Based Purchasing, Readmissions Reduction Program, SNF VBP, oncology and kidney models); widely cited research on healthcare-spending concentration; published home-based and hospital-at-home care studies. Cost-reduction figures are directional — drawn from existing high-risk and skilled home-based programs — and illustrate the potential of extending value-based care to non-skilled home care, not a guaranteed result.</p>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section class="band">
+      <h2 class="sec-h">The outcomes we work to drive</h2>
+      <p class="prose">Lower cost isn't abstract — it comes from a specific set of outcomes that consistent, well-managed home care is positioned to move. These are the results we measure and reward our network against.</p>
+      <div class="outcomes">
+        <div class="ocard">
+          <div class="oname">Fewer avoidable ED visits</div>
+          <p class="omech">Someone in the home catches a problem early and routes it to the right care — before a missed medication or an unnoticed symptom becomes a 911 call.</p>
+          <div class="oevi"><span class="lab">Evidence</span>CMS's Independence at Home demonstration reduced hospitalizations and emergency use for high-need patients through home-based care — while generating net savings per beneficiary.</div>
+        </div>
+        <div class="ocard">
+          <div class="oname">Lower 30-day readmissions</div>
+          <p class="omech">Structured post-discharge support — medication reconciliation, follow-up visits, early warning signs — closes the gaps that send people back to the hospital.</p>
+          <div class="oevi"><span class="lab">Evidence</span>Transitional-care programs such as the Care Transitions Intervention have reduced readmissions by <strong>20&ndash;50%</strong>.</div>
+        </div>
+        <div class="ocard">
+          <div class="oname">Shorter hospital stays</div>
+          <p class="omech">When a reliable home plan is in place, a hospital can discharge safely sooner — instead of holding a patient because there is nowhere safe to send them.</p>
+          <div class="oevi"><span class="lab">Evidence</span>Hospital-at-home and structured discharge-to-home models shorten length of stay and lower cost versus traditional inpatient care.</div>
+        </div>
+        <div class="ocard">
+          <div class="oname">Fewer diversions to facility care</div>
+          <p class="omech">Consistent, capable support at home keeps people safely independent — delaying or avoiding a costly move into a nursing facility.</p>
+          <div class="oevi"><span class="lab">Evidence</span>Home- and community-based services and programs like PACE are shown to delay nursing-home placement and reduce institutional care.</div>
+        </div>
+      </div>
+      <p class="outcome-note">Each of these traces back to the same thing: <strong>what happens between visits</strong> — medication taken, meals eaten, mobility kept, decline caught early. That is the work our network is built to deliver, measure, and reward.</p>
+      <p class="sources">Evidence is drawn from established home-based and transitional-care programs — the Care Transitions Intervention (readmissions), CMS's Independence at Home demonstration (hospitalizations and emergency use), hospital-at-home models (length of stay), and home- and community-based services and PACE (facility diversion). These show what home-based care can achieve; our aim is to extend that impact to non-skilled home care and measure it directly. Figures are directional.</p>
+    </section>
+
+    <!-- OUR APPROACH -->
+    <section>
+      <h2 class="sec-h">Our approach</h2>
+      <div class="flow">
+        <div class="fstep">
+          <div class="fnum">1</div>
+          <div class="fbody">
+            <h3>Integrate home care with the rest of the system</h3>
+            <p>We connect home care to the skilled-care and benefits infrastructure already in place — hospitals, health plans, accountable care organizations, and employers — so it operates as part of a continuum rather than a silo. That means care that begins at a hospital discharge or a plan's care-management flow, and information that moves between them.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <div class="fnum">2</div>
+          <div class="fbody">
+            <h3>Align incentives across payers, providers, and patients</h3>
+            <p>Today, an agency is paid for hours and has little reason to steer care toward outcomes. We build a network in which <strong>agencies are rewarded for the results they produce</strong> — through both payment and referral volume — so that doing what improves a patient's health is also what grows an agency's business. Payers fund what reduces cost; patients receive care oriented around staying well at home.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <div class="fnum">3</div>
+          <div class="fbody">
+            <h3>Connect care delivery to health outcomes</h3>
+            <p>We capture what actually happens in the home and link it to the outcomes the system measures — readmissions, avoidable emergency visits, facility stays. That connection turns home care from an unmeasured cost into <strong>demonstrable, accountable value</strong>, and gives every party a shared, verifiable picture of what the care achieved.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW THE MODEL WORKS -->
+    <section>
+      <h2 class="sec-h">How the model works</h2>
+      <p class="prose">
+        Aponot operates a network of licensed home-care agencies where measurable, outcomes-based incentives are used to continuously refine and optimize delivery models and best practices. In practice, it works as a continuous loop:
+      </p>
+      <div class="flow">
+        <div class="fstep">
+          <div class="fnum">→</div>
+          <div class="fbody">
+            <h3>Track care and outcomes together</h3>
+            <p>We record what care is delivered in the home and connect it to health outcomes drawn from claims and clinical data — building a picture no single agency or payer holds on its own.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <div class="fnum">→</div>
+          <div class="fbody">
+            <h3>Link care to outcomes</h3>
+            <p>By linking care and outcomes, we can see — fairly and risk-adjusted — which agencies and models are generating the results that matter.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <div class="fnum">→</div>
+          <div class="fbody">
+            <h3>Scale and steer to what works</h3>
+            <p>We identify where care is improving outcomes, then push best practices across our network and redirect care to those proven models.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO WE WORK WITH -->
+    <section>
+      <h2 class="sec-h">Who we work with</h2>
+      <div class="three">
+        <div class="card">
+          <div class="clab">Payers &amp; providers</div>
+          <h3>Health plans, ACOs, hospitals</h3>
+          <p>A way to put existing home-care spend to work more effectively — and a measurable reduction in avoidable admissions, emergency visits, and facility stays, with the evidence to prove it.</p>
+        </div>
+        <div class="card">
+          <div class="clab">Home-care agencies</div>
+          <h3>Independent agencies</h3>
+          <p>Access to value-based revenue and referral flow they can't reach alone, plus the tools and guidance to raise their outcomes — rewarded for quality, not just hours.</p>
+        </div>
+        <div class="card">
+          <div class="clab">Patients &amp; families</div>
+          <h3>Older adults and caregivers</h3>
+          <p>Care organized around staying healthy and independent at home — better managed, better coordinated, and connected to the rest of a person's care.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW WE OPERATE -->
+    <section>
+      <h2 class="sec-h">How we operate</h2>
+      <div class="trust">
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>State-licensed agencies</div>
+          <div class="td">Care delivered by licensed local agencies, each under its own license and insurance.</div>
+        </div>
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Credentialed caregivers</div>
+          <div class="td">CNA or HHA, background-checked and agency-verified.</div>
+        </div>
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>HIPAA-compliant</div>
+          <div class="td">Data handled under HIPAA, with Business Associate Agreements available.</div>
+        </div>
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Outcome-driven</div>
+          <div class="td">Performance measured on results, risk-adjusted for how sick each patient is.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSE -->
+    <div class="close">
+      <p><strong>Aponot is building this with payers, providers, and home-care agencies.</strong> If you work in value-based care, home-based care, care transitions, or agency operations, we'd welcome a conversation.</p>
+      <div class="cta-row">
+        <a href="https://calendly.com/joshua-aponot" class="cta-button">Get in touch</a>
+        <a href="/how-it-works" class="cta-button secondary">How it works</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div>&copy; 2026 Aponot</div>
+    <nav class="footer-nav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/value-based-care">Value-based care</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/articles">Resources</a>
+      <a href="/privacy">Privacy</a>
+      <a href="mailto:hello@aponot.com">Contact</a>
+    </nav>
+  </footer>
+
+</div>
+
+</body>
+</html>
