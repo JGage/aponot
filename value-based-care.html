@@ -94,6 +94,13 @@
     .axis .tick:last-child { transform: translateX(-100%); }
     .cap { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-top: 26px; max-width: 820px; }
     .cap strong { color: var(--ink-soft); font-weight: 600; }
+    /* timeline takeaways */
+    .takeaways { list-style: none; margin: 34px 0 0; padding: 0; max-width: 780px; display: grid; gap: 14px; }
+    .takeaways li { position: relative; padding-left: 30px; font-size: 15px; color: var(--ink-soft); line-height: 1.55; }
+    .takeaways li::before { content: ""; position: absolute; left: 8px; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--terra); }
+    .takeaways li.key::before { background: var(--crimson); }
+    .takeaways li strong { color: var(--text); font-weight: 600; }
+    .takeaways .src { display: block; margin-top: 18px; padding-left: 30px; font-size: 12px; color: var(--muted); line-height: 1.6; max-width: 820px; }
     @media (max-width: 720px){ .tlrow, .axis { grid-template-columns: 150px 1fr; gap: 14px; } .tl .lbl .nm { font-size: 13.5px; } }
 
     /* stat tiles */
@@ -240,7 +247,13 @@
           </div>
         </div>
       </div>
-      <p class="cap"><strong>How to read this:</strong> each bar begins at the year that setting's first major value-based payment program took effect and runs to today — so a longer bar means a longer head start. Milestones reflect CMS program start dates: ACOs / Medicare Shared Savings Program (2012), hospital readmissions penalties and value-based purchasing (~2012&ndash;13), oncology and kidney models (2016 onward), Home Health Value-Based Purchasing (2016 pilot; nationwide 2023), and SNF Value-Based Purchasing (2018). Non-skilled home care still has no federal value-based program. Across the system, roughly <strong>40% of U.S. healthcare payments</strong> now flow through value-based models &mdash; home care remains the exception. Start years are approximate.</p>
+      <ul class="takeaways">
+        <li><strong>The 2010 Affordable Care Act set it in motion.</strong> It created the CMS Innovation Center and launched the first wave of value-based programs — Accountable Care Organizations, hospital readmission penalties, and value-based purchasing — that began tying payment to outcomes across the system.</li>
+        <li class="key">Roughly <strong>40% of U.S. healthcare payments now flow through value-based models</strong> — yet non-skilled home care sits almost entirely outside them.</li>
+        <li>The shift has paid off. Medicare's largest value-based program, the <strong>Shared Savings Program, generated a record ~$2.1&nbsp;billion in net savings in 2023</strong> while improving quality — and has produced savings for the trust funds every year since 2019.</li>
+        <li>Care outcomes have followed the dollars: transitional and in-home care models have cut <strong>30-day hospital readmissions by 20&ndash;50%</strong> for high-risk patients — precisely the kind of result non-skilled home care is positioned to drive once it's measured and rewarded.</li>
+        <span class="src">Start years reflect CMS program launch dates and are approximate. Sources: HCPLAN APM Measurement; CMS Medicare Shared Savings Program 2023 results; published research on transitional and in-home care.</span>
+      </ul>
     </section>
 
     <!-- POTENTIAL -->
