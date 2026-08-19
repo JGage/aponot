@@ -182,11 +182,12 @@
     .flow { margin-top: 8px; }
     .fstep { display: grid; grid-template-columns: 56px 1fr; gap: 26px; padding: 30px 0; border-top: 1px solid var(--line); }
     .fstep:last-child { border-bottom: 1px solid var(--line); }
-    .fnum { font-family: 'Fraunces', Georgia, serif; font-size: 34px; font-weight: 500; color: var(--terra); line-height: 1; }
+    .ficon { width: 56px; height: 56px; border-radius: 16px; background: rgba(198,101,64,0.13); display: flex; align-items: center; justify-content: center; }
+    .ficon svg { width: 32px; height: 32px; display: block; }
     .fbody h3 { font-family: 'Fraunces', Georgia, serif; font-size: 23px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 10px; color: var(--text); }
     .fbody p { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 660px; }
     .fbody p strong { color: var(--text); font-weight: 500; }
-    @media (max-width: 640px){ .fstep { grid-template-columns: 40px 1fr; gap: 16px; padding: 24px 0; } .fnum { font-size: 26px; } .fbody h3 { font-size: 19px; } .fbody p { font-size: 15px; } }
+    @media (max-width: 640px){ .fstep { grid-template-columns: 48px 1fr; gap: 16px; padding: 24px 0; } .ficon { width: 46px; height: 46px; border-radius: 13px; } .ficon svg { width: 27px; height: 27px; } .fbody h3 { font-size: 19px; } .fbody p { font-size: 15px; } }
 
     /* three-column audiences */
     .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -258,7 +259,7 @@
     </div>
 
     <p class="lede">
-      Aponot is a healthcare company working to make home care a <strong>measured, accountable part of the health system</strong>. We do it by more closely integrating home care with existing skilled-care and benefits infrastructure, aligning incentives across payers, providers, and patients, and connecting care delivery to the health outcomes that matter.
+      Aponot brings home care into the rest of the health system &mdash; <strong>connected</strong> to hospitals &amp; health plans, <strong>aligned</strong> around shared goals, and <strong>accountable</strong> for the results it delivers.
     </p>
 
     <!-- OUR APPROACH (moved directly below hero) -->
@@ -266,24 +267,45 @@
       <h2 class="sec-h">Our approach</h2>
       <div class="flow">
         <div class="fstep">
-          <div class="fnum">1</div>
+          <div class="ficon"><svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 25 Q15 19 12 13" stroke="#c66540" stroke-width="2.4" stroke-dasharray="0.5 5.2"/>
+            <path d="M41 25 Q50 19 53 13" stroke="#c66540" stroke-width="2.4" stroke-dasharray="0.5 5.2"/>
+            <path d="M42 41 Q51 46 53 53" stroke="#c66540" stroke-width="2.4" stroke-dasharray="0.5 5.2"/>
+            <circle cx="11" cy="11" r="4.6" fill="#a31f34"/>
+            <circle cx="54" cy="11" r="4.6" fill="#c66540"/>
+            <circle cx="54" cy="54" r="4.6" fill="#c66540"/>
+            <path d="M20 35 L32 24 L44 35 L44 46 Q44 49 41 49 L23 49 Q20 49 20 46 Z" fill="rgba(198,101,64,0.18)" stroke="#c66540" stroke-width="2.7"/>
+            <path d="M28 49 L28 41 Q28 39.5 29.5 39.5 L34.5 39.5 Q36 39.5 36 41 L36 49" fill="#fff" stroke="#a31f34" stroke-width="2.3"/>
+          </svg></div>
           <div class="fbody">
-            <h3>Integrate home care with the rest of the system</h3>
-            <p>We connect home care to the skilled-care and benefits infrastructure already in place — hospitals, health plans, accountable care organizations, and employers — so it operates as part of a continuum rather than a silo. That means care that begins at a hospital discharge or a plan's care-management flow, and information that moves between them.</p>
+            <h3>Connected to the system</h3>
+            <p>We pull home care out of its silo, connecting it to the hospitals, health plans, and employers already involved in providing care — filling the spaces between more formal care to support everyday wellbeing and prevent health crises.</p>
           </div>
         </div>
         <div class="fstep">
-          <div class="fnum">2</div>
+          <div class="ficon"><svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="47" cy="18" r="8.5" fill="rgba(198,101,64,0.18)" stroke="#c66540" stroke-width="2.7"/>
+            <circle cx="47" cy="18" r="2.6" fill="#a31f34"/>
+            <g stroke="#c66540" stroke-width="2.7">
+              <path d="M10 30 L26 21"/><path d="M22 20.5 L26.4 20.8 L25.2 25"/>
+              <path d="M10 41 L26 32"/><path d="M22 31.5 L26.4 31.8 L25.2 36"/>
+              <path d="M10 52 L26 43"/><path d="M22 42.5 L26.4 42.8 L25.2 47"/>
+            </g>
+          </svg></div>
           <div class="fbody">
-            <h3>Align incentives across payers, providers, and patients</h3>
-            <p>Today, an agency is paid for hours and has little reason to steer care toward outcomes. We build a network in which <strong>agencies are rewarded for the results they produce</strong> — through both payment and referral volume — so that doing what improves a patient's health is also what grows an agency's business. Payers fund what reduces cost; patients receive care oriented around staying well at home.</p>
+            <h3>Aligned on goals</h3>
+            <p>While much of home care is focused on maximizing billable hours, we've built a network where partner agencies are rewarded for measurable outcomes.</p>
           </div>
         </div>
         <div class="fstep">
-          <div class="fnum">3</div>
+          <div class="ficon"><svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 11 L14 50 L53 50" stroke="#c66540" stroke-width="2.7"/>
+            <path d="M20 20 L29 29 L37 25 L45 36" stroke="#c66540" stroke-width="2.9"/>
+            <path d="M45.6 41.4 C43 38.6 43 35 46 34.6 C47.4 34.4 48.4 35.3 48.6 36.4 C48.8 35.3 49.8 34.4 51.2 34.6 C54.2 35 54.2 38.6 51.6 41.4 L48.6 44 Z" fill="#a31f34" stroke="#a31f34" stroke-width="1.2"/>
+          </svg></div>
           <div class="fbody">
-            <h3>Connect care delivery to health outcomes</h3>
-            <p>We capture what actually happens in the home and link it to the outcomes the system measures — readmissions, avoidable emergency visits, facility stays. That connection turns home care from an unmeasured cost into <strong>demonstrable, accountable value</strong>, and gives every party a shared, verifiable picture of what the care achieved.</p>
+            <h3>Accountable for results</h3>
+            <p>We track what actually happens at home and connect it to the outcomes that matter — fewer readmissions, ER visits, and facility stays.</p>
           </div>
         </div>
       </div>
