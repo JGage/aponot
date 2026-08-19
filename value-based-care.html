@@ -72,12 +72,12 @@
       width: 100vw; left: 50%; right: 50%;
       margin-left: -50vw; margin-right: -50vw;
       margin-top: -40px; margin-bottom: 14px;
-      min-height: 600px;
+      min-height: 740px;
       display: flex; align-items: flex-end;
       overflow: hidden;
     }
     .hero-media { position: absolute; inset: 0; }
-    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 26%; display: block; }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 32%; display: block; }
     .hero-scrim {
       position: absolute; inset: 0;
       background:
@@ -155,6 +155,24 @@
     .outcome-note { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 680px; margin-top: 26px; }
     .outcome-note strong { color: var(--text); font-weight: 500; }
     @media (max-width: 720px){ .outcomes { grid-template-columns: 1fr; } }
+
+    /* mission / product intro */
+    .mission-note { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 700px; margin-bottom: 18px; }
+    .mission-note strong { color: var(--text); font-weight: 500; }
+
+    /* testimonials */
+    .tmon { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+    .tcard { position: relative; border: 1px solid var(--line); border-radius: 16px; padding: 30px 26px 24px; background: #fff; box-shadow: 0 1px 2px rgba(28,26,23,0.03); display: flex; flex-direction: column; }
+    .tcard .qmark { position: absolute; top: 12px; left: 24px; font-family: 'Fraunces', Georgia, serif; font-size: 46px; line-height: 1; color: var(--crimson); opacity: 0.22; }
+    .tcard .quote { font-size: 15.5px; color: var(--ink-soft); line-height: 1.62; margin: 14px 0 22px; flex: 1; }
+    .tcard .who { display: flex; align-items: center; gap: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+    .tcard .who .avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; flex: none; background: var(--track); }
+    .tcard .who .ph { display: flex; align-items: center; justify-content: center; color: var(--muted); }
+    .tcard .who .ph svg { width: 24px; height: 24px; }
+    .tcard .who .meta .nm { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.3; }
+    .tcard .who .meta .loc { font-size: 12.5px; color: var(--muted); line-height: 1.35; margin-top: 2px; }
+    .tmon-note { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin-top: 22px; max-width: 760px; }
+    @media (max-width: 720px){ .tmon { grid-template-columns: 1fr; } }
 
     /* full-bleed grey band */
     section.band { margin: 88px calc(50% - 50vw); padding: 76px calc(50vw - 50%); background: var(--band); }
@@ -242,6 +260,75 @@
     <p class="lede">
       Aponot is a healthcare company working to make home care a <strong>measured, accountable part of the health system</strong>. We do it by more closely integrating home care with existing skilled-care and benefits infrastructure, aligning incentives across payers, providers, and patients, and connecting care delivery to the health outcomes that matter.
     </p>
+
+    <!-- OUR APPROACH (moved directly below hero) -->
+    <section>
+      <h2 class="sec-h">Our approach</h2>
+      <div class="flow">
+        <div class="fstep">
+          <div class="fnum">1</div>
+          <div class="fbody">
+            <h3>Integrate home care with the rest of the system</h3>
+            <p>We connect home care to the skilled-care and benefits infrastructure already in place — hospitals, health plans, accountable care organizations, and employers — so it operates as part of a continuum rather than a silo. That means care that begins at a hospital discharge or a plan's care-management flow, and information that moves between them.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <div class="fnum">2</div>
+          <div class="fbody">
+            <h3>Align incentives across payers, providers, and patients</h3>
+            <p>Today, an agency is paid for hours and has little reason to steer care toward outcomes. We build a network in which <strong>agencies are rewarded for the results they produce</strong> — through both payment and referral volume — so that doing what improves a patient's health is also what grows an agency's business. Payers fund what reduces cost; patients receive care oriented around staying well at home.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <div class="fnum">3</div>
+          <div class="fbody">
+            <h3>Connect care delivery to health outcomes</h3>
+            <p>We capture what actually happens in the home and link it to the outcomes the system measures — readmissions, avoidable emergency visits, facility stays. That connection turns home care from an unmeasured cost into <strong>demonstrable, accountable value</strong>, and gives every party a shared, verifiable picture of what the care achieved.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS  —  placeholder quotes + avatars; Joshua to supply real text and photos -->
+    <section>
+      <h2 class="sec-h">What families and clients tell us.</h2>
+      <div class="tmon">
+        <div class="tcard">
+          <span class="qmark">&ldquo;</span>
+          <p class="quote">Thanks to Charlene, our caregiver, my mom is able to stay safe in her own home. After she got out of the hospital and then rehab, we were one fall away from moving her into a facility &mdash; but this care changed everything.</p>
+          <div class="who">
+            <img class="avatar" src="/t-avatar-1.jpg" alt="A woman with her mother at home" />
+            <div class="meta">
+              <div class="nm">Daughter of member agency client</div>
+              <div class="loc">Age 47 · Tampa, FL</div>
+            </div>
+          </div>
+        </div>
+        <div class="tcard">
+          <span class="qmark">&ldquo;</span>
+          <p class="quote">Before finding this care, my mom was constantly in and out of the hospital with severe UTIs. Since Dayan, our caregiver, started giving her regular showers and toileting support, she hasn&rsquo;t had a single infection. This care has literally kept my mom healthy and out of the ER. I am forever grateful.</p>
+          <div class="who">
+            <img class="avatar" src="/t-avatar-2.jpg" alt="A woman with her mother at home" />
+            <div class="meta">
+              <div class="nm">Daughter of member agency client</div>
+              <div class="loc">Age 39 · Cincinnati, OH</div>
+            </div>
+          </div>
+        </div>
+        <div class="tcard">
+          <span class="qmark">&ldquo;</span>
+          <p class="quote">Marcus, my caregiver, is a godsend. He keeps me straight on all the new meds and appointments I got since I got out of the hospital &mdash; tells me when to take what, and drives me to my appointments. Haven&rsquo;t missed one yet.</p>
+          <div class="who">
+            <img class="avatar" src="/t-avatar-3.jpg" alt="An older man at home" />
+            <div class="meta">
+              <div class="nm">Member agency client</div>
+              <div class="loc">Age 73 · Tampa, FL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="tmon-note">Testimonials are from clients of Aponot&rsquo;s member home-care agency. Names are withheld for privacy; photos are representative.</p>
+    </section>
 
     <!-- THE GAP -->
     <section>
@@ -339,34 +426,6 @@
       </div>
       <p class="outcome-note">Each of these traces back to the same thing: <strong>what happens between visits</strong> — medication taken, meals eaten, mobility kept, decline caught early. That is the work our network is built to deliver, measure, and reward.</p>
       <p class="sources">Evidence is drawn from established home-based and transitional-care programs — the Care Transitions Intervention (readmissions), CMS's Independence at Home demonstration (hospitalizations and emergency use), hospital-at-home models (length of stay), and home- and community-based services and PACE (facility diversion). These show what home-based care can achieve; our aim is to extend that impact to non-skilled home care and measure it directly. Figures are directional.</p>
-    </section>
-
-    <!-- OUR APPROACH -->
-    <section>
-      <h2 class="sec-h">Our approach</h2>
-      <div class="flow">
-        <div class="fstep">
-          <div class="fnum">1</div>
-          <div class="fbody">
-            <h3>Integrate home care with the rest of the system</h3>
-            <p>We connect home care to the skilled-care and benefits infrastructure already in place — hospitals, health plans, accountable care organizations, and employers — so it operates as part of a continuum rather than a silo. That means care that begins at a hospital discharge or a plan's care-management flow, and information that moves between them.</p>
-          </div>
-        </div>
-        <div class="fstep">
-          <div class="fnum">2</div>
-          <div class="fbody">
-            <h3>Align incentives across payers, providers, and patients</h3>
-            <p>Today, an agency is paid for hours and has little reason to steer care toward outcomes. We build a network in which <strong>agencies are rewarded for the results they produce</strong> — through both payment and referral volume — so that doing what improves a patient's health is also what grows an agency's business. Payers fund what reduces cost; patients receive care oriented around staying well at home.</p>
-          </div>
-        </div>
-        <div class="fstep">
-          <div class="fnum">3</div>
-          <div class="fbody">
-            <h3>Connect care delivery to health outcomes</h3>
-            <p>We capture what actually happens in the home and link it to the outcomes the system measures — readmissions, avoidable emergency visits, facility stays. That connection turns home care from an unmeasured cost into <strong>demonstrable, accountable value</strong>, and gives every party a shared, verifiable picture of what the care achieved.</p>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- HOW THE MODEL WORKS -->
