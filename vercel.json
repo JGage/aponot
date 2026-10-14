@@ -2,7 +2,6 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/how-it-works", "destination": "/benefits/how-it-works", "permanent": true },
     { "source": "/impact-calculator", "destination": "/benefits/impact-calculator", "permanent": true },
     { "source": "/articles", "destination": "/benefits/articles", "permanent": true },
     { "source": "/eldercare-next-benefit", "destination": "/benefits/eldercare-next-benefit", "permanent": true },

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works — Aponot</title>
+  <meta name="description" content="How Aponot works: payers send us members, we route them to vetted home-care agencies and coordinate care, and shared savings flow back to the agencies that deliver results — built on a decade of what value-based care has proven, at a scale no single player can reach alone." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #ffffff; --text: #1c1a17; --ink-soft: #4a4744; --muted: #8a857e;
+      --line: rgba(28, 26, 23, 0.12); --line-soft: rgba(28, 26, 23, 0.07); --line-strong: rgba(28, 26, 23, 0.22);
+      --track: rgba(28, 26, 23, 0.07); --terra: #c66540; --terra-soft: rgba(198, 101, 64, 0.09);
+      --crimson: #a31f34; --crimson-hover: #b32540; --crimson-soft: rgba(163, 31, 52, 0.06); --band: #f4f2ef;
+    }
+    html, body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; padding: 40px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    header .brand img { height: 28px; width: auto; display: block; }
+    header .topnav { display: flex; align-items: center; gap: 22px; font-size: 14px; color: var(--muted); flex-wrap: wrap; }
+    header .topnav a { text-decoration: none; color: inherit; transition: color .15s; }
+    header .topnav a:not(.login-link):hover { color: var(--text); }
+    header .topnav a.active { color: var(--text); }
+    header .login-link { color: var(--text); padding: 8px 18px; border: 1px solid var(--line-strong); border-radius: 999px; transition: background .15s, border-color .15s, color .15s; }
+    header .login-link:hover { background: var(--terra-soft); border-color: var(--terra); color: var(--terra); }
+    @media (max-width: 640px){ header .topnav a:not(.login-link){ display: none; } }
+
+    main { flex: 1; max-width: 880px; margin: 0 auto; width: 100%; padding: 72px 0 40px; }
+    .eyebrow { font-size: 11px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 18px; }
+    h1 { font-family: 'Fraunces', Georgia, serif; font-size: 52px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 26px; color: var(--text); max-width: 760px; }
+    .lede { font-size: 19px; color: var(--muted); max-width: 700px; }
+    .lede strong { color: var(--text); font-weight: 500; }
+
+    section { margin-top: 92px; }
+    .sec-h { font-family: 'Fraunces', Georgia, serif; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.12; margin-bottom: 18px; color: var(--text); max-width: 740px; }
+    .prose { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 700px; margin-bottom: 16px; }
+    .prose strong { color: var(--text); font-weight: 500; }
+
+    /* platform loop diagram */
+    .platform { margin: 34px 0 10px; }
+    .flowrail { position: relative; height: 38px; display: flex; align-items: center; justify-content: center; }
+    .flowrail .line { position: absolute; left: 7%; right: 7%; top: 50%; height: 2px; background: var(--terra); opacity: .45; }
+    .flowrail.back .line { background: var(--crimson); opacity: .4; }
+    .flowrail .lab { position: relative; background: #fff; padding: 2px 16px; font-size: 13px; font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
+    .flowrail.back .lab { color: var(--crimson); }
+    .prow { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .pbox { border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px; text-align: center; background: #fff; }
+    .pbox.hub { border-color: rgba(163,31,52,.4); border-top: 2px solid var(--crimson); box-shadow: 0 1px 3px rgba(28,26,23,.05); }
+    .pbox .plab { font-size: 10.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra); margin-bottom: 7px; }
+    .pbox.hub .plab { color: var(--crimson); }
+    .pbox .pname { font-family: 'Fraunces', Georgia, serif; font-size: 18px; color: var(--text); line-height: 1.15; }
+    .pbox .psub { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.45; }
+    @media (max-width: 640px){ .prow { grid-template-columns: 1fr; } .flowrail .line { left: 20%; right: 20%; } }
+
+    /* numbered steps */
+    .flow { margin-top: 36px; }
+    .fstep { display: grid; grid-template-columns: 56px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
+    .fstep:last-child { border-bottom: 1px solid var(--line); }
+    .fnum { width: 56px; height: 56px; border-radius: 16px; background: rgba(198,101,64,0.13); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--crimson); }
+    .fstep.money .fnum { background: var(--crimson-soft); }
+    .fbody h3 { font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 9px; color: var(--text); }
+    .fbody p { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 680px; }
+    .fbody p strong { color: var(--text); font-weight: 500; }
+    @media (max-width: 640px){ .fstep { grid-template-columns: 46px 1fr; gap: 16px; padding: 22px 0; } .fnum { width: 46px; height: 46px; border-radius: 13px; font-size: 22px; } .fbody h3 { font-size: 19px; } .fbody p { font-size: 15px; } }
+
+    /* two-column: proven levers vs home-care overlay */
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 8px; }
+    .lcard { border: 1px solid var(--line); border-radius: 16px; padding: 26px 26px 22px; background: #fff; }
+    .lcard.add { border-top: 2px solid var(--terra); }
+    .lcard .clab { font-size: 11px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+    .lcard h3 { font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1.15; margin-bottom: 14px; color: var(--text); }
+    .lcard ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+    .lcard li { position: relative; padding-left: 24px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+    .lcard li::before { content: ""; position: absolute; left: 4px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--terra); }
+    .lcard.add li::before { background: var(--crimson); }
+    @media (max-width: 720px){ .twocol { grid-template-columns: 1fr; } }
+
+    /* full-bleed band */
+    section.band { margin: 88px calc(50% - 50vw); padding: 76px calc(50vw - 50%); background: var(--band); }
+    section.band > *:first-child { margin-top: 0; }
+
+    /* three pillars */
+    .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+    .card { border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px 22px; background: #fff; }
+    .card .ic { width: 46px; height: 46px; border-radius: 13px; background: rgba(198,101,64,0.13); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .card .ic svg { width: 26px; height: 26px; }
+    .card h3 { font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1.15; margin-bottom: 9px; }
+    .card p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+    .compound { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 700px; margin-top: 26px; }
+    .compound strong { color: var(--text); font-weight: 500; }
+    @media (max-width: 720px){ .three { grid-template-columns: 1fr; } }
+
+    /* close / cta */
+    .close { margin-top: 92px; border-top: 1px solid var(--line); padding-top: 46px; }
+    .close p { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 680px; margin-bottom: 10px; }
+    .close p strong { color: var(--text); font-weight: 500; }
+    .cta-row { margin-top: 28px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .cta-button { background: var(--crimson); color: #fff; padding: 14px 28px; font-size: 14px; font-weight: 500; border-radius: 999px; transition: background-color 120ms; }
+    .cta-button:hover { background: var(--crimson-hover); }
+    .cta-button.secondary { background: transparent; color: var(--text); border: 1px solid var(--line-strong); }
+
+    footer { padding: 60px 40px 32px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; max-width: 880px; margin: 0 auto; width: 100%; }
+    footer .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    footer .footer-nav a { text-decoration: underline; text-decoration-color: var(--line-strong); }
+
+    @media (max-width: 640px) {
+      .page { padding: 24px; }
+      h1 { font-size: 33px; }
+      .lede { font-size: 16px; }
+      main { padding: 44px 0 20px; }
+      section { margin-top: 60px; }
+      .sec-h { font-size: 25px; }
+      footer { padding: 40px 24px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <header>
+    <a href="/" class="brand"><img src="/logo-red.png" alt="Aponot" /></a>
+    <nav class="topnav">
+      <a href="/how-it-works" class="active">How it works</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/benefits">For employers</a>
+      <a href="/benefits/articles">Resources</a>
+      <a class="login-link" href="https://app.aponot.com/sign-in">Log in</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="eyebrow">How it works</div>
+    <h1>How Aponot works.</h1>
+    <p class="lede">
+      We sit between the payers who carry the cost of care and the agencies who deliver it &mdash; <strong>routing members to the right care, coordinating it, measuring what it produces, and sharing the savings back</strong> with the agencies that earn them.
+    </p>
+
+    <!-- SECTION 1: THE MODEL -->
+    <section>
+      <h2 class="sec-h">The model</h2>
+      <p class="prose">
+        Aponot is the layer that connects home care to the rest of the health system. Payers route members to us; we place them with the right agencies and run the coordination and measurement; and when avoidable costs fall, the savings flow back &mdash; to us, and through us to the agencies that delivered the results.
+      </p>
+
+      <div class="platform">
+        <div class="flowrail">
+          <div class="line"></div>
+          <div class="lab">Members routed to the right care&nbsp;&rarr;</div>
+        </div>
+        <div class="prow">
+          <div class="pbox">
+            <div class="plab">Payers</div>
+            <div class="pname">Health plans, ACOs, hospitals, full-risk groups</div>
+            <div class="psub">Bear the cost of care and the risk on outcomes.</div>
+          </div>
+          <div class="pbox hub">
+            <div class="plab">Aponot</div>
+            <div class="pname">Coordination &amp; data layer</div>
+            <div class="psub">Routes members, coordinates care, and measures outcomes.</div>
+          </div>
+          <div class="pbox">
+            <div class="plab">Agencies</div>
+            <div class="pname">Licensed home-care agencies</div>
+            <div class="psub">Deliver the care in the home, rewarded for results.</div>
+          </div>
+        </div>
+        <div class="flowrail back">
+          <div class="line"></div>
+          <div class="lab">&larr;&nbsp;Outcomes, data &amp; shared savings flow back</div>
+        </div>
+      </div>
+
+      <div class="flow">
+        <div class="fstep">
+          <div class="fnum">1</div>
+          <div class="fbody">
+            <h3>Payers send us members</h3>
+            <p>Health plans, ACOs, hospitals, and full-risk groups &mdash; the parties who bear the cost of care &mdash; route their high-risk, home-care-appropriate members to Aponot.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <div class="fnum">2</div>
+          <div class="fbody">
+            <h3>We match members to the right agencies</h3>
+            <p>We place each member with a vetted agency in our network and set an outcome-focused care plan &mdash; targeting the specific moments that drive avoidable cost, not just hours of coverage.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <div class="fnum">3</div>
+          <div class="fbody">
+            <h3>We manage the agencies and coordinate care</h3>
+            <p>We run the measurement and coordination layer across the network: protocols, escalation, and the data that connects what happens in the home to downstream medical outcomes.</p>
+          </div>
+        </div>
+        <div class="fstep money">
+          <div class="fnum">4</div>
+          <div class="fbody">
+            <h3>Payers share the savings with us</h3>
+            <p>When avoidable admissions, ER visits, and facility stays fall, the risk-bearing payer <strong>shares the savings</strong> those prevented events represent with Aponot.</p>
+          </div>
+        </div>
+        <div class="fstep money">
+          <div class="fnum">5</div>
+          <div class="fbody">
+            <h3>We share the savings with our agencies</h3>
+            <p>We pass a share through to the agencies that produced the results &mdash; <strong>rewarding outcomes, not just billable hours</strong>. That incentive pulls the whole network toward what actually works, and the cycle compounds.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: BUILT ON A DECADE OF VBC -->
+    <section>
+      <h2 class="sec-h">Built on a decade of what value-based care has already proven.</h2>
+      <p class="prose">
+        Primary care, hospitals, and skilled care have spent more than ten years inside value-based payment, and in the process the field learned which activities actually move outcomes &mdash; and which don't. Rapid post-discharge follow-up, medication reconciliation, 24/7 access, and in-person contact move the needle. More visits for their own sake, and telephone-only check-ins, largely don't.
+      </p>
+      <p class="prose">
+        Aponot doesn't re-learn those lessons. <strong>We take the levers a decade of value-based care has already validated, and overlay what only home care can do</strong> &mdash; a caregiver in the home nearly every day, positioned to catch the small signals that become the largest costs.
+      </p>
+      <div class="twocol">
+        <div class="lcard">
+          <div class="clab">What a decade of VBC proved works</div>
+          <h3>The validated levers</h3>
+          <ul>
+            <li>Rapid, structured follow-up in the days after a hospital discharge</li>
+            <li>Medication reconciliation and adherence support</li>
+            <li>24/7 access and early escalation before a crisis</li>
+            <li>Frequent, in-person contact &mdash; not telephone-only</li>
+            <li>Tight targeting of the patients whose costs are actually preventable</li>
+          </ul>
+        </div>
+        <div class="lcard add">
+          <div class="clab">What home care uniquely adds</div>
+          <h3>The home-care overlay</h3>
+          <ul>
+            <li>A caregiver physically in the home, nearly every day</li>
+            <li>Medication and functional status observed, not self-reported</li>
+            <li>Decline caught early &mdash; the fall, the confusion, the missed meal</li>
+            <li>Transportation and follow-through on the appointments that matter</li>
+            <li>The highest-frequency touchpoint between clinical visits</li>
+          </ul>
+        </div>
+      </div>
+      <p class="prose" style="margin-top:22px;">
+        Put the proven levers in the one setting that can execute them daily, and the result is <strong>incremental value</strong> on top of everything the health system already does.
+      </p>
+    </section>
+
+    <!-- SECTION 3: WHY CENTRALIZING WINS -->
+    <section class="band">
+      <h2 class="sec-h">Why a network drives results no single player can reach alone.</h2>
+      <p class="prose">
+        The value isn't only in the care &mdash; it's in centralizing three things that are weak or impossible for any one agency, or any one payer, on its own.
+      </p>
+      <div class="three">
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#c66540" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="15" r="6"/><path d="M12 38 c0-7 5-11 12-11 s12 4 12 11"/>
+            <circle cx="9" cy="19" r="4"/><circle cx="39" cy="19" r="4"/>
+          </svg></div>
+          <h3>Aggregator of demand</h3>
+          <p>We pool members from many payers into one network &mdash; giving agencies steady, outcome-based volume they could never assemble alone, and giving payers a single accountable partner instead of thousands of fragmented agencies.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#c66540" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 6 L39 12 V24 c0 10-7 15-15 18 c-8-3-15-8-15-18 V12 Z"/><path d="M18 24 l4 4 l8-9"/>
+          </svg></div>
+          <h3>Pooler of risk</h3>
+          <p>Spreading outcomes across many members and many agencies turns what is noise for one small agency into a stable, measurable signal &mdash; the kind a payer can actually underwrite and reward.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#c66540" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="9" width="32" height="24" rx="3"/><path d="M15 27 l6-7 l5 4 l7-9"/><path d="M19 39 h10 M24 33 v6"/>
+          </svg></div>
+          <h3>AI-powered data layer</h3>
+          <p>The coordination and measurement engine &mdash; linking in-home signals to medical outcomes &mdash; gets sharper with every member, steering care toward what works at a scale no individual player can match.</p>
+        </div>
+      </div>
+      <p class="compound">
+        Centralized, these three compound: <strong>more demand sharpens the data, better data earns more savings, and more savings attracts more demand.</strong> That flywheel is the outsized result &mdash; one no single agency or payer could produce on its own.
+      </p>
+    </section>
+
+    <!-- CLOSE -->
+    <div class="close">
+      <p><strong>Aponot is building this with payers, providers, and home-care agencies.</strong> If you work in value-based care, home-based care, care transitions, or agency operations, we'd welcome a conversation.</p>
+      <div class="cta-row">
+        <a href="https://calendly.com/joshua-aponot" class="cta-button">Get in touch</a>
+        <a href="/value-based-care" class="cta-button secondary">Why value-based care</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div>&copy; 2026 Aponot</div>
+    <nav class="footer-nav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/benefits">For employers</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/benefits/articles">Resources</a>
+      <a href="/privacy">Privacy</a>
+      <a href="mailto:hello@aponot.com">Contact</a>
+    </nav>
+  </footer>
+
+</div>
+
+</body>
+</html>
