@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aponot — Elder care that works for your workforce</title>
-  <meta name="description" content="Elder care as an employee benefit — concierge care navigation and licensed home care — for the sandwich generation your business depends on." />
+  <title>Aponot — Bringing value-based care to home care</title>
+  <meta name="description" content="Aponot is a healthcare company working to bring value-based care to home care — integrating home care with the health system, aligning incentives across payers, providers, and patients, and connecting care delivery to health outcomes." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
@@ -12,18 +12,20 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      /* Warm dusty dark — softer than pitch black, subtle brown undertone */
       --bg: #ffffff;
       --text: #1c1a17;
+      --ink-soft: #4a4744;
       --muted: #8a857e;
       --line: rgba(28, 26, 23, 0.12);
+      --line-soft: rgba(28, 26, 23, 0.07);
       --line-strong: rgba(28, 26, 23, 0.22);
-      /* Warmth accent — terra cotta */
+      --track: rgba(28, 26, 23, 0.07);
       --terra: #c66540;
-      --terra-soft: rgba(198, 101, 64, 0.12);
-      /* Emphasis / credibility — MIT crimson */
+      --terra-soft: rgba(198, 101, 64, 0.09);
       --crimson: #a31f34;
       --crimson-hover: #b32540;
+      --crimson-soft: rgba(163, 31, 52, 0.06);
+      --band: #f4f2ef;
     }
 
     html, body {
@@ -39,620 +41,191 @@
 
     a { color: inherit; text-decoration: none; }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding: 0 40px 40px;
-    }
+    .page { min-height: 100vh; display: flex; flex-direction: column; padding: 40px; }
 
-    header {
-      position: absolute; top: 0; left: 0; right: 0; z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 30px 40px;
-      text-shadow: 0 1px 12px rgba(0,0,0,0.28);
-    }
-    header .brand { display: inline-flex; align-items: center; }
-    header .brand img { height: 30px; width: auto; display: block; }
-    header .login-link {
-      font-size: 14px;
-      font-weight: 500;
-      color: #ffffff;
-      padding: 8px 18px;
-      border: 1px solid rgba(255,255,255,0.55);
-      border-radius: 999px;
-      transition: background .15s, border-color .15s, color .15s;
-    }
-    header .login-link:hover { background: rgba(255,255,255,0.16); border-color: #ffffff; color: #ffffff; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    header .brand img { height: 28px; width: auto; display: block; }
+    header .topnav { display: flex; align-items: center; gap: 22px; font-size: 14px; color: var(--muted); flex-wrap: wrap; }
+    header .topnav a { text-decoration: none; color: inherit; transition: color .15s; }
+    header .topnav a:not(.login-link):hover { color: var(--text); }
+    header .topnav a.active { color: var(--text); }
+    header .login-link { color: var(--text); padding: 8px 18px; border: 1px solid var(--line-strong); border-radius: 999px; transition: background .15s, border-color .15s, color .15s; }
+    header .login-link:hover { background: var(--terra-soft); border-color: var(--terra); color: var(--terra); }
+    @media (max-width: 640px){ header .topnav a:not(.login-link){ display: none; } }
 
-    header .topnav {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.88);
-    }
-    header .topnav a { color: inherit; transition: color .15s; }
-    header .topnav a:not(.login-link):hover { color: #ffffff; }
+    main { flex: 1; max-width: 880px; margin: 0 auto; width: 100%; padding: 80px 0 40px; }
 
-
-    main {
-      flex: 1;
-      max-width: 880px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 0 0 40px;
-    }
+    .eyebrow { font-size: 11px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 22px; }
 
     h1 {
       font-family: 'Fraunces', Georgia, serif;
-      font-size: 56px;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      line-height: 1.05;
-      margin-bottom: 32px;
-      color: var(--text);
-      max-width: 760px;
+      font-size: 56px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.05;
+      margin-bottom: 30px; color: var(--text); max-width: 780px;
     }
 
-    .lede {
-      font-size: 19px;
-      color: var(--muted);
-      max-width: 640px;
-      margin-bottom: 96px;
-    }
+    .lede { font-size: 19px; color: var(--muted); max-width: 680px; margin-bottom: 20px; }
+    .lede strong { color: var(--text); font-weight: 500; }
 
-    section.block {
-      padding-top: 64px;
-      margin-top: 64px;
-      border-top: 1px solid var(--line);
-    }
-
-    section.block:first-of-type {
-      border-top: none;
-      margin-top: 0;
-      padding-top: 0;
-    }
-
-    section.block h2 {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 32px;
-      font-weight: 500;
-      letter-spacing: -0.015em;
-      line-height: 1.15;
-      color: var(--text);
-      margin-bottom: 24px;
-      max-width: 640px;
-      display: none; /* Only used in some sections, remove per section as needed */
-    }
-
-    .kicker {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--terra);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 24px;
-    }
-
-    section.block p {
-      font-size: 17px;
-      color: var(--text);
-      max-width: 640px;
-      margin-bottom: 20px;
-    }
-
-    section.block p:last-child { margin-bottom: 0; }
-
-    section.block p.muted {
-      color: var(--muted);
-    }
-
-    /* Miss-list — clean bulleted structure for "what existing benefits miss" */
-    .miss-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-top: 32px;
-      max-width: 640px;
-    }
-
-    .miss-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    .miss-marker {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--terra);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding-top: 4px;
-      white-space: nowrap;
-    }
-
-    .miss-body {
-      font-size: 17px;
-      color: var(--text);
-      line-height: 1.55;
-    }
-
-    .miss-body strong {
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .miss-punchline {
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
-      font-size: 17px;
-      color: var(--muted);
-    }
-
-    .miss-punchline strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* Impact section */
-    .impact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      margin-top: 40px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    .impact-cell {
-      background: var(--bg);
-      padding: 48px 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .impact-value {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 68px;
-      font-weight: 500;
-      letter-spacing: -0.025em;
-      line-height: 0.95;
-      color: var(--text);
-    }
-
-    /* First (headline) impact number gets crimson emphasis */
-    .impact-cell:first-child .impact-value {
-      color: var(--crimson);
-    }
-
-    .impact-label {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.5;
-      margin-top: 8px;
-    }
-
-    .impact-scenario {
-      margin-top: 24px;
-      padding: 24px 0 0;
-      border-top: 1px solid var(--line);
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .impact-scenario strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* Workforce cost visualization */
-    .wf-viz { margin-top: 44px; display: grid; grid-template-columns: minmax(0,430px) 1fr; gap: 48px; align-items: center; }
-    .wf-label { font-size: 12px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
-    .wf-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 9px; }
-    .wf-grid span { display: block; }
-    .wf-grid svg, .wf-note .swatch svg { width: 100%; height: auto; display: block; }
-    .p-none { color: #201d1a; }
-    .p-care { color: var(--crimson); }
-    .p-leave { color: #c8c2ba; }
-    .wf-notes { display: flex; flex-direction: column; gap: 22px; }
-    .wf-note { display: flex; gap: 14px; align-items: flex-start; }
-    .wf-note .swatch { flex: 0 0 auto; width: 26px; height: 26px; margin-top: 2px; }
-    .wf-note p { font-size: 16px; line-height: 1.5; color: var(--text); margin: 0; max-width: none; }
-    .wf-note strong { font-weight: 500; }
-    .wf-note.care strong { color: var(--crimson); }
-    .wf-note.leave strong { color: #8a857e; }
-    .cost-head { margin-top: 46px; font-size: 12px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.11em; }
-    .cost-bullets { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-    .cost-cell { background: var(--bg); padding: 26px 24px; }
-    .cost-num { font-family: 'Fraunces', Georgia, serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; color: var(--crimson); }
-    .cost-cell:not(:first-child) .cost-num { color: var(--text); }
-    .cost-desc { font-size: 14px; color: var(--muted); line-height: 1.5; margin-top: 12px; }
-    @media (max-width: 760px) { .wf-viz { grid-template-columns: 1fr; gap: 30px; } .wf-grid { max-width: 380px; } .cost-bullets { grid-template-columns: 1fr; } }
-
-    /* Who we are — MIT emphasis */
-    .credentials-line {
-      display: inline;
-    }
-
-    .credentials-line .mit {
-      color: var(--crimson);
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    /* Testimonial / voice callout */
-    .voice-callout {
-      margin-top: 40px;
-      padding: 32px 36px;
-      background: var(--terra-soft);
-      border-left: 3px solid var(--terra);
-      border-radius: 4px;
-      max-width: 640px;
-    }
-
-    .voice-callout blockquote {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 22px;
-      font-weight: 400;
-      line-height: 1.4;
-      color: var(--text);
-      font-style: italic;
-      margin-bottom: 12px;
-    }
-
-    .voice-callout .attribution {
-      font-size: 13px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    /* Form section */
-    section.form-block {
-      padding-top: 64px;
-      margin-top: 96px;
-      border-top: 1px solid var(--line);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: 440px;
-      margin-top: 32px;
-    }
-
-    input, textarea {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid var(--line-strong);
-      color: var(--text);
-      padding: 12px 0;
-      font-family: inherit;
-      font-size: 15px;
-      transition: border-color 120ms;
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-bottom-color: var(--terra);
-    }
-
-    input::placeholder, textarea::placeholder {
-      color: var(--muted);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 60px;
-      line-height: 1.5;
-      font-family: inherit;
-    }
-
-    button {
-      align-self: flex-start;
-      margin-top: 16px;
-      background: var(--crimson);
-      color: #fff;
-      border: none;
-      padding: 14px 28px;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 500;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: background-color 120ms;
-      letter-spacing: 0.01em;
-    }
-
-    button:hover { background: var(--crimson-hover); }
-    button:disabled { opacity: 0.5; cursor: default; }
-
-    footer {
-      padding: 60px 40px 32px;
-      font-size: 13px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      max-width: 880px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    footer a { text-decoration: underline; text-decoration-color: var(--line-strong); }
-
-    footer .footer-nav {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .sources {
-      margin-top: 24px;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* Founding team */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
-      max-width: 640px;
-    }
-    .team-card { display: flex; flex-direction: column; gap: 10px; }
-    .team-avatar {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: var(--terra-soft); color: var(--terra);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500;
-    }
-    .team-name { font-size: 15px; font-weight: 500; color: var(--text); }
-    .team-role { font-size: 13px; color: var(--muted); margin-top: -6px; }
-    .team-link { font-size: 13px; color: var(--terra); text-decoration: none; }
-    .team-link:hover { text-decoration: underline; }
-
-    /* Primary CTA button (link styled) */
-    .cta-row { margin-top: 28px; }
-    .cta-button {
-      display: inline-block;
-      background: var(--crimson); color: #fff;
-      padding: 14px 28px; border-radius: 999px;
-      font-size: 14px; font-weight: 500; letter-spacing: 0.01em;
-      transition: background-color 120ms;
-    }
-    .cta-button:hover { background: var(--crimson-hover); }
-    .calc-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 34px; font-size: 15px; font-weight: 500; color: var(--crimson); padding: 13px 26px; border: 1px solid var(--line-strong); border-radius: 999px; transition: background .15s, border-color .15s, color .15s; }
-    .calc-cta:hover { background: var(--terra-soft); border-color: var(--terra); color: var(--terra); }
-
-    /* Agency partners comparison */
-    .cmp-list { margin-top: 20px; }
-    .cmp-row { display: grid; grid-template-columns: 230px 1fr; gap: 40px; align-items: center; padding: 30px 0; border-top: 1px solid var(--line); }
-    .cmp-hero .big { font-family: 'Fraunces', Georgia, serif; font-size: 50px; font-weight: 500; color: var(--crimson); line-height: 0.95; letter-spacing: -0.025em; }
-    .cmp-hero .lab { font-size: 16px; font-weight: 500; color: var(--text); margin-top: 10px; line-height: 1.35; }
-    .cmp-hero .dir { font-size: 12px; color: var(--muted); margin-top: 8px; }
-    .cmp-metric { font-size: 11.5px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
-    .cmp-bars { display: flex; flex-direction: column; gap: 12px; }
-    .cmp-bar { display: grid; grid-template-columns: 120px 1fr auto; gap: 14px; align-items: center; }
-    .cmp-bname { font-size: 13px; color: var(--muted); text-align: right; white-space: nowrap; }
-    .cmp-bname.ours { color: var(--text); font-weight: 500; }
-    .cmp-track { background: rgba(28,26,23,0.05); border-radius: 999px; height: 24px; overflow: hidden; }
-    .cmp-fill { height: 24px; border-radius: 999px; min-width: 8px; }
-    .cmp-fill.ours { background: var(--crimson); }
-    .cmp-fill.them { background: #c9c3bb; }
-    .cmp-val { font-size: 14px; font-weight: 500; color: var(--text); white-space: nowrap; min-width: 62px; text-align: right; }
-    .cmp-src { margin-top: 30px; font-size: 11.5px; color: var(--muted); line-height: 1.6; max-width: 760px; }
-    @media (max-width: 760px) {
-      .cmp-row { grid-template-columns: 1fr; gap: 18px; padding: 26px 0; }
-      .cmp-hero .big { font-size: 44px; }
-    }
-    @media (max-width: 640px) {
-      .cmp-bar { grid-template-columns: 84px 1fr auto; gap: 10px; }
-      .cmp-bname { font-size: 12px; }
-      .cmp-val { min-width: 54px; font-size: 13px; }
-    }
-
-    /* Credential seals + cards layout */
-    .trust-layout {
-      display: grid; grid-template-columns: 172px 1fr; gap: 44px;
-      align-items: center; margin-top: 38px;
-    }
-    .cred-seals { display: flex; flex-direction: column; gap: 30px; align-items: center; }
-    .cred-seals img {
-      height: auto; display: block;
-      filter: grayscale(100%); opacity: 0.5;
-      transition: opacity .18s, filter .18s;
-    }
-    .cred-seals img:hover { filter: grayscale(0%); opacity: 1; }
-    @media (max-width: 760px) {
-      .trust-layout { grid-template-columns: 1fr; gap: 30px; }
-      .cred-seals { flex-direction: row; justify-content: center; gap: 44px; }
-    }
-
-    /* Icon trust cards */
-    .trust-cards {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-      margin-top: 36px; max-width: 720px;
-    }
-    .trust-card {
-      position: relative; overflow: hidden;
-      background: #faf9f7; border: 1px solid var(--line); border-radius: 12px;
-      padding: 30px 28px; min-height: 188px;
-      display: flex; flex-direction: column; justify-content: flex-end; gap: 10px;
-    }
-    .trust-watermark {
-      position: absolute; top: -20px; right: -14px;
-      width: 150px; height: 150px; color: rgba(28,26,23,0.08);
-      pointer-events: none;
-    }
-    .trust-watermark svg { width: 100%; height: 100%; display: block; stroke-width: 1.25; }
-    .trust-card h3 { position: relative; z-index: 1; font-size: 16px; font-weight: 500; color: var(--text); }
-    .trust-card p { position: relative; z-index: 1; font-size: 14px; color: var(--muted); line-height: 1.5; margin: 0; max-width: none; }
-
-    /* Competitor-type icons */
-    .miss-lead { display: flex; flex-direction: column; gap: 13px; width: 150px; }
-    .miss-icon {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: rgba(198,101,64,0.09); color: var(--terra);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .miss-icon svg { width: 34px; height: 34px; }
-    /* Stat icons */
-    .impact-icon { color: var(--terra); height: 48px; margin-bottom: 4px; }
-    .impact-icon svg { width: 48px; height: 48px; display: block; }
-
-    /* Soft panel (used for Who we are + CTA) */
-    .panel {
-      background: #faf9f7; border: 1px solid var(--line);
-      border-radius: 16px; padding: 44px 44px;
-    }
-
-    /* "Worked closely with" strip */
-    .logo-strip { margin-top: 34px; padding-top: 30px; border-top: 1px solid var(--line); }
-    .logo-strip-label {
-      font-size: 11.5px; font-weight: 500; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 0.09em; line-height: 1.5;
-      margin-bottom: 20px; max-width: 520px;
-    }
-    .logo-carousel { display: flex; align-items: center; gap: 12px; }
-    .lc-track {
-      display: flex; align-items: center; gap: 44px; flex: 1;
-      overflow-x: auto; scroll-behavior: smooth; padding: 8px 2px;
-      scrollbar-width: none; -ms-overflow-style: none;
-    }
-    .lc-track::-webkit-scrollbar { display: none; }
-    .lc-track img {
-      flex: 0 0 auto; width: auto; display: block;
-      filter: grayscale(100%); opacity: 0.6;
-      transition: opacity .18s, filter .18s;
-    }
-    .lc-track img:hover { filter: grayscale(0%); opacity: 1; }
-    .lc-arrow {
-      flex: 0 0 auto; width: 30px; height: 36px; border: none; background: none; padding: 0;
-      color: var(--muted); cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: color .15s;
-    }
-    .lc-arrow:hover { color: var(--terra); }
-    .lc-arrow svg { width: 16px; height: 16px; fill: currentColor; display: block; }
-    @media (max-width: 640px) { .lc-track { gap: 30px; } }
-
-    /* Numbered steps */
-    .steps-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 36px; }
-    .step-item { display: flex; flex-direction: column; gap: 14px; }
-    .step-num {
-      width: 46px; height: 46px; border-radius: 50%;
-      border: 1.5px solid var(--terra); color: var(--terra);
-      font-family: 'Fraunces', Georgia, serif; font-size: 21px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .step-item h3 { font-size: 16px; font-weight: 500; color: var(--text); }
-    .step-item p { font-size: 15px; color: var(--muted); line-height: 1.55; margin: 0; max-width: none; }
-    .step-photo { position: relative; width: 128px; height: 128px; margin-bottom: 4px; }
-    .step-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; box-shadow: 0 2px 6px rgba(28,26,23,0.08), 0 12px 28px rgba(28,26,23,0.12); }
-    .step-badge { position: absolute; bottom: -2px; right: -2px; width: 36px; height: 36px; border-radius: 50%; background: var(--crimson); color: #fff; font-family: 'Fraunces', Georgia, serif; font-size: 17px; display: flex; align-items: center; justify-content: center; border: 3px solid var(--bg); }
-
-    /* Hero — full-bleed photo banner with white text overlay */
+    /* Hero — full-bleed photo, softly faded to white so dark text reads */
     .hero {
       position: relative;
       width: 100vw; left: 50%; right: 50%;
-      margin-left: -50vw; margin-right: -50vw; margin-top: 0; margin-bottom: 84px;
-      min-height: 668px;
+      margin-left: -50vw; margin-right: -50vw;
+      margin-top: -40px; margin-bottom: 14px;
+      min-height: 740px;
       display: flex; align-items: flex-end;
       overflow: hidden;
     }
     .hero-media { position: absolute; inset: 0; }
-    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 32%; display: block; }
     .hero-scrim {
       position: absolute; inset: 0;
       background:
-        linear-gradient(to bottom, rgba(22,17,14,0.46) 0%, rgba(22,17,14,0) 26%),
-        linear-gradient(100deg, rgba(22,17,14,0.70) 0%, rgba(22,17,14,0.34) 46%, rgba(22,17,14,0.05) 100%);
+        linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.64) 20%, rgba(255,255,255,0.12) 52%, rgba(255,255,255,0) 72%),
+        linear-gradient(100deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.36) 40%, rgba(255,255,255,0) 68%),
+        linear-gradient(rgba(255,255,255,0.14), rgba(255,255,255,0.14));
     }
     .hero-inner {
       position: relative; z-index: 2;
-      width: 100%; max-width: 960px; margin: 0 auto;
-      padding: 0 40px 76px;
+      width: 100%; max-width: 880px; margin: 0 auto;
+      padding: 0 40px 62px;
     }
-    .hero-content { max-width: 540px; }
-    .hero-content h1 {
-      color: #ffffff; font-size: 54px; line-height: 1.04; letter-spacing: -0.02em;
-      margin-bottom: 20px; max-width: none;
-      text-shadow: 0 2px 22px rgba(0,0,0,0.30);
-    }
-    .hero-content .hero-sub {
-      color: rgba(255,255,255,0.92); font-size: 19px; line-height: 1.5;
-      max-width: 470px; margin-bottom: 30px;
-      text-shadow: 0 1px 16px rgba(0,0,0,0.34);
-    }
-    .hero-content .cta-button { margin: 0; box-shadow: 0 10px 26px rgba(0,0,0,0.28); }
-    @media (max-width: 760px) {
-      .hero { min-height: 560px; margin-bottom: 52px; }
-      .hero-inner { padding: 0 24px 48px; }
-      .hero-content h1 { font-size: 35px; }
-      .hero-content .hero-sub { font-size: 16px; }
+    .hero-content { max-width: 640px; }
+    .hero-content .eyebrow { margin-bottom: 18px; }
+    .hero-content h1 { margin-bottom: 0; text-shadow: 0 1px 22px rgba(255,255,255,0.7); }
+    @media (max-width: 640px){
+      .hero { min-height: 440px; margin-top: -8px; }
+      .hero-inner { padding: 0 24px 36px; }
     }
 
-    /* Full-bleed section bands */
-    .band {
-      position: relative; left: 50%; right: 50%;
-      width: 100vw; margin-left: -50vw; margin-right: -50vw;
-    }
-    section.block.band { margin-top: 44px; padding-top: 0; border-top: none; }
-    .band-grey { background: #faf9f7; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .band-inner { max-width: 960px; margin: 0 auto; padding: 78px 40px; }
-    @media (max-width: 640px) { .band-inner { padding: 52px 24px; } section.block.band { margin-top: 28px; } }
+    section { margin-top: 96px; }
+    .sec-h { font-family: 'Fraunces', Georgia, serif; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 24px; color: var(--text); max-width: 720px; }
+    .prose { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 680px; margin-bottom: 18px; }
+    .prose strong { color: var(--text); font-weight: 500; }
 
-    /* Problem section two-column */
-    .problem-cols { display: grid; grid-template-columns: 1fr 300px; gap: 44px; align-items: start; }
-    .problem-figure {
-      border-radius: 14px; overflow: hidden;
-      box-shadow: 0 1px 3px rgba(28,26,23,0.06), 0 8px 26px rgba(28,26,23,0.06);
-    }
-    .problem-figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 22%; display: block; }
-    @media (max-width: 640px) { .problem-cols { grid-template-columns: 1fr; gap: 30px; } .problem-figure { max-width: 340px; } }
+    /* VBC maturation timeline */
+    .tl { position: relative; margin-top: 40px; padding-top: 8px; }
+    .tlrow { display: grid; grid-template-columns: 210px 1fr; gap: 22px; align-items: center; padding: 12px 0; }
+    .tlrow.hl { background: var(--crimson-soft); border-radius: 10px; margin: 0 -14px; padding: 12px 14px; }
+    .tl .lbl .nm { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.25; }
+    .tl .lbl .pg { font-size: 12px; color: var(--muted); line-height: 1.4; margin-top: 3px; }
+    .tl .lbl .pg.none { color: var(--crimson); }
+    .tl .track { position: relative; height: 34px; }
+    .tl .bar { position: absolute; top: 50%; transform: translateY(-50%); height: 12px; border-radius: 6px; background: var(--terra); }
+    .tl .bar.crim { background: var(--crimson); }
+    .tl .bar .yr { position: absolute; left: 0; top: -19px; font-size: 12.5px; font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
+    .tl .bar.crim .yr { color: var(--crimson); }
+    .tl .bar .dot { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 9px; height: 9px; border-radius: 50%; background: #fff; border: 2px solid var(--terra); }
+    .tl .bar .dotlab { position: absolute; top: 15px; transform: translateX(-50%); font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+    .today { position: absolute; top: 0; bottom: 34px; right: 0; border-left: 1.5px dashed var(--crimson); }
+    .today .tlab { position: absolute; top: -6px; right: 6px; font-size: 10.5px; font-weight: 600; color: var(--crimson); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+    .axis { display: grid; grid-template-columns: 210px 1fr; gap: 22px; margin-top: 6px; }
+    .axis .ticks { position: relative; height: 18px; border-top: 1px solid var(--line); }
+    .axis .tick { position: absolute; top: 6px; transform: translateX(-50%); font-size: 11.5px; color: var(--muted); }
+    .axis .tick:first-child { transform: translateX(0); }
+    .axis .tick:last-child { transform: translateX(-100%); }
+    .cap { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-top: 26px; max-width: 820px; }
+    .cap strong { color: var(--ink-soft); font-weight: 600; }
+    /* timeline takeaways */
+    .takeaways { list-style: none; margin: 34px 0 0; padding: 0; max-width: 780px; display: grid; gap: 14px; }
+    .takeaways li { position: relative; padding-left: 30px; font-size: 15px; color: var(--ink-soft); line-height: 1.55; }
+    .takeaways li::before { content: ""; position: absolute; left: 8px; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--terra); }
+    .takeaways li.key::before { background: var(--crimson); }
+    .takeaways li strong { color: var(--text); font-weight: 600; }
+    .takeaways .src { display: block; margin-top: 18px; padding-left: 30px; font-size: 12px; color: var(--muted); line-height: 1.6; max-width: 820px; }
+    @media (max-width: 720px){ .tlrow, .axis { grid-template-columns: 150px 1fr; gap: 14px; } .tl .lbl .nm { font-size: 13.5px; } }
+
+    /* stat tiles */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+    .stat { border: 1px solid var(--line); border-radius: 14px; border-top: 2px solid var(--terra); padding: 22px 22px 20px; }
+    .stat .n { font-family: 'Fraunces', Georgia, serif; font-size: 32px; font-weight: 500; color: var(--crimson); line-height: 1.02; letter-spacing: -0.01em; }
+    .stat .n small { font-size: 15px; color: var(--ink-soft); font-weight: 400; }
+    .stat .l { font-size: 14px; color: var(--ink-soft); line-height: 1.5; margin-top: 12px; }
+    .sources { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin-top: 20px; max-width: 760px; }
+    @media (max-width: 720px){ .crow { grid-template-columns: 1fr; gap: 8px; } .crow .tag { text-align: left; } .stats { grid-template-columns: 1fr; } }
+
+    /* outcomes */
+    .outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 8px; }
+    .ocard { border: 1px solid var(--line); border-radius: 16px; padding: 26px 26px 22px; background: #fff; box-shadow: 0 1px 2px rgba(28,26,23,0.03); }
+    .ocard .oname { font-family: 'Fraunces', Georgia, serif; font-size: 21px; font-weight: 500; line-height: 1.15; margin-bottom: 10px; color: var(--text); }
+    .ocard .omech { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+    .ocard .oevi { font-size: 13px; color: var(--ink-soft); line-height: 1.5; border-top: 1px solid var(--line); padding-top: 13px; }
+    .ocard .oevi .lab { display: block; font-size: 10.5px; font-weight: 600; color: var(--terra); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
+    .ocard .oevi strong { color: var(--crimson); font-weight: 600; }
+    .outcome-note { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 680px; margin-top: 26px; }
+    .outcome-note strong { color: var(--text); font-weight: 500; }
+    @media (max-width: 720px){ .outcomes { grid-template-columns: 1fr; } }
+
+    /* mission / product intro */
+    .mission-note { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 700px; margin-bottom: 18px; }
+    .mission-note strong { color: var(--text); font-weight: 500; }
+
+    /* testimonials */
+    .tmon { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+    .tcard { position: relative; border: 1px solid var(--line); border-radius: 16px; padding: 30px 26px 24px; background: #fff; box-shadow: 0 1px 2px rgba(28,26,23,0.03); display: flex; flex-direction: column; }
+    .tcard .qmark { position: absolute; top: 12px; left: 24px; font-family: 'Fraunces', Georgia, serif; font-size: 46px; line-height: 1; color: var(--crimson); opacity: 0.22; }
+    .tcard .quote { font-size: 15.5px; color: var(--ink-soft); line-height: 1.62; margin: 14px 0 22px; flex: 1; }
+    .tcard .who { display: flex; align-items: center; gap: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+    .tcard .who .avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; flex: none; background: var(--track); }
+    .tcard .who .ph { display: flex; align-items: center; justify-content: center; color: var(--muted); }
+    .tcard .who .ph svg { width: 24px; height: 24px; }
+    .tcard .who .meta .nm { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.3; }
+    .tcard .who .meta .loc { font-size: 12.5px; color: var(--muted); line-height: 1.35; margin-top: 2px; }
+    .tmon-note { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin-top: 22px; max-width: 760px; }
+    @media (max-width: 720px){ .tmon { grid-template-columns: 1fr; } }
+
+    /* full-bleed grey band */
+    section.band { margin: 88px calc(50% - 50vw); padding: 76px calc(50vw - 50%); background: var(--band); }
+    section.band > *:first-child { margin-top: 0; }
+
+    /* numbered pillars / flow */
+    .flow { margin-top: 8px; }
+    .fstep { display: grid; grid-template-columns: 56px 1fr; gap: 26px; padding: 30px 0; border-top: 1px solid var(--line); }
+    .fstep:last-child { border-bottom: 1px solid var(--line); }
+    .ficon { width: 56px; height: 56px; border-radius: 16px; background: rgba(198,101,64,0.13); display: flex; align-items: center; justify-content: center; }
+    .ficon svg { width: 32px; height: 32px; display: block; }
+    .fnum { width: 56px; height: 56px; border-radius: 16px; background: rgba(198,101,64,0.13); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--crimson); }
+    .fbody h3 { font-family: 'Fraunces', Georgia, serif; font-size: 23px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 10px; color: var(--text); }
+    .fbody p { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 660px; }
+    .fbody p strong { color: var(--text); font-weight: 500; }
+    @media (max-width: 640px){ .fstep { grid-template-columns: 48px 1fr; gap: 16px; padding: 24px 0; } .ficon { width: 46px; height: 46px; border-radius: 13px; } .fnum { width: 46px; height: 46px; border-radius: 13px; font-size: 22px; } .ficon svg { width: 27px; height: 27px; } .fbody h3 { font-size: 19px; } .fbody p { font-size: 15px; } }
+
+    /* three-column audiences */
+    .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card { border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px 24px; }
+    .card .clab { font-size: 12px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+    .card h3 { font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1.15; margin-bottom: 10px; }
+    .card p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+    @media (max-width: 720px){ .three { grid-template-columns: 1fr; } }
+
+    /* trust strip */
+    .trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 30px 0; }
+    .trust .tt { display: flex; align-items: center; gap: 8px; font-size: 15.5px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .trust .chk { width: 15px; height: 15px; color: var(--crimson); flex: none; }
+    .trust .td { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+    @media (max-width: 720px){ .trust { grid-template-columns: 1fr 1fr; gap: 22px; } }
+
+    /* close / cta */
+    .close { margin-top: 96px; border-top: 1px solid var(--line); padding-top: 48px; }
+    .close p { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 680px; margin-bottom: 10px; }
+    .close p strong { color: var(--text); font-weight: 500; }
+    .cta-row { margin-top: 30px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .cta-button { background: var(--crimson); color: #fff; padding: 14px 28px; font-size: 14px; font-weight: 500; border-radius: 999px; transition: background-color 120ms; }
+    .cta-button:hover { background: var(--crimson-hover); }
+    .cta-button.secondary { background: transparent; color: var(--text); border: 1px solid var(--line-strong); }
+
+    footer { padding: 60px 40px 32px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; max-width: 880px; margin: 0 auto; width: 100%; }
+    footer .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    footer .footer-nav a { text-decoration: underline; text-decoration-color: var(--line-strong); }
 
     @media (max-width: 640px) {
-      .page { padding: 0 24px 24px; }
-      header { padding: 20px 24px; }
-      header .topnav a:not(.login-link) { display: none; }
-      .team-grid { grid-template-columns: 1fr; gap: 28px; }
-      .trust-cards { grid-template-columns: 1fr; }
-      .steps-row { grid-template-columns: 1fr; gap: 24px; }
-      .panel { padding: 32px 26px; }
-      h1 { font-size: 36px; }
-      .lede { font-size: 16px; margin-bottom: 64px; }
-      main { padding: 0 0 20px; }
-      section.block { padding-top: 48px; margin-top: 48px; }
-      section.form-block { padding-top: 48px; margin-top: 64px; }
-      .impact-grid { grid-template-columns: 1fr; }
-      .impact-cell { padding: 36px 24px; }
-      .impact-value { font-size: 52px; }
-      .voice-callout { padding: 24px 28px; }
-      .voice-callout blockquote { font-size: 19px; }
-      footer {
-        padding: 40px 24px 24px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      footer .footer-nav { gap: 16px; }
+      .page { padding: 24px; }
+      h1 { font-size: 33px; }
+      .lede { font-size: 16px; }
+      main { padding: 40px 0 20px; }
+      section { margin-top: 64px; }
+      .sec-h { font-size: 25px; }
+      footer { padding: 40px 24px 24px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -663,10 +236,10 @@
   <header>
     <a href="/" class="brand"><img src="/logo-red.png" alt="Aponot" /></a>
     <nav class="topnav">
-      <a href="/agencies">For agencies</a>
-      <a href="/articles">Resources</a>
       <a href="/how-it-works">How it works</a>
-      <a href="/impact-calculator">Impact calculator</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/benefits">For employers</a>
+      <a href="/articles">Resources</a>
       <a class="login-link" href="https://app.aponot.com/sign-in">Log in</a>
     </nav>
   </header>
@@ -675,431 +248,311 @@
 
     <div class="hero">
       <div class="hero-media">
-        <img src="/hero.jpg" alt="A caregiver and an older woman sharing a warm, candid moment outdoors" />
+        <img src="/vbc-hero.jpg" alt="A home caregiver guiding an older man through gentle stretching exercises at home" />
         <div class="hero-scrim"></div>
       </div>
       <div class="hero-inner">
         <div class="hero-content">
-          <h1>Elder care that works for your workforce.</h1>
-          <p class="hero-sub">
-            Employees in their 40s and 50s are carrying an invisible second job.
-            Aponot is a benefit that makes it lighter — and keeps them at yours.
-          </p>
-          <a class="cta-button" href="#contact">Get in touch →</a>
+          <div class="eyebrow">Our mission</div>
+          <h1>Bringing value-based care to home care.</h1>
         </div>
       </div>
     </div>
 
-    <section class="block">
-      <div class="kicker">The problem inside your workforce</div>
-      <div class="problem-cols">
-        <div>
-          <p>
-            47% of adults in their 40s and 50s have a parent age 65 or older and
-            are actively caring for them.
-          </p>
-          <p>
-            For most, that care is invisible to their employer — until it isn't.
-            Missed meetings. Distracted workdays. A resignation letter.
-          </p>
-          <p>
-            The cost of caregiver-related absenteeism and turnover in US workplaces
-            is measured in the tens of billions annually.
-          </p>
+    <p class="lede">
+      Aponot brings home care into the rest of the health system &mdash; <strong>connected</strong> to hospitals &amp; health plans, <strong>aligned</strong> around shared goals, and <strong>accountable</strong> for the results it delivers.
+    </p>
 
-          <div class="voice-callout">
-            <blockquote>
-              "By the time I realized my mom needed help, I was already burned out
-              from trying to figure out where to start."
-            </blockquote>
-            <div class="attribution">— Family Caregiver, age 52, Tampa FL</div>
+    <!-- OUR APPROACH (moved directly below hero) -->
+    <section>
+      <h2 class="sec-h">Our approach</h2>
+      <div class="flow">
+        <div class="fstep">
+          <div class="ficon"><svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 25 Q15 19 12 13" stroke="#c66540" stroke-width="2.4" stroke-dasharray="0.5 5.2"/>
+            <path d="M41 25 Q50 19 53 13" stroke="#c66540" stroke-width="2.4" stroke-dasharray="0.5 5.2"/>
+            <path d="M42 41 Q51 46 53 53" stroke="#c66540" stroke-width="2.4" stroke-dasharray="0.5 5.2"/>
+            <circle cx="11" cy="11" r="4.6" fill="#a31f34"/>
+            <circle cx="54" cy="11" r="4.6" fill="#c66540"/>
+            <circle cx="54" cy="54" r="4.6" fill="#c66540"/>
+            <path d="M20 35 L32 24 L44 35 L44 46 Q44 49 41 49 L23 49 Q20 49 20 46 Z" fill="rgba(198,101,64,0.18)" stroke="#c66540" stroke-width="2.7"/>
+            <path d="M28 49 L28 41 Q28 39.5 29.5 39.5 L34.5 39.5 Q36 39.5 36 41 L36 49" fill="#fff" stroke="#a31f34" stroke-width="2.3"/>
+          </svg></div>
+          <div class="fbody">
+            <h3>Connected to the system</h3>
+            <p>We pull home care out of its silo, connecting it to the hospitals, health plans, and employers already involved in providing care — filling the spaces between more formal care to support everyday wellbeing and prevent health crises.</p>
           </div>
         </div>
-        <div class="problem-figure">
-          <img src="/employee.jpg" alt="A working professional at home, worn down while reviewing bills and messages" />
-        </div>
-      </div>
-      <a class="calc-cta" href="/impact-calculator">Calculate what it's costing your team →</a>
-    </section>
-
-    <section class="block">
-      <div class="kicker">What it's costing you</div>
-      <p class="muted">
-        Caregiving isn't just an employee problem. It shows up in your P&amp;L
-        as absenteeism, distraction, presenteeism, and turnover — most of it
-        invisible until you look for it.
-      </p>
-
-      <div class="wf-viz">
-        <div>
-          <div class="wf-label">Your workforce</div>
-          <div class="wf-grid">
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-none"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-care"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-care"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-care"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-care"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <span class="p-leave"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
+        <div class="fstep">
+          <div class="ficon"><svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="47" cy="18" r="8.5" fill="rgba(198,101,64,0.18)" stroke="#c66540" stroke-width="2.7"/>
+            <circle cx="47" cy="18" r="2.6" fill="#a31f34"/>
+            <g stroke="#c66540" stroke-width="2.7">
+              <path d="M10 30 L26 21"/><path d="M22 20.5 L26.4 20.8 L25.2 25"/>
+              <path d="M10 41 L26 32"/><path d="M22 31.5 L26.4 31.8 L25.2 36"/>
+              <path d="M10 52 L26 43"/><path d="M22 42.5 L26.4 42.8 L25.2 47"/>
+            </g>
+          </svg></div>
+          <div class="fbody">
+            <h3>Aligned on goals</h3>
+            <p>While much of home care is focused on maximizing billable hours, we've built a network where partner agencies are rewarded for measurable outcomes.</p>
           </div>
         </div>
-        <div class="wf-notes">
-          <div class="wf-note care">
-            <span class="swatch p-care"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <p>About <strong>1 in 4</strong> employees is quietly caring for an aging parent or family member.</p>
+        <div class="fstep">
+          <div class="ficon"><svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 11 L14 50 L53 50" stroke="#c66540" stroke-width="2.7"/>
+            <path d="M20 20 L29 29 L37 25 L45 36" stroke="#c66540" stroke-width="2.9"/>
+            <path d="M45.6 41.4 C43 38.6 43 35 46 34.6 C47.4 34.4 48.4 35.3 48.6 36.4 C48.8 35.3 49.8 34.4 51.2 34.6 C54.2 35 54.2 38.6 51.6 41.4 L48.6 44 Z" fill="#a31f34" stroke="#a31f34" stroke-width="1.2"/>
+          </svg></div>
+          <div class="fbody">
+            <h3>Accountable for results</h3>
+            <p>We track what actually happens at home and connect it to the outcomes that matter — fewer readmissions, ER visits, and facility stays.</p>
           </div>
-          <div class="wf-note leave">
-            <span class="swatch p-leave"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.2"/><path d="M12 13c-4.3 0-7.5 3-7.5 6.6 0 .8.6 1.4 1.4 1.4h12.2c.8 0 1.4-.6 1.4-1.4C19.5 16 16.3 13 12 13z"/></svg></span>
-            <p>And <strong>1 in 5</strong> of those caregivers will eventually quit, cut their hours, or take leave.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="cost-head">What that quietly costs &mdash; per 1,000 employees</div>
-      <div class="cost-bullets">
-        <div class="cost-cell">
-          <div class="cost-num">$1M+</div>
-          <div class="cost-desc">estimated lost each year to reduced productivity, absence, and turnover.</div>
-        </div>
-        <div class="cost-cell">
-          <div class="cost-num">~1,500</div>
-          <div class="cost-desc">workdays missed a year as employees step away to manage care.</div>
-        </div>
-        <div class="cost-cell">
-          <div class="cost-num">~2,000</div>
-          <div class="cost-desc">hours a week lost to phone calls, scheduling, and coordinating care.</div>
         </div>
       </div>
     </section>
 
-    <section class="block">
-      <div class="kicker">Elder care benefits are becoming a competitive advantage</div>
-      <p>
-        Demand is climbing fast — but supply hasn't kept up. Only about
-        <strong>1 in 8 US employers</strong> offers any eldercare benefit today,
-        and most of those are just referral lines, not actual care. That gap is
-        the opportunity: the employers who deliver real care now are the
-        ones who stand out to the experienced, sandwich-generation talent
-        everyone is fighting to keep.
-      </p>
-      <p>
-        But most current offerings fall short of what employees actually need.
-      </p>
-
-      <div class="miss-list">
-        <div class="miss-item">
-          <div class="miss-lead">
-            <div class="miss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.4" fill="rgba(198,101,64,0.16)" stroke-width="1.5"/><polygon points="16 8 13.4 13.4 8 16 10.6 10.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1" fill="rgba(255,255,255,0.9)" stroke="none"/></svg></div>
-            <div class="miss-marker">Navigation-only apps</div>
-          </div>
-          <div class="miss-body">
-            <strong>Guidance, but no delivery.</strong> A coordinator helps the
-            employee think through options — then leaves them to find, vet, and
-            arrange the actual care on their own.
-          </div>
-        </div>
-
-        <div class="miss-item">
-          <div class="miss-lead">
-            <div class="miss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.2" cy="8.4" r="3" fill="rgba(198,101,64,0.16)" stroke-width="1.5"/><path d="M3.8 19.2a5.4 5.4 0 0 1 10.8 0" fill="rgba(198,101,64,0.16)" stroke-width="1.5"/><circle cx="16.4" cy="9" r="2.5" stroke-width="1.5"/><path d="M15.2 14.2a4.6 4.6 0 0 1 5 4.6" stroke-width="1.5"/></svg></div>
-            <div class="miss-marker">Companion visits</div>
-          </div>
-          <div class="miss-body">
-            <strong>Social visits to the parent.</strong> Friendly, valuable
-            for isolation — but not care. No help with bathing, mobility,
-            medication, or the moments that actually cause a family crisis.
-          </div>
-        </div>
-
-        <div class="miss-item">
-          <div class="miss-lead">
-            <div class="miss-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.5" width="14" height="16" rx="2.2" fill="rgba(198,101,64,0.16)" stroke-width="1.5"/><rect x="9" y="2.8" width="6" height="3.4" rx="1.2" fill="currentColor" stroke="none"/><line x1="8.5" y1="11" x2="15.5" y2="11" stroke-width="1.5"/><line x1="8.5" y1="14.5" x2="13.5" y2="14.5" stroke-width="1.5"/></svg></div>
-            <div class="miss-marker">Referral lists</div>
-          </div>
-          <div class="miss-body">
-            <strong>A vetted list of local agencies.</strong> The employee
-            still calls around, screens providers, negotiates rates, and hopes
-            someone picks up.
-          </div>
-        </div>
-      </div>
-
-      <div class="miss-punchline">
-        Each solves a slice. Aponot is the only one that pairs
-        <strong>concierge care navigation</strong> — a real advisor guiding the
-        family from the very first question — with <strong>real, licensed home
-        care</strong> delivered in the home when it's needed.
-      </div>
-    </section>
-
-    <section class="block">
-      <div class="kicker">How Aponot works</div>
-
-      <p class="muted" style="margin-bottom:34px;">
-        Aponot works on two levels. A <strong>concierge care advisor</strong>
-        helps employees plan and navigate elder care from the very first
-        question — often years before hands-on help is needed, and across
-        everything from assisted living to aging-in-place planning. And when
-        the day comes, <strong>licensed home care</strong> is delivered in the
-        home. The steps below show that delivery path.
-      </p>
-
-      <div class="steps-row">
-        <div class="step-item">
-          <div class="step-photo"><img src="/step-request.jpg" alt="An employee setting up care from her desk at work" /><span class="step-badge">1</span></div>
-          <h3>Request</h3>
-          <p>Employees log in and describe what their loved one needs — often in minutes. No phone tag, no hunting for an agency.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-photo"><img src="/step-match.jpg" alt="A caregiver arriving at an older man's home" /><span class="step-badge">2</span></div>
-          <h3>Match</h3>
-          <p>Aponot matches them with a vetted local agency and arranges a credentialed, background-checked caregiver.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-photo"><img src="/step-care.jpg" alt="A caregiver helping an older man with mobility exercises" /><span class="step-badge">3</span></div>
-          <h3>Care</h3>
-          <p>Care is delivered in the home. Aponot handles scheduling, payment, and follow-up from there.</p>
-        </div>
-      </div>
-
-      <p class="muted" style="margin-top:36px;">
-        Employers pay a predictable subscription. Employees can opt into
-        additional coverage tiers via voluntary payroll deduction.
-      </p>
-    </section>
-
-    <section class="block">
-      <div class="kicker">Built on licensed, credentialed care</div>
-      <p class="muted">
-        Aponot isn&rsquo;t a call center or a directory. Care is delivered by
-        real, licensed agencies and credentialed caregivers — and we hold the
-        network to it.
-      </p>
-
-      <div class="trust-cards">
-        <div class="trust-card">
-          <div class="trust-watermark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <h3>State-licensed agencies</h3>
-          <p>Every agency in the network operates under its own state license, insurance, and workers&rsquo; compensation.</p>
-        </div>
-        <div class="trust-card">
-          <div class="trust-watermark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 10-5.5"/><path d="M15 19l2 2 4-4"/></svg>
-          </div>
-          <h3>Credentialed caregivers</h3>
-          <p>Caregivers are certified (CNA or HHA), background-checked, and verified through the agency employing them.</p>
-        </div>
-        <div class="trust-card">
-          <div class="trust-watermark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-          </div>
-          <h3>HIPAA-compliant</h3>
-          <p>Administrative, physical, and technical safeguards, with Business Associate Agreements available on request.</p>
-        </div>
-        <div class="trust-card">
-          <div class="trust-watermark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9z"/><path d="M12 12v6a2 2 0 0 0 4 0"/></svg>
-          </div>
-          <h3>Fully insured</h3>
-          <p>General, professional (E&amp;O), and cyber liability coverage; certificates available on request.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="block band band-grey">
-      <div class="band-inner">
-      <div class="kicker">Who we are</div>
-      <p>
-        Aponot is built by the operators of a licensed, insured Florida home
-        care agency — not a tech company guessing at care from the outside. We
-        run the operations, employ caregivers, and answer the 2 a.m. calls.
-      </p>
-      <p>
-        Our founding team&rsquo;s background spans years working alongside
-        leading health systems and senior-living communities, together with
-        ex-management consultants and <span class="mit">MIT alumni</span>.
-      </p>
-      <p>
-        We built Aponot to close a gap the benefits industry has circled but
-        never solved: actual care delivery, at scale, at the moments that matter.
-      </p>
-
-      <div class="logo-strip">
-        <div class="logo-strip-label">Healthcare &amp; senior-care companies our founders have worked closely with</div>
-        <div class="logo-carousel">
-          <button class="lc-arrow" type="button" aria-label="Scroll logos left" onclick="scrollLogos(-1)">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 4 L6 12 L16 20 Z"></path></svg>
-          </button>
-          <div class="lc-track" id="logoTrack">
-            <img src="/logos/advent.png" alt="AdventHealth" style="height:30px;" />
-            <img src="/logos/hca.png" alt="HCA Healthcare" style="height:44px;" />
-            <img src="/logos/moffitt.png" alt="Moffitt Cancer Center" style="height:40px;" />
-            <img src="/logos/baycare.png" alt="BayCare" style="height:32px;" />
-            <img src="/logos/brookdale.png" alt="Brookdale Senior Living" style="height:38px;" />
-            <img src="/logos/discovery.png" alt="Discovery Senior Living" style="height:48px;" />
-            <img src="/logos/enhabit.png" alt="Enhabit Home Health &amp; Hospice" style="height:40px;" />
-          </div>
-          <button class="lc-arrow" type="button" aria-label="Scroll logos right" onclick="scrollLogos(1)">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 4 L18 12 L8 20 Z"></path></svg>
-          </button>
-        </div>
-      </div>
-
-      </div>
-    </section>
-
-    <section class="block">
-      <div class="kicker">Our agency partners</div>
-      <p class="muted">
-        Our agency partners don&rsquo;t just meet the standard &mdash; they lead the industry on the
-        measures that actually shape care: keeping their best caregivers, retaining clients, and earning
-        top marks from the families they serve. We vet to that bar, then hold the network to it.
-      </p>
-
-      <div class="cmp-list">
-        <div class="cmp-row">
-          <div class="cmp-hero">
-            <div class="big">40%</div>
-            <div class="lab">lower caregiver turnover</div>
-            <div class="dir">&darr; lower is better</div>
-          </div>
-          <div>
-            <div class="cmp-metric">Caregiver turnover / year</div>
-            <div class="cmp-bars">
-              <div class="cmp-bar"><div class="cmp-bname ours">Aponot network</div><div class="cmp-track"><div class="cmp-fill ours" style="width:47.6%"></div></div><div class="cmp-val">47.6%</div></div>
-              <div class="cmp-bar"><div class="cmp-bname">Industry avg</div><div class="cmp-track"><div class="cmp-fill them" style="width:79.2%"></div></div><div class="cmp-val">~79%</div></div>
+    <!-- Testimonials hidden for launch — restore with real, consented client quotes before re-enabling -->
+    <!--
+<section>
+      <h2 class="sec-h">What families and clients tell us.</h2>
+      <div class="tmon">
+        <div class="tcard">
+          <span class="qmark">&ldquo;</span>
+          <p class="quote">Thanks to Charlene, our caregiver, my mom is able to stay safe in her own home. After she got out of the hospital and then rehab, we were one fall away from moving her into a facility &mdash; but this care changed everything.</p>
+          <div class="who">
+            <img class="avatar" src="/t-avatar-1.jpg" alt="A woman with her mother at home" />
+            <div class="meta">
+              <div class="nm">Daughter of member agency client</div>
+              <div class="loc">Age 47 · Tampa, FL</div>
             </div>
           </div>
         </div>
-
-        <div class="cmp-row">
-          <div class="cmp-hero">
-            <div class="big">5&times;</div>
-            <div class="lab">more CNAs than the industry norm</div>
-            <div class="dir">&uarr; higher is better</div>
-          </div>
-          <div>
-            <div class="cmp-metric">Caregivers who are CNAs &middot; the more clinically-trained credential</div>
-            <div class="cmp-bars">
-              <div class="cmp-bar"><div class="cmp-bname ours">Aponot network</div><div class="cmp-track"><div class="cmp-fill ours" style="width:67%"></div></div><div class="cmp-val">~67%</div></div>
-              <div class="cmp-bar"><div class="cmp-bname">Industry avg</div><div class="cmp-track"><div class="cmp-fill them" style="width:13%"></div></div><div class="cmp-val">~13%</div></div>
+        <div class="tcard">
+          <span class="qmark">&ldquo;</span>
+          <p class="quote">Before finding this care, my mom was constantly in and out of the hospital with severe UTIs. Since Dayan, our caregiver, started giving her regular showers and toileting support, she hasn&rsquo;t had a single infection. This care has literally kept my mom healthy and out of the ER. I am forever grateful.</p>
+          <div class="who">
+            <img class="avatar" src="/t-avatar-2.jpg" alt="A woman with her mother at home" />
+            <div class="meta">
+              <div class="nm">Daughter of member agency client</div>
+              <div class="loc">Age 39 · Cincinnati, OH</div>
             </div>
           </div>
         </div>
-
-        <div class="cmp-row">
-          <div class="cmp-hero">
-            <div class="big">83%</div>
-            <div class="lab">longer client relationships</div>
-            <div class="dir">&uarr; higher is better</div>
-          </div>
-          <div>
-            <div class="cmp-metric">Client length of service &middot; private pay</div>
-            <div class="cmp-bars">
-              <div class="cmp-bar"><div class="cmp-bname ours">Aponot network</div><div class="cmp-track"><div class="cmp-fill ours" style="width:91.7%"></div></div><div class="cmp-val">11 mo</div></div>
-              <div class="cmp-bar"><div class="cmp-bname">Industry avg</div><div class="cmp-track"><div class="cmp-fill them" style="width:50%"></div></div><div class="cmp-val">~6 mo</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cmp-row">
-          <div class="cmp-hero">
-            <div class="big">40%</div>
-            <div class="lab">higher client satisfaction</div>
-            <div class="dir">&uarr; higher is better</div>
-          </div>
-          <div>
-            <div class="cmp-metric">Average client rating</div>
-            <div class="cmp-bars">
-              <div class="cmp-bar"><div class="cmp-bname ours">Aponot network</div><div class="cmp-track"><div class="cmp-fill ours" style="width:94%"></div></div><div class="cmp-val">9.4 / 10</div></div>
-              <div class="cmp-bar"><div class="cmp-bname">Industry avg</div><div class="cmp-track"><div class="cmp-fill them" style="width:67%"></div></div><div class="cmp-val">~6.7 / 10</div></div>
+        <div class="tcard">
+          <span class="qmark">&ldquo;</span>
+          <p class="quote">Marcus, my caregiver, is a godsend. He keeps me straight on all the new meds and appointments I got since I got out of the hospital &mdash; tells me when to take what, and drives me to my appointments. Haven&rsquo;t missed one yet.</p>
+          <div class="who">
+            <img class="avatar" src="/t-avatar-3.jpg" alt="An older man at home" />
+            <div class="meta">
+              <div class="nm">Member agency client</div>
+              <div class="loc">Age 73 · Tampa, FL</div>
             </div>
           </div>
         </div>
       </div>
+      <p class="tmon-note">Testimonials are from clients of Aponot&rsquo;s member home-care agency. Names are withheld for privacy; photos are representative.</p>
+    </section>
+    -->
 
-      <p class="cmp-src">
-        Industry caregiver turnover ~79% (Activated Insights / Home Care Pulse 2024 benchmark). CNA share
-        reflects an estimated industry HHA:CNA mix of ~6.5:1 (ranges ~4:1&ndash;9:1 by state) vs ~1:2 across the
-        Aponot network; private-pay tenure and client rating reflect industry norms. Aponot figures reflect the
-        current network of partner agencies.
+    <!-- THE GAP -->
+    <section>
+      <h2 class="sec-h">The system is shifting to paying for outcomes. Home care hasn't caught up.</h2>
+      <p class="prose">
+        Healthcare is steadily moving from paying for volume to paying for results — through Medicare Advantage, accountable care organizations, and readmission-based penalties. Home care sits directly on many of those outcomes: whether an aging parent takes their medication, eats well, stays mobile, and avoids a fall or a hospital stay often comes down to what happens between visits, at home.
       </p>
+      <p class="prose">
+        Yet home care remains one of the largest, most fragmented, and least connected parts of the system. It is delivered by thousands of independent agencies, <strong>paid mostly by the hour</strong>, and rarely linked to the medical results it influences. The care that could prevent the costliest events is disconnected from the parties who would benefit from preventing them.
+      </p>
+
+      <div class="tl">
+        <div class="today"><span class="tlab">Today</span></div>
+        <div class="tlrow">
+          <div class="lbl"><div class="nm">Primary care</div><div class="pg">ACOs &amp; Shared Savings Program</div></div>
+          <div class="track"><div class="bar" style="left:12.5%;width:87.5%"><span class="yr">2012</span></div></div>
+        </div>
+        <div class="tlrow">
+          <div class="lbl"><div class="nm">Hospital &amp; inpatient</div><div class="pg">Readmissions penalties, Hospital VBP</div></div>
+          <div class="track"><div class="bar" style="left:12.5%;width:87.5%"><span class="yr">2012</span></div></div>
+        </div>
+        <div class="tlrow">
+          <div class="lbl"><div class="nm">Specialty care</div><div class="pg">Oncology &amp; kidney models</div></div>
+          <div class="track"><div class="bar" style="left:37.5%;width:62.5%"><span class="yr">2016</span></div></div>
+        </div>
+        <div class="tlrow">
+          <div class="lbl"><div class="nm">Skilled home health</div><div class="pg">Home Health Value-Based Purchasing</div></div>
+          <div class="track"><div class="bar" style="left:37.5%;width:62.5%"><span class="yr">2016</span><span class="dot" style="left:87.5%"></span><span class="dotlab" style="left:87.5%">nationwide 2023</span></div></div>
+        </div>
+        <div class="tlrow">
+          <div class="lbl"><div class="nm">Skilled nursing &amp; post-acute</div><div class="pg">SNF Value-Based Purchasing</div></div>
+          <div class="track"><div class="bar" style="left:50%;width:50%"><span class="yr">2018</span></div></div>
+        </div>
+        <div class="tlrow hl">
+          <div class="lbl"><div class="nm">Non-skilled home care</div><div class="pg none">No federal program yet</div></div>
+          <div class="track"><div class="bar crim" style="left:87.5%;width:12.5%"><span class="yr">just beginning</span></div></div>
+        </div>
+        <div class="axis">
+          <div></div>
+          <div class="ticks">
+            <span class="tick" style="left:0%">2010</span>
+            <span class="tick" style="left:25%">2014</span>
+            <span class="tick" style="left:50%">2018</span>
+            <span class="tick" style="left:75%">2022</span>
+            <span class="tick" style="left:100%">2026</span>
+          </div>
+        </div>
+      </div>
+      <ul class="takeaways">
+        <li><strong>The 2010 Affordable Care Act set it in motion.</strong> It created the CMS Innovation Center and launched the first wave of value-based programs — Accountable Care Organizations, hospital readmission penalties, and value-based purchasing — that began tying payment to outcomes across the system.</li>
+        <li class="key">Roughly <strong>40% of U.S. healthcare payments now flow through value-based models</strong> — yet non-skilled home care sits almost entirely outside them.</li>
+        <li>The shift has paid off. Medicare's largest value-based program, the <strong>Shared Savings Program, generated a record ~$2.1&nbsp;billion in net savings in 2023</strong> while improving quality — and has produced savings for the trust funds every year since 2019.</li>
+        <li>Care outcomes have followed the dollars: transitional and in-home care models have cut <strong>30-day hospital readmissions by 20&ndash;50%</strong> for high-risk patients — precisely the kind of result non-skilled home care is positioned to drive once it's measured and rewarded.</li>
+        <span class="src">Start years reflect CMS program launch dates and are approximate. Sources: HCPLAN APM Measurement; CMS Medicare Shared Savings Program 2023 results; published research on transitional and in-home care.</span>
+      </ul>
     </section>
 
-    <section class="form-block" id="contact">
-      <div class="kicker">Get in touch</div>
-      <p class="lede" style="margin-bottom: 0;">
-        If you're an HR leader, benefits consultant, or broker who wants to
-        hear more about bringing real elder care support to your employees, we'd love
-        to talk&hellip;
-      </p>
+    <!-- POTENTIAL -->
+    <section>
+      <h2 class="sec-h">Value-based home care can significantly reduce the overall cost of care.</h2>
+      <p class="prose">Home care is uniquely positioned to influence the highest-cost outcomes — yet it's the one setting still paid for inputs, not results. Bringing it into the fold is where the next wave of value creation sits.</p>
+      <div class="stats">
+        <div class="stat"><div class="n"><small>~</small>50%</div><div class="l">of healthcare spending is driven by the sickest ~5% of patients — the high-need population largely supported at home, where much of the cost is preventable.</div></div>
+        <div class="stat"><div class="n">10&ndash;25%</div><div class="l">total-cost-of-care reduction reported by intensive in-home care models for high-risk populations — the impact non-skilled home care could extend if measured and rewarded.</div></div>
+        <div class="stat"><div class="n"><small>~</small>30%</div><div class="l">lower cost observed in hospital-at-home programs versus traditional inpatient care — evidence that well-managed home-based care bends the curve.</div></div>
+      </div>
+      <p class="sources">Sources: HCPLAN APM Measurement; CMS (Home Health Value-Based Purchasing, Readmissions Reduction Program, SNF VBP, oncology and kidney models); widely cited research on healthcare-spending concentration; published home-based and hospital-at-home care studies. Cost-reduction figures are directional — drawn from existing high-risk and skilled home-based programs — and illustrate the potential of extending value-based care to non-skilled home care, not a guaranteed result.</p>
+    </section>
 
+    <!-- OUTCOMES -->
+    <section class="band">
+      <h2 class="sec-h">The outcomes we work to drive</h2>
+      <p class="prose">Lower cost isn't abstract — it comes from a specific set of outcomes that consistent, well-managed home care is positioned to move. These are the results we measure and reward our network against.</p>
+      <div class="outcomes">
+        <div class="ocard">
+          <div class="oname">Fewer avoidable ED visits</div>
+          <p class="omech">Someone in the home catches a problem early and routes it to the right care — before a missed medication or an unnoticed symptom becomes a 911 call.</p>
+          <div class="oevi"><span class="lab">Evidence</span>CMS's Independence at Home demonstration reduced hospitalizations and emergency use for high-need patients through home-based care — while generating net savings per beneficiary.</div>
+        </div>
+        <div class="ocard">
+          <div class="oname">Lower 30-day readmissions</div>
+          <p class="omech">Structured post-discharge support — medication reconciliation, follow-up visits, early warning signs — closes the gaps that send people back to the hospital.</p>
+          <div class="oevi"><span class="lab">Evidence</span>Transitional-care programs such as the Care Transitions Intervention have reduced readmissions by <strong>20&ndash;50%</strong>.</div>
+        </div>
+        <div class="ocard">
+          <div class="oname">Shorter hospital stays</div>
+          <p class="omech">When a reliable home plan is in place, a hospital can discharge safely sooner — instead of holding a patient because there is nowhere safe to send them.</p>
+          <div class="oevi"><span class="lab">Evidence</span>Hospital-at-home and structured discharge-to-home models shorten length of stay and lower cost versus traditional inpatient care.</div>
+        </div>
+        <div class="ocard">
+          <div class="oname">Fewer diversions to facility care</div>
+          <p class="omech">Consistent, capable support at home keeps people safely independent — delaying or avoiding a costly move into a nursing facility.</p>
+          <div class="oevi"><span class="lab">Evidence</span>Home- and community-based services and programs like PACE are shown to delay nursing-home placement and reduce institutional care.</div>
+        </div>
+      </div>
+      <p class="outcome-note">Each of these traces back to the same thing: <strong>what happens between visits</strong> — medication taken, meals eaten, mobility kept, decline caught early. That is the work our network is built to deliver, measure, and reward.</p>
+      <p class="sources">Evidence is drawn from established home-based and transitional-care programs — the Care Transitions Intervention (readmissions), CMS's Independence at Home demonstration (hospitalizations and emergency use), hospital-at-home models (length of stay), and home- and community-based services and PACE (facility diversion). These show what home-based care can achieve; our aim is to extend that impact to non-skilled home care and measure it directly. Figures are directional.</p>
+    </section>
+
+    <!-- HOW THE MODEL WORKS -->
+    <section>
+      <h2 class="sec-h">How the model works</h2>
+      <p class="prose">
+        Aponot operates a network of licensed home-care agencies where measurable, outcomes-based incentives are used to continuously refine and optimize delivery models and best practices. In practice, it works as a continuous loop:
+      </p>
+      <div class="flow">
+        <div class="fstep">
+          <div class="fnum">1</div>
+          <div class="fbody">
+            <h3>Track care and outcomes together</h3>
+            <p>We record what care is delivered in the home and connect it to health outcomes drawn from claims and clinical data — building a picture no single agency or payer holds on its own.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <div class="fnum">2</div>
+          <div class="fbody">
+            <h3>Link care to outcomes</h3>
+            <p>By linking care and outcomes, we can see — fairly and risk-adjusted — which agencies and models are generating the results that matter.</p>
+          </div>
+        </div>
+        <div class="fstep">
+          <div class="fnum">3</div>
+          <div class="fbody">
+            <h3>Scale and steer to what works</h3>
+            <p>We identify where care is improving outcomes, then push best practices across our network and redirect care to those proven models.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO WE WORK WITH -->
+    <section>
+      <h2 class="sec-h">Who we work with</h2>
+      <div class="three">
+        <div class="card">
+          <div class="clab">Payers &amp; providers</div>
+          <h3>Health plans, ACOs, hospitals</h3>
+          <p>A way to put existing home-care spend to work more effectively — and a measurable reduction in avoidable admissions, emergency visits, and facility stays, with the evidence to prove it.</p>
+        </div>
+        <div class="card">
+          <div class="clab">Home-care agencies</div>
+          <h3>Independent agencies</h3>
+          <p>Access to value-based revenue and referral flow they can't reach alone, plus the tools and guidance to raise their outcomes — rewarded for quality, not just hours.</p>
+        </div>
+        <div class="card">
+          <div class="clab">Patients &amp; families</div>
+          <h3>Older adults and caregivers</h3>
+          <p>Care organized around staying healthy and independent at home — better managed, better coordinated, and connected to the rest of a person's care.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW WE OPERATE -->
+    <section>
+      <h2 class="sec-h">How we operate</h2>
+      <div class="trust">
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>State-licensed agencies</div>
+          <div class="td">Care delivered by licensed local agencies, each under its own license and insurance.</div>
+        </div>
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Credentialed caregivers</div>
+          <div class="td">CNA or HHA, background-checked and agency-verified.</div>
+        </div>
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>HIPAA-compliant</div>
+          <div class="td">Data handled under HIPAA, with Business Associate Agreements available.</div>
+        </div>
+        <div class="ti">
+          <div class="tt"><svg class="chk" viewBox="0 0 20 20" fill="none"><path d="M4 10.5 L8.5 15 L16 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Outcome-driven</div>
+          <div class="td">Performance measured on results, risk-adjusted for how sick each patient is.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSE -->
+    <div class="close">
+      <p><strong>Aponot is building this with payers, providers, and home-care agencies.</strong> If you work in value-based care, home-based care, care transitions, or agency operations, we'd welcome a conversation.</p>
       <div class="cta-row">
-        <a class="cta-button" href="https://calendly.com/joshua-aponot">Book an intro →</a>
+        <a href="https://calendly.com/joshua-aponot" class="cta-button">Get in touch</a>
+        <a href="/how-it-works" class="cta-button secondary">How it works</a>
       </div>
-
-      <p class="muted" style="font-size:15px; margin-top:28px; margin-bottom:0;">
-        Prefer email? Leave your details and we&rsquo;ll reach out.
-      </p>
-
-      <form onsubmit="handleSubmit(event)" id="signup-form">
-        <input type="text" name="name" placeholder="Name" required autocomplete="name" />
-        <input type="email" name="email" placeholder="Work email" required autocomplete="email" />
-        <input type="text" name="company" placeholder="Company" autocomplete="organization" />
-        <textarea name="context" placeholder="Anything you'd like us to know (optional)"></textarea>
-        <button type="submit">Get in touch</button>
-      </form>
-    </section>
+    </div>
 
   </main>
 
   <footer>
     <div>&copy; 2026 Aponot</div>
     <nav class="footer-nav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/benefits">For employers</a>
       <a href="/agencies">For agencies</a>
       <a href="/articles">Resources</a>
-      <a href="/how-it-works">How it works</a>
-      <a href="/value-based-care">Value-based care</a>
       <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="/hipaa">HIPAA</a>
       <a href="mailto:hello@aponot.com">Contact</a>
     </nav>
   </footer>
 
 </div>
-
-<script>
-  function handleSubmit(event) {
-    event.preventDefault();
-    const button = event.target.querySelector('button');
-    const form = document.getElementById('signup-form');
-    button.textContent = 'Thanks — we\'ll be in touch';
-    button.disabled = true;
-    Array.from(form.querySelectorAll('input, textarea')).forEach(el => el.disabled = true);
-  }
-
-  function scrollLogos(dir) {
-    var t = document.getElementById('logoTrack');
-    if (!t) return;
-    t.scrollBy({ left: dir * Math.max(240, Math.round(t.clientWidth * 0.72)), behavior: 'smooth' });
-  }
-</script>
 
 </body>
 </html>
