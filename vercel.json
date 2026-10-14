@@ -1,4 +1,15 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/how-it-works", "destination": "/benefits/how-it-works", "permanent": true },
+    { "source": "/impact-calculator", "destination": "/benefits/impact-calculator", "permanent": true },
+    { "source": "/articles", "destination": "/benefits/articles", "permanent": true },
+    { "source": "/eldercare-next-benefit", "destination": "/benefits/eldercare-next-benefit", "permanent": true },
+    { "source": "/hidden-cost-of-caregiving", "destination": "/benefits/hidden-cost-of-caregiving", "permanent": true },
+    { "source": "/home-care-101", "destination": "/benefits/home-care-101", "permanent": true },
+    { "source": "/navigation-isnt-care", "destination": "/benefits/navigation-isnt-care", "permanent": true },
+    { "source": "/sandwich-generation-workforce", "destination": "/benefits/sandwich-generation-workforce", "permanent": true },
+    { "source": "/what-quality-means", "destination": "/benefits/what-quality-means", "permanent": true }
+  ]
 }
