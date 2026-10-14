@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Aponot</title>
+  <meta name="description" content="Aponot was founded by a team that has run high-performing home-care agencies from the inside. We built it to bring non-skilled home care into value-based care — and finally pay for the outcomes it quietly produces every day." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #ffffff; --text: #1c1a17; --ink-soft: #4a4744; --muted: #8a857e;
+      --line: rgba(28, 26, 23, 0.12); --line-soft: rgba(28, 26, 23, 0.07); --line-strong: rgba(28, 26, 23, 0.22);
+      --track: rgba(28, 26, 23, 0.07); --terra: #c66540; --terra-soft: rgba(198, 101, 64, 0.09);
+      --crimson: #a31f34; --crimson-hover: #b32540; --crimson-soft: rgba(163, 31, 52, 0.06); --band: #f4f2ef;
+    }
+    html, body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; padding: 40px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    header .brand img { height: 28px; width: auto; display: block; }
+    header .topnav { display: flex; align-items: center; gap: 22px; font-size: 14px; color: var(--muted); flex-wrap: wrap; }
+    header .topnav a { text-decoration: none; color: inherit; transition: color .15s; }
+    header .topnav a:not(.login-link):hover { color: var(--text); }
+    header .topnav a.active { color: var(--text); }
+    header .login-link { color: var(--text); padding: 8px 18px; border: 1px solid var(--line-strong); border-radius: 999px; transition: background .15s, border-color .15s, color .15s; }
+    header .login-link:hover { background: var(--terra-soft); border-color: var(--terra); color: var(--terra); }
+    @media (max-width: 640px){ header .topnav a:not(.login-link){ display: none; } }
+
+    main { flex: 1; max-width: 880px; margin: 0 auto; width: 100%; padding: 72px 0 40px; }
+    .eyebrow { font-size: 11px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 18px; }
+    h1 { font-family: 'Fraunces', Georgia, serif; font-size: 52px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 26px; color: var(--text); max-width: 760px; }
+    .lede { font-size: 19px; color: var(--muted); max-width: 720px; }
+    .lede strong { color: var(--text); font-weight: 500; }
+
+    section { margin-top: 92px; }
+    .sec-h { font-family: 'Fraunces', Georgia, serif; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.12; margin-bottom: 18px; color: var(--text); max-width: 740px; }
+    .prose { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 710px; margin-bottom: 18px; }
+    .prose strong { color: var(--text); font-weight: 500; }
+
+    /* operator callout */
+    .callout { margin-top: 26px; border-left: 2px solid var(--crimson); background: var(--crimson-soft); border-radius: 0 12px 12px 0; padding: 20px 24px; max-width: 710px; }
+    .callout p { font-size: 16px; color: var(--ink-soft); line-height: 1.6; }
+    .callout p strong { color: var(--text); font-weight: 500; }
+
+    /* logo strip */
+    .logos { display: flex; flex-wrap: wrap; align-items: center; gap: 36px 44px; margin-top: 30px; }
+    .logos img { filter: grayscale(1); opacity: 0.5; transition: opacity .15s, filter .15s; }
+    .logos img:hover { filter: grayscale(0); opacity: 1; }
+    @media (max-width: 640px){ .logos { gap: 26px 30px; } .logos img { height: 30px !important; } }
+
+    /* beliefs 2x2 */
+    .beliefs { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 40px; margin-top: 12px; }
+    .belief { }
+    .belief .bnum { font-family: 'Fraunces', Georgia, serif; font-size: 15px; color: var(--terra); margin-bottom: 8px; }
+    .belief h3 { font-family: 'Fraunces', Georgia, serif; font-size: 21px; font-weight: 500; line-height: 1.18; margin-bottom: 9px; color: var(--text); }
+    .belief p { font-size: 15.5px; color: var(--muted); line-height: 1.6; }
+    @media (max-width: 640px){ .beliefs { grid-template-columns: 1fr; gap: 28px; } }
+
+    /* full-bleed band */
+    section.band { margin: 92px calc(50% - 50vw); padding: 76px calc(50vw - 50%); background: var(--band); }
+    section.band > *:first-child { margin-top: 0; }
+
+    /* stat row */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; }
+    .stat { border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; background: #fff; }
+    .stat .big { font-family: 'Fraunces', Georgia, serif; font-size: 38px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; color: var(--crimson); }
+    .stat .cap { font-size: 14px; color: var(--muted); line-height: 1.5; margin-top: 12px; }
+    .stat .cap strong { color: var(--text); font-weight: 500; }
+    .statnote { font-size: 12.5px; color: var(--muted); margin-top: 14px; font-style: italic; max-width: 700px; }
+    @media (max-width: 720px){ .stats { grid-template-columns: 1fr; } }
+
+    /* close / cta */
+    .close { margin-top: 92px; border-top: 1px solid var(--line); padding-top: 46px; }
+    .close p { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 690px; margin-bottom: 10px; }
+    .close p strong { color: var(--text); font-weight: 500; }
+    .cta-row { margin-top: 28px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .cta-button { background: var(--crimson); color: #fff; padding: 14px 28px; font-size: 14px; font-weight: 500; border-radius: 999px; transition: background-color 120ms; }
+    .cta-button:hover { background: var(--crimson-hover); }
+    .cta-button.secondary { background: transparent; color: var(--text); border: 1px solid var(--line-strong); }
+
+    footer { padding: 60px 40px 32px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; max-width: 880px; margin: 0 auto; width: 100%; }
+    footer .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    footer .footer-nav a { text-decoration: underline; text-decoration-color: var(--line-strong); }
+
+    @media (max-width: 640px) {
+      .page { padding: 24px; }
+      h1 { font-size: 33px; }
+      .lede { font-size: 16px; }
+      main { padding: 44px 0 20px; }
+      section { margin-top: 60px; }
+      .sec-h { font-size: 25px; }
+      .stat .big { font-size: 34px; }
+      footer { padding: 40px 24px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+</head>
+<body>
+
+<div class="page">
+
+  <header>
+    <a href="/" class="brand"><img src="/logo-red.png" alt="Aponot" /></a>
+    <nav class="topnav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/payers">For payers</a>
+      <a href="/about" class="active">About</a>
+      <a class="login-link" href="https://app.aponot.com/sign-in">Log in</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="eyebrow">About us</div>
+    <h1>Built by home-care operators.</h1>
+    <p class="lede">
+      Aponot was founded by a team that has run high-performing home-care agencies <strong>from the inside</strong>. We started it to bring non-skilled home care into value-based care &mdash; and finally pay for the outcomes it quietly produces every day.
+    </p>
+
+    <!-- OUR STORY -->
+    <section>
+      <h2 class="sec-h">Our story</h2>
+      <p class="prose">
+        Aponot was started by a team that met at MIT and spent years as operators in the home-care industry. We&rsquo;ve run high-performing home-care agencies, so we know how to deliver industry-leading care, support caregivers through a demanding role, and navigate the complex systems &mdash; Medicaid, long-term-care insurance, managed care &mdash; that surround it.
+      </p>
+      <p class="prose">
+        Running those agencies, we saw the same thing over and over: the daily, in-home work our caregivers did <strong>quietly prevented expensive acute events</strong> &mdash; the fall caught early, the medication error spotted, the decline flagged before it became an ambulance ride. But nobody paid for that value. Non-skilled home care sat outside value-based care entirely, billed by the hour, disconnected from the outcomes it produced.
+      </p>
+      <p class="prose">
+        We built Aponot to close that gap: to aggregate home-care agencies into a single network, overlay what a decade of value-based care has already proven, and connect the home to the payers who carry the cost of avoidable care &mdash; so the value our caregivers create every day <strong>finally shows up where it should.</strong>
+      </p>
+      <div class="callout">
+        <p><strong>We build from inside the work, not above it.</strong> Aponot is built on CareUp, our own licensed Florida home-care agency &mdash; so every protocol and product decision starts from how care actually gets delivered.</p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <h2 class="sec-h">Our experience</h2>
+      <p class="prose">A few of the healthcare and senior-care organizations our team has worked with and alongside.</p>
+      <div class="logos">
+        <img src="/logos/hca.png" alt="HCA Healthcare" style="height:40px;" />
+        <img src="/logos/moffitt.png" alt="Moffitt Cancer Center" style="height:36px;" />
+        <img src="/logos/baycare.png" alt="BayCare" style="height:30px;" />
+        <img src="/logos/brookdale.png" alt="Brookdale Senior Living" style="height:34px;" />
+        <img src="/logos/discovery.png" alt="Discovery Senior Living" style="height:44px;" />
+        <img src="/logos/enhabit.png" alt="Enhabit Home Health & Hospice" style="height:26px;" />
+        <img src="/logos/advent.png" alt="AdventHealth" style="height:30px;" />
+      </div>
+    </section>
+
+    <!-- BELIEFS -->
+    <section class="band">
+      <h2 class="sec-h">What we believe</h2>
+      <p class="prose">A few things we build everything around.</p>
+      <div class="beliefs">
+        <div class="belief">
+          <div class="bnum">01</div>
+          <h3>Home care is an underused clinical lever</h3>
+          <p>A caregiver in the home is the highest-frequency touchpoint a high-risk senior has. The moments that prevent an ED visit or an admission happen there &mdash; long undervalued because no one paid for them.</p>
+        </div>
+        <div class="belief">
+          <div class="bnum">02</div>
+          <h3>Pay for outcomes, not hours</h3>
+          <p>Care should be rewarded for what it produces, not just the time it bills. That shift is what finally makes better care and a better business line up in the same direction.</p>
+        </div>
+        <div class="belief">
+          <div class="bnum">03</div>
+          <h3>Build on what&rsquo;s already proven</h3>
+          <p>A decade of value-based care showed which activities actually move outcomes. We don&rsquo;t reinvent that playbook &mdash; we bring it into the one setting that can run it every day.</p>
+        </div>
+        <div class="belief">
+          <div class="bnum">04</div>
+          <h3>Operators, not spectators</h3>
+          <p>We&rsquo;ve run the agencies and delivered the care ourselves. We design Aponot for how care actually happens on the ground &mdash; not how it looks on a slide.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRACK RECORD -->
+    <section>
+      <h2 class="sec-h">Our track record</h2>
+      <p class="prose">Our experience shows up where it matters most &mdash; in the quality of care delivered, the caregivers who stay, and the families who trust us.</p>
+      <div class="stats">
+        <div class="stat">
+          <div class="big">~3&times;</div>
+          <div class="cap"><strong>The industry&rsquo;s caregiver retention</strong> at our affiliated agency &mdash; the foundation of consistent, high-quality care.</div>
+        </div>
+        <div class="stat">
+          <div class="big">5/5</div>
+          <div class="cap"><strong>Average Google client review</strong> &mdash; care families actually recommend.</div>
+        </div>
+        <div class="stat">
+          <div class="big">Tens of thousands</div>
+          <div class="cap"><strong>Of care hours delivered</strong> &mdash; real operating experience, not a whiteboard.</div>
+        </div>
+      </div>
+      <p class="statnote">Figures reflect our affiliated agency&rsquo;s operating stats as of 2026 versus non-skilled home-care industry benchmarks, including professional care.</p>
+    </section>
+
+    <!-- CLOSE -->
+    <div class="close">
+      <p><strong>Whether you carry medical risk or deliver care, we&rsquo;d like to talk.</strong> Aponot is building its founding network of payers and home-care agencies now &mdash; and we welcome a conversation with anyone working to make home care drive real value.</p>
+      <div class="cta-row">
+        <a href="https://calendly.com/joshua-aponot" class="cta-button">Get in touch</a>
+        <a href="/how-it-works" class="cta-button secondary">See how the model works</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div>&copy; 2026 Aponot</div>
+    <nav class="footer-nav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/payers">For payers</a>
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy</a>
+      <a href="mailto:hello@aponot.com">Contact</a>
+    </nav>
+  </footer>
+
+</div>
+
+</body>
+</html>
