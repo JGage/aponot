@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Payers — Aponot</title>
+  <meta name="description" content="Risk-bearing entities carry more than $70B a year in avoidable acute cost. Value-based care is already cutting it in primary care — and Aponot is the single integration point that lets payers finally tap non-skilled home care to reduce ED visits, admissions, readmissions, and facility placement." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #ffffff; --text: #1c1a17; --ink-soft: #4a4744; --muted: #8a857e;
+      --line: rgba(28, 26, 23, 0.12); --line-soft: rgba(28, 26, 23, 0.07); --line-strong: rgba(28, 26, 23, 0.22);
+      --track: rgba(28, 26, 23, 0.07); --terra: #c66540; --terra-soft: rgba(198, 101, 64, 0.09);
+      --crimson: #a31f34; --crimson-hover: #b32540; --crimson-soft: rgba(163, 31, 52, 0.06); --band: #f4f2ef;
+    }
+    html, body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; padding: 40px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    header .brand img { height: 28px; width: auto; display: block; }
+    header .topnav { display: flex; align-items: center; gap: 22px; font-size: 14px; color: var(--muted); flex-wrap: wrap; }
+    header .topnav a { text-decoration: none; color: inherit; transition: color .15s; }
+    header .topnav a:not(.login-link):hover { color: var(--text); }
+    header .topnav a.active { color: var(--text); }
+    header .login-link { color: var(--text); padding: 8px 18px; border: 1px solid var(--line-strong); border-radius: 999px; transition: background .15s, border-color .15s, color .15s; }
+    header .login-link:hover { background: var(--terra-soft); border-color: var(--terra); color: var(--terra); }
+    @media (max-width: 640px){ header .topnav a:not(.login-link){ display: none; } }
+
+    main { flex: 1; max-width: 880px; margin: 0 auto; width: 100%; padding: 72px 0 40px; }
+    .eyebrow { font-size: 11px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 18px; }
+    h1 { font-family: 'Fraunces', Georgia, serif; font-size: 50px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.06; margin-bottom: 26px; color: var(--text); max-width: 780px; }
+    .lede { font-size: 19px; color: var(--muted); max-width: 720px; }
+    .lede strong { color: var(--text); font-weight: 500; }
+
+    section { margin-top: 92px; }
+    .sec-h { font-family: 'Fraunces', Georgia, serif; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.12; margin-bottom: 18px; color: var(--text); max-width: 760px; }
+    .prose { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 710px; margin-bottom: 16px; }
+    .prose strong { color: var(--text); font-weight: 500; }
+
+    /* stat row */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+    .stat { border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; background: #fff; }
+    .stat.hl { border-top: 2px solid var(--crimson); }
+    .stat .big { font-family: 'Fraunces', Georgia, serif; font-size: 40px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; color: var(--crimson); }
+    .stat .cap { font-size: 14px; color: var(--muted); line-height: 1.5; margin-top: 12px; }
+    .stat .cap strong { color: var(--text); font-weight: 500; }
+    .statnote { font-size: 12.5px; color: var(--muted); margin-top: 14px; font-style: italic; max-width: 700px; }
+    @media (max-width: 720px){ .stats { grid-template-columns: 1fr; } }
+
+    /* proof cards */
+    .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 10px; }
+    .card { border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px 22px; background: #fff; }
+    .card .plab { font-size: 11px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .card h3 { font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1.15; margin-bottom: 10px; }
+    .card p { font-size: 14.5px; color: var(--muted); line-height: 1.6; }
+    .card p strong { color: var(--text); font-weight: 500; }
+    @media (max-width: 720px){ .three { grid-template-columns: 1fr; } }
+
+    /* full-bleed band */
+    section.band { margin: 92px calc(50% - 50vw); padding: 76px calc(50vw - 50%); background: var(--band); }
+    section.band > *:first-child { margin-top: 0; }
+    .band .prose { max-width: 720px; }
+
+    /* two-column: why out / why now */
+    .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 30px; }
+    .lcard { border: 1px solid var(--line); border-radius: 16px; padding: 26px 26px 22px; background: #fff; }
+    .lcard.now { border-top: 2px solid var(--crimson); }
+    .lcard .clab { font-size: 11px; font-weight: 500; color: var(--terra); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+    .lcard.now .clab { color: var(--crimson); }
+    .lcard h3 { font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1.15; margin-bottom: 14px; color: var(--text); }
+    .lcard ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+    .lcard li { position: relative; padding-left: 24px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+    .lcard li::before { content: ""; position: absolute; left: 4px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--terra); }
+    .lcard.now li::before { background: var(--crimson); }
+    @media (max-width: 720px){ .twocol { grid-template-columns: 1fr; } }
+
+    /* attribute pills */
+    .attrs { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .pill { display: flex; align-items: center; gap: 9px; border: 1px solid var(--line-strong); border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 500; color: var(--text); }
+    .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--terra); }
+
+    /* targets list */
+    .targets { margin-top: 30px; border-top: 1px solid var(--line); }
+    .trow { display: grid; grid-template-columns: 30px 1fr; gap: 18px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .trow .tmark { width: 30px; height: 30px; border-radius: 9px; background: var(--crimson-soft); display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .trow .tmark svg { width: 17px; height: 17px; }
+    .trow h4 { font-size: 16.5px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+    .trow p { font-size: 14.5px; color: var(--muted); line-height: 1.55; }
+
+    /* close / cta */
+    .close { margin-top: 92px; border-top: 1px solid var(--line); padding-top: 46px; }
+    .close p { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 690px; margin-bottom: 10px; }
+    .close p strong { color: var(--text); font-weight: 500; }
+    .cta-row { margin-top: 28px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .cta-button { background: var(--crimson); color: #fff; padding: 14px 28px; font-size: 14px; font-weight: 500; border-radius: 999px; transition: background-color 120ms; }
+    .cta-button:hover { background: var(--crimson-hover); }
+    .cta-button.secondary { background: transparent; color: var(--text); border: 1px solid var(--line-strong); }
+
+    footer { padding: 60px 40px 32px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; max-width: 880px; margin: 0 auto; width: 100%; }
+    footer .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    footer .footer-nav a { text-decoration: underline; text-decoration-color: var(--line-strong); }
+
+    @media (max-width: 640px) {
+      .page { padding: 24px; }
+      h1 { font-size: 32px; }
+      .lede { font-size: 16px; }
+      main { padding: 44px 0 20px; }
+      section { margin-top: 60px; }
+      .sec-h { font-size: 25px; }
+      .stat .big { font-size: 34px; }
+      footer { padding: 40px 24px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <header>
+    <a href="/" class="brand"><img src="/logo-red.png" alt="Aponot" /></a>
+    <nav class="topnav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/payers" class="active">For payers</a>
+      <a href="/benefits/articles">Resources</a>
+      <a class="login-link" href="https://app.aponot.com/sign-in">Log in</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="eyebrow">For payers</div>
+    <h1>Over $70 billion a year in avoidable cost. Most of it starts at home.</h1>
+    <p class="lede">
+      Every risk-bearing entity carries the same burden: ED visits that didn&rsquo;t need to happen, admissions and readmissions that were preventable, seniors placed in facilities before they had to be. The events are avoidable &mdash; but <strong>the moments that cause them happen in the home, between clinical visits</strong>, where you have no reach today.
+    </p>
+
+    <!-- SECTION 1: THE PROBLEM -->
+    <section>
+      <h2 class="sec-h">The cost you already pay for.</h2>
+      <p class="prose">
+        For a health plan, ACO, MA plan, or any entity bearing medical risk, avoidable acute care is the single largest pool of recoverable spend &mdash; and the hardest to reach, because it&rsquo;s driven by what happens to members on the days no clinician sees them.
+      </p>
+      <div class="stats">
+        <div class="stat hl">
+          <div class="big">$70B+</div>
+          <div class="cap"><strong>Avoidable acute cost each year</strong> &mdash; ED visits, admissions, readmissions, and premature facility placement combined.</div>
+        </div>
+        <div class="stat">
+          <div class="big">~$32B</div>
+          <div class="cap"><strong>Avoidable ED visits</strong> a year &mdash; care that could have been prevented or redirected.</div>
+        </div>
+        <div class="stat">
+          <div class="big">~$17B</div>
+          <div class="cap"><strong>Preventable hospital readmissions</strong> a year borne by Medicare alone.</div>
+        </div>
+      </div>
+      <p class="statnote">Industry estimates: avoidable hospital ED visits ~$32B/yr (UnitedHealth Group); preventable readmissions ~$17B/yr (CMS); the $70B+ figure combines these with avoidable admissions and premature long-term facility placement.</p>
+    </section>
+
+    <!-- SECTION 2: VBC CAN WORK -->
+    <section>
+      <h2 class="sec-h">Reducing it is hard. But value-based care is already doing it.</h2>
+      <p class="prose">
+        Avoidable cost has defeated a long list of good intentions. What&rsquo;s changed is that a cohort of value-based operators has actually cracked it &mdash; and they&rsquo;re among the fastest-growing companies in all of healthcare.
+      </p>
+      <div class="three">
+        <div class="card">
+          <div class="plab">Scaled savings</div>
+          <h3>Aledade</h3>
+          <p><strong>Saved Medicare more than $1B in 2024</strong>, preventing roughly 96,000 hospitalizations and 167,000 ED visits. 93% of its ACOs earned shared savings &mdash; versus 73% of all others.</p>
+        </div>
+        <div class="card">
+          <div class="plab">Explosive growth</div>
+          <h3>Main Street Health</h3>
+          <p><strong>The #1 fastest-growing private company in America</strong> (Inc. 5000, 2026). The company reports 53% fewer readmissions, 51% higher Star scores, and 11% lower medical cost &mdash; in rural markets, no less.</p>
+        </div>
+        <div class="card">
+          <div class="plab">Market validation</div>
+          <h3>Oak Street &amp; ChenMed</h3>
+          <p>The high-touch senior primary-care model, proven enough that <strong>CVS bought Oak Street Health for ~$10.6B</strong> and Amazon bought One Medical for ~$3.9B.</p>
+        </div>
+      </div>
+      <p class="prose" style="margin-top:26px;">
+        The question has shifted. It&rsquo;s no longer <em>whether</em> value-based care can reduce avoidable cost &mdash; it&rsquo;s <strong>which settings haven&rsquo;t been brought into it yet.</strong>
+      </p>
+    </section>
+
+    <!-- SECTION 3: HOME CARE, THE MISSING SETTING -->
+    <section class="band">
+      <h2 class="sec-h">Home care has been the missing setting &mdash; until now.</h2>
+      <p class="prose">
+        One care setting has sat almost entirely outside value-based payment: non-skilled, in-home care. Insiders have long suspected it could be one of the most powerful levers on avoidable cost &mdash; it&rsquo;s the <strong>highest-frequency touchpoint a senior has</strong>, in the exact place decline begins. But three features of the industry kept it out. And two changes just opened the door.
+      </p>
+      <div class="twocol">
+        <div class="lcard">
+          <div class="clab">Why it stayed out</div>
+          <h3>The industry&rsquo;s barriers</h3>
+          <ul>
+            <li>Highly fragmented &mdash; thousands of small, local agencies, none at scale</li>
+            <li>Misaligned incentives &mdash; paid by the hour, with no stake in outcomes</li>
+            <li>Operators and workforce lacking the data and clinical sophistication to plug into value-based models</li>
+            <li>No measurement layer tying in-home activity to downstream medical cost</li>
+          </ul>
+        </div>
+        <div class="lcard now">
+          <div class="clab">Why now</div>
+          <h3>What finally changed</h3>
+          <ul>
+            <li>A decade of value-based care in primary care proved <em>which</em> activities cut avoidable cost &mdash; and nearly all of them live in the home</li>
+            <li>AI makes it possible to coordinate, measure, and manage a fragmented agency network at scale</li>
+            <li>Together, they make the potential insiders always saw finally realizable</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE INTEGRATION POINT -->
+    <section>
+      <h2 class="sec-h">One integration point into the home.</h2>
+      <p class="prose">
+        Aponot is the <strong>single integration point</strong> that lets you tap the massive home-care infrastructure that already exists &mdash; without contracting thousands of agencies or building a measurement layer yourself. You connect once to us; we manage the network and the data, and put home care&rsquo;s unique attributes to work on your avoidable cost.
+      </p>
+      <div class="attrs">
+        <div class="pill"><span class="dot"></span>In the home</div>
+        <div class="pill"><span class="dot"></span>High-frequency</div>
+        <div class="pill"><span class="dot"></span>High-touch</div>
+        <div class="pill"><span class="dot"></span>Low-cost</div>
+      </div>
+
+      <h3 class="sec-h" style="font-size:22px; margin-top:52px; margin-bottom:6px;">What we target</h3>
+      <div class="targets">
+        <div class="trow">
+          <div class="tmark"><svg viewBox="0 0 24 24" fill="none" stroke="#a31f34" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 5 4-12 2 7h6"/></svg></div>
+          <div><h4>Emergency department visits</h4><p>Catching decline and closing gaps in the home before they become an avoidable ED trip.</p></div>
+        </div>
+        <div class="trow">
+          <div class="tmark"><svg viewBox="0 0 24 24" fill="none" stroke="#a31f34" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-5 8 5v12"/><path d="M12 8v6M9 11h6"/></svg></div>
+          <div><h4>Hospital admissions &amp; readmissions</h4><p>Post-discharge follow-through, medication reconciliation, and early escalation &mdash; the proven levers, executed daily.</p></div>
+        </div>
+        <div class="trow">
+          <div class="tmark"><svg viewBox="0 0 24 24" fill="none" stroke="#a31f34" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M10 21v-5h4v5"/></svg></div>
+          <div><h4>Premature facility placement</h4><p>Keeping members safely and independently at home longer &mdash; deferring the highest-cost transition of all.</p></div>
+        </div>
+        <div class="trow">
+          <div class="tmark"><svg viewBox="0 0 24 24" fill="none" stroke="#a31f34" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19l1-5.8L3.5 9.2l5.9-.9z"/></svg></div>
+          <div><h4>Star ratings &amp; quality</h4><p>Better adherence, engagement, and experience in the home flow straight through to Star and quality performance.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSE -->
+    <div class="close">
+      <p><strong>We&rsquo;re partnering with a small number of risk-bearing entities on pilots now.</strong> If you carry medical risk and want to reach the avoidable cost that lives in the home, we&rsquo;d welcome a conversation about what a pilot could look like on your population.</p>
+      <div class="cta-row">
+        <a href="https://calendly.com/joshua-aponot" class="cta-button">Explore a pilot</a>
+        <a href="/how-it-works" class="cta-button secondary">See how the model works</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div>&copy; 2026 Aponot</div>
+    <nav class="footer-nav">
+      <a href="/how-it-works">How it works</a>
+      <a href="/agencies">For agencies</a>
+      <a href="/payers">For payers</a>
+      <a href="/benefits/articles">Resources</a>
+      <a href="/privacy">Privacy</a>
+      <a href="mailto:hello@aponot.com">Contact</a>
+    </nav>
+  </footer>
+
+</div>
+
+</body>
+</html>
